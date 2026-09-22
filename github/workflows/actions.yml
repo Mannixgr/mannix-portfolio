@@ -1,0 +1,32 @@
+name: Deploy Portfolio Site
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Connect to Tailscale
+        uses: tailscale/github-action@v2
+        with:
+          oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
+          oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
+          tags: tag:ci
+
+      - name: Add SSH key
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.DEPLOY_SSH_KEY }}
+
+      - name: Sync site files to the container
+        run: |
+          rsync -avz --delete \
+            -e "ssh -o StrictHostKeyChecking=accept-new" \
+            --exclude '.git*' --exclude '.github' \
+            ./ deploy@192.168.1.20:/var/www/portfolio/
