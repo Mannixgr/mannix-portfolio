@@ -4,13 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Mannix Graham | Cloud, DevOps &amp; SRE Internships</title>
-  <meta name="description" content="Mannix Graham, Computer Science (Honours) at Wilfrid Laurier University. Terraform, AWS, GitHub Actions, Kubernetes and test automation. Seeking Cloud, DevOps and SRE internships." />
+  <meta name="description" content="Mannix Graham, Computer Science (Honours) at Wilfrid Laurier University. Terraform, AWS, GitHub Actions, Docker and test automation. Seeking Cloud, DevOps and SRE internships." />
   <meta name="theme-color" content="#051F20" />
   <link rel="canonical" href="https://mannixgr.github.io/mannix-portfolio/" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://mannixgr.github.io/mannix-portfolio/" />
   <meta property="og:title" content="Mannix Graham | Cloud, DevOps &amp; SRE Internships" />
-  <meta property="og:description" content="Terraform + AWS + GitHub Actions (OIDC), a Cisco/Proxmox/k3s homelab, and test automation that cut regression from 3.5 hours to 7 minutes." />
+  <meta property="og:description" content="Terraform + AWS + GitHub Actions (OIDC), a self-hosted Cisco/Proxmox homelab, and test automation that cut regression from 3.5 hours to 7 minutes." />
   <meta property="og:image" content="https://mannixgr.github.io/mannix-portfolio/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -310,9 +310,7 @@
     .project > :last-child { margin-bottom: 0; }
 
     @media (min-width: 720px) {
-      .project-grid { grid-template-columns: 1fr 1fr; }
       .project.featured {
-        grid-column: 1 / -1;
         display: grid;
         grid-template-columns: 1fr 17.5rem;
         grid-template-rows: auto auto auto 1fr; /* the tall diagram's extra height lands below the link */
@@ -326,6 +324,7 @@
     .tech { font-family: var(--font-mono); color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.6rem; }
 
     .project-link { font-size: 0.92rem; font-weight: 600; }
+    .project-links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; }
 
     /* Diagram: dark frame to match the page; click opens it full size */
     .diagram { margin: 0.25rem 0 1rem; }
@@ -555,17 +554,28 @@
             </figure>
           </article>
 
-          <article class="project">
+          <article class="project featured">
             <h3>Network &amp; Virtualization Homelab</h3>
-            <p>A home network split into security zones, so one compromised device can't reach everything — VLANs with inter-VLAN routing on Cisco IOS. On top, a self-managed k3s cluster runs Dockerized workloads across Proxmox VMs, reachable only through Tailscale with nothing exposed to the public internet.</p>
-            <p class="tech">Cisco IOS · Proxmox VE · Kubernetes (k3s) · Docker · Tailscale</p>
+            <p>A Proxmox host running containers and a Docker VM behind a Cisco RV260 and Catalyst 3550 — including the server this page is coming from. Remote admin goes through a Tailscale subnet route and public traffic through Tailscale Funnel, so no ports are opened on the router. Next: splitting the flat LAN into server, client and management VLANs with ACLs between them.</p>
+            <p class="tech">Proxmox VE · Cisco IOS · Tailscale · Docker · Caddy</p>
+            <a class="project-link" href="https://github.com/Mannixgr/Homelab" target="_blank" rel="noopener noreferrer">Configs &amp; diagrams on GitHub →</a>
+
+            <figure class="diagram">
+              <a href="homelab-network.svg" target="_blank" rel="noopener">
+                <img src="homelab-network.svg" alt="Homelab network diagram: Rogers gateway and Cisco RV260 (double NAT) feed a Catalyst 3550, PoE switch and access points. A Proxmox host runs a Homepage container, the Caddy container serving this site, and a Docker VM. Public visitors arrive through Tailscale Funnel and the GitHub Actions runner through the tailnet. Client and management VLAN zones and an AWS VPN are shown as planned." width="1300" height="930" loading="lazy" />
+              </a>
+              <figcaption>Network · click to enlarge ↗</figcaption>
+            </figure>
           </article>
 
           <article class="project">
             <h3>Portfolio Site</h3>
-            <p>Self-hosted in my homelab and deployed on every push. A GitHub Actions workflow joins my tailnet as a tagged CI device, then rsyncs the site to a web container. A Tailscale ACL limits what that CI device can reach, and the deploy key is locked to a validating rsync wrapper rather than a shell.</p>
-            <p class="tech">GitHub Actions · Tailscale ACLs · SSH · rsync · Proxmox</p>
-            <a class="project-link" href="https://github.com/Mannixgr/mannix-portfolio/blob/main/.github/workflows/deploy.yml" target="_blank" rel="noopener noreferrer">View the workflow →</a>
+            <p>Self-hosted in my homelab and deployed on every push. A GitHub Actions workflow joins my tailnet as an ephemeral CI node that can reach exactly one host on port 22, then rsyncs the site to a Caddy container. The deploy user has no shell — its key can only run rsync into the web root, enforced by a wrapper script. Getting there took four fixes, written up below.</p>
+            <p class="tech">GitHub Actions · Tailscale ACLs &amp; Funnel · SSH · rsync · Caddy</p>
+            <div class="project-links">
+              <a class="project-link" href="https://github.com/Mannixgr/Homelab/blob/main/docs/2026-09-deploy-pipeline.md" target="_blank" rel="noopener noreferrer">What broke &amp; how I fixed it →</a>
+              <a class="project-link" href="https://github.com/Mannixgr/mannix-portfolio/blob/main/.github/workflows/deploy.yml" target="_blank" rel="noopener noreferrer">View the workflow →</a>
+            </div>
           </article>
         </div>
       </div>
@@ -593,8 +603,8 @@
           <div class="skill-row">
             <h3>Networking &amp; Homelab</h3>
             <div>
-              <p>VLAN-segmented network with inter-VLAN routing on Cisco IOS, a k3s cluster across Proxmox VMs, and remote access only over Tailscale — nothing exposed publicly.</p>
-              <p class="tech">Cisco IOS · Proxmox VE · Kubernetes (k3s) · Tailscale · Ubuntu Linux</p>
+              <p>Proxmox host running containers and a Docker VM behind a Cisco RV260 and Catalyst 3550, with remote admin over a Tailscale subnet route and no router ports opened. Next: VLAN zones with inter-VLAN ACLs.</p>
+              <p class="tech">Cisco IOS · Proxmox VE · Tailscale · Docker · Caddy · Debian Linux</p>
             </div>
           </div>
           <div class="skill-row">
