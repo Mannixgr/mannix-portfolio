@@ -104,7 +104,38 @@
       margin-right: auto;
     }
 
-    .nav-actions { display: flex; align-items: center; gap: 1.1rem; }
+    /* In-page section links; the one you're reading gets aria-current */
+    .nav-sections { display: flex; gap: 1.1rem; }
+    .nav-sections a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      white-space: nowrap;
+      padding: 0.2rem 0;
+      border-bottom: 2px solid transparent;
+      transition: color 150ms, border-color 150ms;
+    }
+    .nav-sections a:hover { color: var(--text-main); }
+    .nav-sections a[aria-current="true"] { color: var(--text-main); border-bottom-color: var(--text-main); }
+
+    /* Keep headings clear of the sticky header when jumping to a section */
+    section[id] { scroll-margin-top: 4.5rem; }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 1.1rem;
+      padding-left: 1.1rem;
+      border-left: 1px solid var(--border);
+    }
+
+    /* Phones: section links drop to their own scrollable row under the name */
+    @media (max-width: 640px) {
+      .nav { flex-wrap: wrap; row-gap: 0.5rem; }
+      .nav-sections { order: 3; width: 100%; overflow-x: auto; gap: 1.25rem; }
+      .nav-actions { padding-left: 0; border-left: 0; }
+      section[id] { scroll-margin-top: 6.5rem; }
+    }
 
     .nav-actions a {
       color: var(--text-muted);
@@ -126,7 +157,20 @@
 
     /* Hero — the one screen every recruiter actually reads */
     .hero {
+      position: relative;
       padding: clamp(3rem, 9vw, 5.5rem) 0 clamp(2.5rem, 6vw, 3.5rem);
+    }
+    .hero > .container { position: relative; z-index: 1; }
+
+    /* Drifting network graph behind the hero; fades out toward the bottom */
+    .hero-net {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent);
+      mask-image: linear-gradient(to bottom, #000 55%, transparent);
     }
 
     .eyebrow {
@@ -187,6 +231,15 @@
     section { padding: clamp(2.5rem, 6vw, 3.75rem) 0; }
     section.band { background: var(--bg-alt); }
 
+    /* Auto-numbered labels: "// 01 About", "// 02 Experience"… (alt text keeps screen readers quiet) */
+    main { counter-reset: section; }
+    .section-label { counter-increment: section; }
+    .section-label::before {
+      content: "// " counter(section, decimal-leading-zero) "\00a0\00a0";
+      content: "// " counter(section, decimal-leading-zero) "\00a0\00a0" / "";
+      color: var(--text-muted);
+    }
+
     .section-label {
       font-family: var(--font-mono);
       color: var(--accent);
@@ -244,61 +297,71 @@
     }
 
     /* Projects */
-    .project-grid { display: grid; gap: 2rem; }
-    @media (min-width: 720px) {
-      .project-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    /* Stacked cards: one featured project with its diagram alongside, then the rest */
+    .project-grid { display: grid; gap: 1.25rem; }
+    .project {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem;
     }
-    .project-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 0.5rem 1rem;
-      margin-bottom: 0.6rem;
-    }
-    .project-head h3 { font-size: 1.15rem; }
+    .project h3 { font-size: 1.2rem; margin-bottom: 0.6rem; }
     .project p { color: var(--text-muted); margin-bottom: 0.85rem; }
+    .project > :last-child { margin-bottom: 0; }
 
-    .status {
-      font-family: var(--font-mono);
-      display: inline-block;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      border: 1px solid var(--text-muted);
-      border-radius: 4px;
-      padding: 0 0.45rem;
-      white-space: nowrap;
+    @media (min-width: 720px) {
+      .project-grid { grid-template-columns: 1fr 1fr; }
+      .project.featured {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: 1fr 17.5rem;
+        grid-template-rows: auto auto auto 1fr; /* the tall diagram's extra height lands below the link */
+        column-gap: 1.75rem;
+        align-items: start;
+      }
+      .project.featured .project-link { justify-self: start; }
+      .project.featured .diagram { grid-column: 2; grid-row: 1 / span 4; margin: 0; }
     }
-    .status.wip { color: var(--accent); border-color: var(--accent); }
 
     .tech { font-family: var(--font-mono); color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.6rem; }
 
     .project-link { font-size: 0.92rem; font-weight: 600; }
 
-    .diagram {
-      margin: 0.25rem 0 1rem;
-      background: var(--text-main);
+    /* Diagram: dark frame to match the page; click opens it full size */
+    .diagram { margin: 0.25rem 0 1rem; }
+    .diagram a {
+      display: block;
+      background: var(--bg);
       border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 0.75rem;
+      border-radius: 8px;
+      padding: 0.5rem;
+      transition: border-color 150ms;
     }
+    .diagram a:hover { border-color: var(--text-muted); }
     .diagram img { display: block; width: 100%; height: auto; border-radius: 4px; }
     .diagram figcaption {
       font-family: var(--font-mono);
       font-size: 0.78rem;
-      color: var(--on-accent);
-      opacity: 0.65;
-      padding: 0.5rem 0.25rem 0.1rem;
+      color: var(--text-muted);
+      padding-top: 0.5rem;
+      text-align: center;
     }
 
     /* Skills */
-    .chips { list-style: none; display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 1.1rem; }
-    .chips li {
-      font-family: var(--font-mono);
-      font-size: 0.95rem;
-      padding: 0.4rem 0.9rem;
-      border: 1px solid var(--accent);
-      border-radius: 6px;
-      color: var(--accent);
+    .skill-row {
+      display: grid;
+      grid-template-columns: 13rem 1fr;
+      gap: 0.4rem 1.5rem;
+      padding: 1.1rem 0;
+      border-top: 1px solid var(--border);
+    }
+    .skill-row:last-child { border-bottom: 1px solid var(--border); }
+    .skill-row h3 { font-size: 1.02rem; }
+    .skill-row p { color: var(--text-muted); }
+    .skill-row .tech { margin: 0.4rem 0 0; }
+
+    @media (max-width: 640px) {
+      .skill-row { grid-template-columns: 1fr; }
     }
 
     /* Final CTA */
@@ -316,9 +379,53 @@
       text-align: center;
     }
 
+    /* Terminal card — résumé highlights as a shell session */
+    .terminal-section { padding-top: 0; }
+    .terminal {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+    }
+    .terminal-bar {
+      display: flex;
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+      background: var(--card-alt);
+      border-bottom: 1px solid var(--border);
+    }
+    .dot { width: 12px; height: 12px; border-radius: 50%; }
+    .dot.red { background: #ff5f57; }
+    .dot.yellow { background: #febc2e; }
+    .dot.green { background: #28c840; }
+
+    .terminal-body { padding: 1.25rem 1.5rem; overflow-x: auto; }
+    .terminal-body p { margin: 0 0 0.35rem; }
+    .terminal-body .cmd { color: var(--text-main); margin-top: 1.1rem; }
+    .terminal-body .cmd:first-child { margin-top: 0; }
+    .cmd::before { content: "$ "; color: var(--text-muted); }
+    .out { color: var(--text-muted); }
+    .out.hl, .num { color: var(--text-main); font-weight: 600; }
+    .dirs { display: flex; flex-wrap: wrap; gap: 0.4rem 1.25rem; }
+    .dirs a { color: var(--text-main); }
+
+    .cursor {
+      display: inline-block;
+      width: 0.6em;
+      height: 1.1em;
+      background: var(--text-main);
+      vertical-align: text-bottom;
+      animation: blink 1s steps(1) infinite;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+
     @media (max-width: 480px) {
       .nav-actions { gap: 0.75rem; }
       .btn { flex: 1 1 calc(50% - 0.7rem); text-align: center; }
+      .terminal { font-size: 0.82rem; }
+      .terminal-body { padding: 1rem; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -337,6 +444,12 @@
   <header class="site-header">
     <div class="container nav">
       <a class="nav-name" href="#top">Mannix Graham</a>
+      <nav class="nav-sections" aria-label="Sections">
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
       <div class="nav-actions">
         <a href="https://github.com/Mannixgr" target="_blank" rel="noopener noreferrer">GitHub</a>
         <a href="https://linkedin.com/in/mannixgraham" target="_blank" rel="noopener noreferrer">LinkedIn</a>
@@ -348,6 +461,7 @@
   <main id="main">
     <!-- Hero -->
     <section class="hero" id="top" aria-labelledby="hero-title">
+      <canvas class="hero-net" aria-hidden="true"></canvas>
       <div class="container">
         <p class="eyebrow">Computer Science · Wilfrid Laurier University</p>
         <h1 id="hero-title">Mannix Graham</h1>
@@ -361,6 +475,34 @@
       </div>
     </section>
 
+    <!-- Terminal card -->
+    <section class="reveal terminal-section" aria-label="Quick summary">
+      <div class="container">
+        <div class="terminal">
+          <div class="terminal-bar" aria-hidden="true">
+            <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+          </div>
+          <div class="terminal-body">
+            <p class="cmd">whoami</p>
+            <p class="out hl">mannix_graham — cloud, devops &amp; sre · CS @ Laurier</p>
+
+            <p class="cmd">cat wins.txt</p>
+            <p class="out"><span class="num">97%</span> faster regression (3.5h → 7m) — Playwright suite @ AGCO</p>
+            <p class="out"><span class="num">4/6</span> QA teammates now writing their own automated tests</p>
+            <p class="out"><span class="num">0</span> long-lived AWS keys — CI/CD deploys via GitHub Actions OIDC</p>
+
+            <p class="cmd">ls projects/</p>
+            <p class="out dirs">
+              <a href="https://github.com/Mannixgr/enterprise-hybrid-aws-" target="_blank" rel="noopener noreferrer">enterprise-hybrid-aws/</a>
+              <span>network-homelab/</span>
+            </p>
+
+            <p class="cmd"><span class="cursor" aria-hidden="true"></span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- About -->
     <section class="reveal" aria-labelledby="about-title">
       <div class="container">
@@ -370,7 +512,7 @@
     </section>
 
     <!-- Experience -->
-    <section class="reveal band" aria-labelledby="experience-title">
+    <section class="reveal band" id="experience" aria-labelledby="experience-title">
       <div class="container">
         <h2 id="experience-title" class="section-label">Experience</h2>
 
@@ -394,47 +536,82 @@
     </section>
 
     <!-- Projects -->
-    <section class="reveal" aria-labelledby="projects-title">
+    <section class="reveal" id="projects" aria-labelledby="projects-title">
       <div class="container">
         <h2 id="projects-title" class="section-label">Projects</h2>
 
         <div class="project-grid">
-          <article class="project">
-            <div class="project-head">
-              <h3>Enterprise Hybrid AWS Environment</h3>
-              <span class="status wip">In progress</span>
-            </div>
-            <p>A production-structured Terraform codebase provisioning a multi-AZ AWS VPC, EC2, IAM and CloudWatch — deployed through GitHub Actions with short-lived OIDC credentials instead of stored access keys.</p>
-
-            <figure class="diagram">
-              <img src="hybridhomelab.drawio.svg" alt="Architecture diagram: GitHub Actions deploys Terraform over OIDC into a multi-AZ AWS VPC with EC2, IAM and CloudWatch, linked by a planned site-to-site VPN to a Proxmox-hosted homelab server." width="823" height="1113" loading="lazy" />
-              <figcaption>GitHub Actions → AWS (OIDC), with the site-to-site VPN to my homelab in progress.</figcaption>
-            </figure>
-
+          <article class="project featured">
+            <h3>Enterprise Hybrid AWS Environment</h3>
+            <p>A multi-AZ AWS environment that rebuilds from code instead of console clicks — a production-structured Terraform codebase (bootstrap, modules, environments) for the VPC, EC2, IAM and CloudWatch. GitHub Actions deploys it with short-lived OIDC credentials, so there are no long-lived AWS keys to leak. Next: a site-to-site VPN linking it to my homelab.</p>
             <p class="tech">Terraform · AWS · GitHub Actions (OIDC) · Proxmox · Tailscale</p>
             <a class="project-link" href="https://github.com/Mannixgr/enterprise-hybrid-aws-" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
+
+            <figure class="diagram">
+              <a href="hybridhomelab.drawio.svg" target="_blank" rel="noopener">
+                <img src="hybridhomelab.drawio.svg" alt="Architecture diagram: GitHub Actions deploys Terraform over OIDC into a multi-AZ AWS VPC with EC2, IAM and CloudWatch, linked by a planned site-to-site VPN to a Proxmox-hosted homelab server." width="823" height="1113" loading="lazy" />
+              </a>
+              <figcaption>Architecture · click to enlarge ↗</figcaption>
+            </figure>
           </article>
 
           <article class="project">
-            <div class="project-head">
-              <h3>Network &amp; Virtualization Homelab</h3>
-              <span class="status">Completed</span>
-            </div>
-            <p>A VLAN-segmented home network with inter-VLAN routing on Cisco IOS, running a self-managed k3s Kubernetes cluster across Proxmox-hosted servers — reachable only through Tailscale, nothing exposed publicly.</p>
-            <p class="tech">Cisco IOS · Proxmox VE · Tailscale · Docker · Kubernetes</p>
+            <h3>Network &amp; Virtualization Homelab</h3>
+            <p>A home network split into security zones, so one compromised device can't reach everything — VLANs with inter-VLAN routing on Cisco IOS. On top, a self-managed k3s cluster runs Dockerized workloads across Proxmox VMs, reachable only through Tailscale with nothing exposed to the public internet.</p>
+            <p class="tech">Cisco IOS · Proxmox VE · Kubernetes (k3s) · Docker · Tailscale</p>
+          </article>
+
+          <article class="project">
+            <h3>This Site</h3>
+            <p>Self-hosted in my homelab and deployed on every push. A GitHub Actions workflow joins my tailnet as a tagged CI device, then rsyncs the site to a web container. A Tailscale ACL limits what that CI device can reach, and the deploy key is locked to a validating rsync wrapper rather than a shell.</p>
+            <p class="tech">GitHub Actions · Tailscale ACLs · SSH · rsync · Proxmox</p>
+            <a class="project-link" href="https://github.com/Mannixgr/mannix-portfolio/blob/main/.github/workflows/deploy.yml" target="_blank" rel="noopener noreferrer">View the workflow →</a>
           </article>
         </div>
       </div>
     </section>
 
     <!-- Skills -->
-    <section class="reveal band" aria-labelledby="skills-title">
+    <section class="reveal band" id="skills" aria-labelledby="skills-title">
       <div class="container">
         <h2 id="skills-title" class="section-label">Skills</h2>
-        <ul class="chips" aria-label="Core skills">
-          <li>Terraform</li><li>AWS</li><li>GitHub Actions</li><li>Docker</li><li>Kubernetes</li><li>Python</li><li>Playwright</li><li>Cisco IOS</li>
-        </ul>
-        <p class="also">Also: Bash, PowerShell, Selenium, pytest, Azure DevOps, Tailscale, REST APIs</p>
+        <div class="skill-list">
+          <div class="skill-row">
+            <h3>Infrastructure as Code</h3>
+            <div>
+              <p>Production-structured Terraform codebase (bootstrap, modules, environments) that builds a multi-AZ AWS VPC, EC2, IAM and CloudWatch — repeatable, no console clicking.</p>
+              <p class="tech">Terraform · AWS (EC2, VPC, IAM, CloudWatch, CloudTrail)</p>
+            </div>
+          </div>
+          <div class="skill-row">
+            <h3>CI/CD &amp; Cloud Security</h3>
+            <div>
+              <p>GitHub Actions deploys to AWS with short-lived OIDC credentials, so there are no long-lived access keys to leak.</p>
+              <p class="tech">GitHub Actions · OIDC · Docker · Azure DevOps</p>
+            </div>
+          </div>
+          <div class="skill-row">
+            <h3>Networking &amp; Homelab</h3>
+            <div>
+              <p>VLAN-segmented network with inter-VLAN routing on Cisco IOS, a k3s cluster across Proxmox VMs, and remote access only over Tailscale — nothing exposed publicly.</p>
+              <p class="tech">Cisco IOS · Proxmox VE · Kubernetes (k3s) · Tailscale · Ubuntu Linux</p>
+            </div>
+          </div>
+          <div class="skill-row">
+            <h3>Test Automation</h3>
+            <div>
+              <p>Built AGCO's first Playwright suite, cutting full regression from 3.5 hours to 7 minutes, and trained 4 of 6 teammates to maintain it.</p>
+              <p class="tech">Playwright · Selenium · pytest · Azure DevOps</p>
+            </div>
+          </div>
+          <div class="skill-row">
+            <h3>Scripting &amp; Tooling</h3>
+            <div>
+              <p>Python tool that scrapes news and social media for keyword mentions — later adopted by AGCO Communications for ongoing monitoring.</p>
+              <p class="tech">Python · Bash · PowerShell · REST APIs · Git</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -471,6 +648,134 @@
   </footer>
 
   <script>
+    // Network background behind the hero: nodes drift and link up when close.
+    // Stays still for reduced-motion users and pauses while the hero is off-screen.
+    (function () {
+      var canvas = document.querySelector('.hero-net');
+      if (!canvas || !canvas.getContext) return;
+      var ctx = canvas.getContext('2d');
+      var hero = canvas.parentElement;
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var RGB = '142, 182, 155'; // --text-muted
+      var LINK_DIST = 130;
+      var w, h, nodes = [], running = false, visible = true;
+
+      function setup() {
+        var dpr = Math.min(window.devicePixelRatio || 1, 2);
+        w = hero.clientWidth;
+        h = hero.clientHeight;
+        canvas.width = w * dpr;
+        canvas.height = h * dpr;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+        var count = Math.min(55, Math.round(w * h / 14000));
+        nodes = [];
+        for (var i = 0; i < count; i++) {
+          nodes.push({
+            x: Math.random() * w,
+            y: Math.random() * h,
+            vx: (Math.random() - 0.5) * 0.3,
+            vy: (Math.random() - 0.5) * 0.3,
+            r: Math.random() * 1.2 + 0.8
+          });
+        }
+        draw();
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, w, h);
+        for (var i = 0; i < nodes.length; i++) {
+          var a = nodes[i];
+          for (var j = i + 1; j < nodes.length; j++) {
+            var b = nodes[j];
+            var dx = a.x - b.x, dy = a.y - b.y;
+            if (Math.abs(dx) > LINK_DIST || Math.abs(dy) > LINK_DIST) continue;
+            var d = Math.sqrt(dx * dx + dy * dy);
+            if (d < LINK_DIST) {
+              ctx.strokeStyle = 'rgba(' + RGB + ',' + (1 - d / LINK_DIST) * 0.22 + ')';
+              ctx.lineWidth = 0.7;
+              ctx.beginPath();
+              ctx.moveTo(a.x, a.y);
+              ctx.lineTo(b.x, b.y);
+              ctx.stroke();
+            }
+          }
+        }
+        ctx.fillStyle = 'rgba(' + RGB + ', 0.55)';
+        nodes.forEach(function (n) {
+          ctx.beginPath();
+          ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+          ctx.fill();
+        });
+      }
+
+      function step() {
+        if (!visible) { running = false; return; }
+        nodes.forEach(function (n) {
+          n.x += n.vx;
+          n.y += n.vy;
+          if (n.x < 0 || n.x > w) n.vx *= -1;
+          if (n.y < 0 || n.y > h) n.vy *= -1;
+        });
+        draw();
+        requestAnimationFrame(step);
+      }
+
+      function start() {
+        if (reduceMotion || running) return;
+        running = true;
+        requestAnimationFrame(step);
+      }
+
+      var resizeTimer;
+      window.addEventListener('resize', function () {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(setup, 150);
+      });
+
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (entries) {
+          visible = entries[0].isIntersecting;
+          if (visible) start();
+        }).observe(hero);
+      }
+
+      setup();
+      start();
+    })();
+
+    // Highlight the nav link for the section currently in view
+    (function () {
+      var links = document.querySelectorAll('.nav-sections a');
+      var sections = Array.prototype.map.call(links, function (a) {
+        return document.querySelector(a.getAttribute('href'));
+      });
+      var ticking = false;
+
+      function update() {
+        ticking = false;
+        var line = window.innerHeight * 0.35;
+        var atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+        var current = -1;
+
+        sections.forEach(function (s, i) {
+          if (s && s.getBoundingClientRect().top <= line) current = i;
+        });
+        if (atBottom) current = sections.length - 1;
+
+        links.forEach(function (a, i) {
+          if (i === current) a.setAttribute('aria-current', 'true');
+          else a.removeAttribute('aria-current');
+        });
+      }
+
+      window.addEventListener('scroll', function () {
+        if (!ticking) { ticking = true; requestAnimationFrame(update); }
+      }, { passive: true });
+      window.addEventListener('resize', update);
+      update();
+    })();
+
     (function () {
       var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       var targets = document.querySelectorAll('.reveal');
