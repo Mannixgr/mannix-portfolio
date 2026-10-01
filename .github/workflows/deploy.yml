@@ -5,6 +5,13 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-portfolio
+  cancel-in-progress: false
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -13,7 +20,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Connect to Tailscale
-        uses: tailscale/github-action@v2
+        uses: tailscale/github-action@v4
         with:
           oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
           oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
@@ -26,7 +33,10 @@ jobs:
 
       - name: Sync site files to the container
         run: |
+          # --delete makes the target an exact mirror of the repo: anything in
+          # /var/www/html that is not in the repo is removed. Check the
+          # destination path before changing it (add --dry-run to preview).
           rsync -avz --delete \
             -e "ssh -o StrictHostKeyChecking=accept-new" \
             --exclude '.git*' --exclude '.github' \
-                        ./ deploy@192.168.1.20:/var/www/html/
+            ./ deploy@192.168.1.20:/var/www/html/
