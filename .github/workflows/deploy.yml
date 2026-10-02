@@ -31,12 +31,22 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.DEPLOY_SSH_KEY }}
 
+      # Pin the server's host key so the deploy only talks to the real container.
+      # DEPLOY_KNOWN_HOSTS holds the output of: ssh-keyscan -t ed25519 192.168.1.20
+      - name: Trust the server's host key
+        env:
+          KNOWN_HOSTS: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
+        run: |
+          test -n "$KNOWN_HOSTS" || { echo "DEPLOY_KNOWN_HOSTS secret is empty"; exit 1; }
+          mkdir -p ~/.ssh
+          echo "$KNOWN_HOSTS" >> ~/.ssh/known_hosts
+
       - name: Sync site files to the container
         run: |
           # --delete makes the target an exact mirror of the repo: anything in
           # /var/www/html that is not in the repo is removed. Check the
           # destination path before changing it (add --dry-run to preview).
           rsync -avz --delete \
-            -e "ssh -o StrictHostKeyChecking=accept-new" \
+            -e "ssh -o StrictHostKeyChecking=yes" \
             --exclude '.git*' --exclude '.github' \
             ./ deploy@192.168.1.20:/var/www/html/

@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Mannix Graham | Cloud, DevOps &amp; SRE Internships</title>
   <meta name="description" content="Mannix Graham, Computer Science (Honours) at Wilfrid Laurier University. Terraform, AWS, GitHub Actions, Docker and test automation. Seeking Cloud, DevOps and SRE internships." />
   <meta name="theme-color" content="#051F20" />
-  <link rel="canonical" href="https://mannixgr.github.io/mannix-portfolio/" />
+  <link rel="canonical" href="https://portfolio-site.tail8c489d.ts.net/" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://mannixgr.github.io/mannix-portfolio/" />
+  <meta property="og:url" content="https://portfolio-site.tail8c489d.ts.net/" />
   <meta property="og:title" content="Mannix Graham | Cloud, DevOps &amp; SRE Internships" />
   <meta property="og:description" content="Terraform + AWS + GitHub Actions (OIDC), a self-hosted Cisco/Proxmox homelab, and test automation that cut regression from 3.5 hours to 7 minutes." />
   <meta property="og:image" content="https://mannixgr.github.io/mannix-portfolio/og-image.png" />
@@ -19,6 +19,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script>document.documentElement.className = 'js';</script>
   <style>
     :root {
       --bg: #051F20;
@@ -92,7 +93,7 @@
       display: flex;
       align-items: center;
       gap: 1rem;
-      padding: 0.85rem 0;
+      padding-block: 0.85rem;
     }
 
     .nav-name {
@@ -116,10 +117,11 @@
       transition: color 150ms, border-color 150ms;
     }
     .nav-sections a:hover { color: var(--text-main); }
-    .nav-sections a[aria-current="true"] { color: var(--text-main); border-bottom-color: var(--text-main); }
+    .nav-sections a[aria-current="location"] { color: var(--text-main); border-bottom-color: var(--text-main); }
 
     /* Keep headings clear of the sticky header when jumping to a section */
-    section[id] { scroll-margin-top: 4.5rem; }
+    section[id], main { scroll-margin-top: 4.5rem; }
+    main:focus { outline: none; }
 
     .nav-actions {
       display: flex;
@@ -134,7 +136,7 @@
       .nav { flex-wrap: wrap; row-gap: 0.5rem; }
       .nav-sections { order: 3; width: 100%; overflow-x: auto; gap: 1.25rem; }
       .nav-actions { padding-left: 0; border-left: 0; }
-      section[id] { scroll-margin-top: 6.5rem; }
+      section[id], main { scroll-margin-top: 7rem; }
     }
 
     .nav-actions a {
@@ -220,7 +222,7 @@
     .hero-now strong { color: var(--text-main); font-weight: 500; }
 
     /* Scroll reveal — sections settle in as you go, nothing jumps */
-    .reveal {
+    .js .reveal {
       opacity: 0;
       transform: translateY(18px);
       transition: opacity 700ms ease, transform 700ms ease;
@@ -323,7 +325,7 @@
 
     .tech { font-family: var(--font-mono); color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.6rem; }
 
-    .project-link { font-size: 0.92rem; font-weight: 600; }
+    .project-link { display: inline-block; padding: 0.4rem 0; font-size: 0.92rem; font-weight: 600; }
     .project-links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; }
 
     /* Diagram: dark frame to match the page; click opens it full size */
@@ -422,6 +424,8 @@
 
     @media (max-width: 480px) {
       .nav-actions { gap: 0.75rem; }
+      /* GitHub/LinkedIn sit right below in the hero; dropping them keeps the header to two rows */
+      .nav-actions a:not(.nav-resume) { display: none; }
       .btn { flex: 1 1 calc(50% - 0.7rem); text-align: center; }
       .terminal { font-size: 0.82rem; }
       .terminal-body { padding: 1rem; }
@@ -452,12 +456,12 @@
       <div class="nav-actions">
         <a href="https://github.com/Mannixgr" target="_blank" rel="noopener noreferrer">GitHub</a>
         <a href="https://linkedin.com/in/mannixgraham" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <a class="nav-resume" href="https://docs.google.com/document/d/1AXoYj0MFRzkPZ4OFpXVCawpK2MVTSP0J/export?format=pdf">Résumé</a>
+        <a class="nav-resume" href="https://docs.google.com/document/d/1AXoYj0MFRzkPZ4OFpXVCawpK2MVTSP0J/preview" target="_blank" rel="noopener noreferrer">Résumé</a>
       </div>
     </div>
   </header>
 
-  <main id="main">
+  <main id="main" tabindex="-1">
     <!-- Hero -->
     <section class="hero" id="top" aria-labelledby="hero-title">
       <canvas class="hero-net" aria-hidden="true"></canvas>
@@ -466,11 +470,11 @@
         <h1 id="hero-title">Mannix Graham</h1>
         <p class="hero-tagline">I enjoy building reliable infrastructure projects through automation, observability, and continuous testing. <strong>Focused on Cloud Engineering, DevOps &amp; SRE</strong>.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="https://docs.google.com/document/d/1AXoYj0MFRzkPZ4OFpXVCawpK2MVTSP0J/export?format=pdf">Résumé (PDF)</a>
+          <a class="btn btn-primary" href="https://docs.google.com/document/d/1AXoYj0MFRzkPZ4OFpXVCawpK2MVTSP0J/preview" target="_blank" rel="noopener noreferrer">Résumé (PDF)</a>
           <a class="btn" href="https://github.com/Mannixgr" target="_blank" rel="noopener noreferrer">GitHub</a>
           <a class="btn" href="https://linkedin.com/in/mannixgraham" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
-        <p class="hero-now">Quality &amp; Product Support Intern, AGCO (May–Aug 2026) · preparing for AWS Certified Cloud Practitioner</p>
+        <p class="hero-now">Most recently: Quality &amp; Product Support Intern, AGCO (May–Aug 2026) · preparing for AWS Certified Cloud Practitioner</p>
       </div>
     </section>
 
@@ -493,7 +497,7 @@
             <p class="cmd">ls projects/</p>
             <p class="out dirs">
               <a href="https://github.com/Mannixgr/enterprise-hybrid-aws-" target="_blank" rel="noopener noreferrer">enterprise-hybrid-aws/</a>
-              <span>network-homelab/</span>
+              <a href="https://github.com/Mannixgr/Homelab" target="_blank" rel="noopener noreferrer">network-homelab/</a>
             </p>
 
             <p class="cmd"><span class="cursor" aria-hidden="true"></span></p>
@@ -506,7 +510,7 @@
     <section class="reveal" aria-labelledby="about-title">
       <div class="container">
         <h2 id="about-title" class="section-label">About</h2>
-        <p class="lede">Third-year CS student who'd rather learn how a system fails than just read about it. Most of my time goes into Terraform, AWS, and a homelab I keep rebuilding on purpose — deploying, breaking, and fixing infrastructure until I understand it end to end. Based between <strong>Waterloo</strong> and <strong>Brampton, ON</strong>.</p>
+        <p class="lede">CS student (graduating Dec 2027) who'd rather learn how a system fails than just read about it. Most of my time goes into Terraform, AWS, and a homelab I keep rebuilding on purpose — deploying, breaking, and fixing infrastructure until I understand it end to end. Based between <strong>Waterloo</strong> and <strong>Brampton, ON</strong>.</p>
       </div>
     </section>
 
@@ -556,7 +560,7 @@
 
           <article class="project featured">
             <h3>Network &amp; Virtualization Homelab</h3>
-            <p>A Proxmox host running containers and a Docker VM behind a Cisco RV260 and Catalyst 3550 — including the server this page is coming from. Remote admin goes through a Tailscale subnet route and public traffic through Tailscale Funnel, so no ports are opened on the router. Next: splitting the flat LAN into server, client and management VLANs with ACLs between them.</p>
+            <p>A Proxmox host running containers and a Docker VM behind a Cisco RV260 and Catalyst 3550 — including the server that hosts this site. Remote admin goes through a Tailscale subnet route and public traffic through Tailscale Funnel, so no ports are opened on the router. Next: splitting the flat LAN into server, client and management VLANs with ACLs between them.</p>
             <p class="tech">Proxmox VE · Cisco IOS · Tailscale · Docker · Caddy</p>
             <a class="project-link" href="https://github.com/Mannixgr/Homelab" target="_blank" rel="noopener noreferrer">Configs &amp; diagrams on GitHub →</a>
 
@@ -645,7 +649,7 @@
         <p>I'm looking for internships in Cloud, DevOps and SRE — email is the fastest way to reach me.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="mailto:Mannixg.is@gmail.com?subject=Internship%20opportunity">Email me</a>
-          <a class="btn" href="https://docs.google.com/document/d/1AXoYj0MFRzkPZ4OFpXVCawpK2MVTSP0J/export?format=pdf">Résumé</a>
+          <a class="btn" href="https://docs.google.com/document/d/1AXoYj0MFRzkPZ4OFpXVCawpK2MVTSP0J/preview" target="_blank" rel="noopener noreferrer">Résumé</a>
           <a class="btn" href="https://github.com/Mannixgr" target="_blank" rel="noopener noreferrer">GitHub</a>
           <a class="btn" href="https://linkedin.com/in/mannixgraham" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
@@ -654,7 +658,7 @@
   </main>
 
   <footer>
-    <div class="container">Mannix Graham · Waterloo / Brampton, ON</div>
+    <div class="container">Mannix Graham · Waterloo / Brampton, ON · <span class="mirror-link">Site down? <a href="https://mannixgr.github.io/mannix-portfolio/">Backup on GitHub Pages</a></span></div>
   </footer>
 
   <script>
@@ -737,10 +741,15 @@
         requestAnimationFrame(step);
       }
 
-      var resizeTimer;
+      // Phones fire resize when the URL bar slides in and out; only a width change needs a new graph
+      var resizeTimer, lastWidth = hero.clientWidth;
       window.addEventListener('resize', function () {
         clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(setup, 150);
+        resizeTimer = setTimeout(function () {
+          if (hero.clientWidth === lastWidth) return;
+          lastWidth = hero.clientWidth;
+          setup();
+        }, 150);
       });
 
       if ('IntersectionObserver' in window) {
@@ -753,6 +762,12 @@
       setup();
       start();
     })();
+
+    // On the GitHub Pages backup, point back to the main site instead of to itself
+    if (location.hostname.endsWith('github.io')) {
+      document.querySelector('.mirror-link').innerHTML =
+        'Backup copy · <a href="https://portfolio-site.tail8c489d.ts.net/">Go to the main site</a>';
+    }
 
     // Highlight the nav link for the section currently in view
     (function () {
@@ -774,7 +789,7 @@
         if (atBottom) current = sections.length - 1;
 
         links.forEach(function (a, i) {
-          if (i === current) a.setAttribute('aria-current', 'true');
+          if (i === current) a.setAttribute('aria-current', 'location');
           else a.removeAttribute('aria-current');
         });
       }
