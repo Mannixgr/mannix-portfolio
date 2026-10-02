@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Mannix Graham | Cloud, DevOps &amp; SRE Internships</title>
-  <meta name="description" content="Mannix Graham, Computer Science (Honours) at Wilfrid Laurier University. Terraform, AWS, GitHub Actions, Docker and test automation. Seeking Cloud, DevOps and SRE internships." />
+  <meta name="description" content="Mannix Graham, Computer Science (Honours) at Wilfrid Laurier University. Terraform, AWS, GitHub Actions, Docker and test automation. Seeking Winter and Summer 2027 Cloud, DevOps and SRE internships." />
   <meta name="theme-color" content="#051F20" />
   <link rel="canonical" href="https://portfolio-site.tail8c489d.ts.net/" />
   <meta property="og:type" content="website" />
@@ -199,6 +199,29 @@
       margin-bottom: 1.25rem;
     }
 
+    /* Availability — what recruiters filter on, right above the buttons */
+    .hero-status {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 0.3rem 0.85rem;
+      margin-bottom: 1.25rem;
+    }
+    .hero-status strong { color: var(--text-main); font-weight: 500; white-space: nowrap; }
+    .status-dot {
+      display: inline-block;
+      vertical-align: middle;
+      margin: -2px 0.55rem 0 0;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #28c840;
+      box-shadow: 0 0 0 3px rgba(40, 200, 64, 0.2);
+    }
+
     .btn {
       display: inline-block;
       padding: 0.75rem 1.3rem;
@@ -369,6 +392,7 @@
     .cta { text-align: center; }
     .cta h2 { font-size: clamp(1.8rem, 5vw, 2.5rem); margin-bottom: 0.6rem; }
     .cta p { color: var(--text-muted); max-width: 32rem; margin: 0 auto 1.75rem; }
+    .cta p strong { color: var(--text-main); }
     .cta .hero-actions { justify-content: center; margin-bottom: 0; }
 
     /* Footer */
@@ -424,6 +448,8 @@
 
     @media (max-width: 480px) {
       .nav-actions { gap: 0.75rem; }
+      /* The pill can't fit one line on phones; let it wrap as plain text */
+      .hero-status { border: 0; padding: 0; }
       /* GitHub/LinkedIn sit right below in the hero; dropping them keeps the header to two rows */
       .nav-actions a:not(.nav-resume) { display: none; }
       .btn { flex: 1 1 calc(50% - 0.7rem); text-align: center; }
@@ -469,6 +495,7 @@
         <p class="eyebrow">Computer Science · Wilfrid Laurier University</p>
         <h1 id="hero-title">Mannix Graham</h1>
         <p class="hero-tagline">I enjoy building reliable infrastructure projects through automation, observability, and continuous testing. <strong>Focused on Cloud Engineering, DevOps &amp; SRE</strong>.</p>
+        <p class="hero-status"><span class="status-dot" aria-hidden="true"></span>Open to internships · <strong>Winter &amp; Summer 2027</strong></p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="https://docs.google.com/document/d/1AXoYj0MFRzkPZ4OFpXVCawpK2MVTSP0J/preview" target="_blank" rel="noopener noreferrer">Résumé (PDF)</a>
           <a class="btn" href="https://github.com/Mannixgr" target="_blank" rel="noopener noreferrer">GitHub</a>
@@ -496,7 +523,7 @@
 
             <p class="cmd">ls projects/</p>
             <p class="out dirs">
-              <a href="https://github.com/Mannixgr/enterprise-hybrid-aws-" target="_blank" rel="noopener noreferrer">enterprise-hybrid-aws/</a>
+              <a href="https://github.com/Mannixgr/enterprise-hybrid-aws" target="_blank" rel="noopener noreferrer">enterprise-hybrid-aws/</a>
               <a href="https://github.com/Mannixgr/Homelab" target="_blank" rel="noopener noreferrer">network-homelab/</a>
             </p>
 
@@ -548,7 +575,7 @@
             <h3>Enterprise Hybrid AWS Environment</h3>
             <p>A multi-AZ AWS environment that rebuilds from code instead of console clicks — a production-structured Terraform codebase (bootstrap, modules, environments) for the VPC, EC2, IAM and CloudWatch. GitHub Actions deploys it with short-lived OIDC credentials, so there are no long-lived AWS keys to leak. Next: a site-to-site VPN linking it to my homelab.</p>
             <p class="tech">Terraform · AWS · GitHub Actions (OIDC) · Proxmox · Tailscale</p>
-            <a class="project-link" href="https://github.com/Mannixgr/enterprise-hybrid-aws-" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
+            <a class="project-link" href="https://github.com/Mannixgr/enterprise-hybrid-aws" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
 
             <figure class="diagram">
               <a href="hybridhomelab.drawio.svg" target="_blank" rel="noopener">
@@ -646,7 +673,7 @@
     <section class="reveal cta band" id="contact" aria-labelledby="contact-title">
       <div class="container">
         <h2 id="contact-title">Let's talk.</h2>
-        <p>I'm looking for internships in Cloud, DevOps and SRE — email is the fastest way to reach me.</p>
+        <p>I'm looking for Cloud, DevOps and SRE internships for <strong>Winter &amp; Summer 2027</strong> — email is the fastest way to reach me.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="mailto:Mannixg.is@gmail.com?subject=Internship%20opportunity">Email me</a>
           <a class="btn" href="https://docs.google.com/document/d/1AXoYj0MFRzkPZ4OFpXVCawpK2MVTSP0J/preview" target="_blank" rel="noopener noreferrer">Résumé</a>
