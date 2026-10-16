@@ -558,10 +558,11 @@
           <ul class="bullets">
             <li>Trained 4 of 6 teammates to write and maintain their own automated tests after a live demo.</li>
             <li>Ran 10+ Azure DevOps test cases per sprint and disaster-recovery drills across 3 critical systems.</li>
+            <li>Automated the complaint-handling workflow (public portal and back office) and the Forgot Password flow with Playwright and pytest.</li>
           </ul>
         </article>
 
-        <p class="also">Also: Operations Associate, City of Waterloo (Sept 2025–Present) · Facility Attendant, City of Brampton (Jan 2023–Present)</p>
+        <p class="also">Also: Operations Associate, City of Waterloo (Sept 2025–Present) · Facility Attendant III (shift lead, 5–8 staff), City of Brampton (2025–Present; joined Jan 2023)</p>
       </div>
     </section>
 
@@ -573,7 +574,7 @@
         <div class="project-grid">
           <article class="project featured">
             <h3>Enterprise Hybrid AWS Environment</h3>
-            <p>A multi-AZ AWS environment that rebuilds from code instead of console clicks — a production-structured Terraform codebase (bootstrap, modules, environments) for the VPC, EC2, IAM and CloudWatch. GitHub Actions deploys it with short-lived OIDC credentials, so there are no long-lived AWS keys to leak. Next: a site-to-site VPN linking it to my homelab.</p>
+            <p>A multi-AZ AWS environment that rebuilds from code instead of console clicks — a production-structured Terraform codebase (bootstrap, modules, environments) for the VPC, EC2 and IAM. A multi-region CloudTrail trail logs every API call to S3 with log-file validation, and a CloudWatch billing alarm guards spend. GitHub Actions deploys it with short-lived OIDC credentials, so there are no long-lived AWS keys to leak. In progress: bringing the billing alarm and its email alerts under Terraform. Next: a site-to-site VPN linking it to my homelab.</p>
             <p class="tech">Terraform · AWS · GitHub Actions (OIDC) · Proxmox · Tailscale</p>
             <a class="project-link" href="https://github.com/Mannixgr/enterprise-hybrid-aws" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
 
@@ -587,8 +588,8 @@
 
           <article class="project featured">
             <h3>Network &amp; Virtualization Homelab</h3>
-            <p>A Proxmox host running containers and a Docker VM behind a Cisco RV260 and Catalyst 3550 — including the server that hosts this site. Remote admin goes through a Tailscale subnet route and public traffic through Tailscale Funnel, so no ports are opened on the router. Next: splitting the flat LAN into server, client and management VLANs with ACLs between them.</p>
-            <p class="tech">Proxmox VE · Cisco IOS · Tailscale · Docker · Caddy</p>
+            <p>A Proxmox host running containers and a Docker VM behind a Cisco RV260 and Catalyst 3550 — including the server that hosts this site. Remote admin goes through a Tailscale subnet route and public traffic through Tailscale Funnel, so no ports are opened on the router. In progress: splitting the flat LAN into server, client and management VLANs with ACLs between them.</p>
+            <p class="tech">Proxmox VE · Cisco IOS · Tailscale · Docker · Caddy · k3s (learning)</p>
             <a class="project-link" href="https://github.com/Mannixgr/Homelab" target="_blank" rel="noopener noreferrer">Configs &amp; diagrams on GitHub →</a>
 
             <figure class="diagram">
@@ -597,6 +598,13 @@
               </a>
               <figcaption>Network · click to enlarge ↗</figcaption>
             </figure>
+          </article>
+
+          <article class="project">
+            <h3>CloudGuard — AWS Operations &amp; Cost-Governance Platform</h3>
+            <p>An AWS operations platform I'm building in phases to flag cost waste and security misconfigurations, then help investigate incidents. It starts with read-only boto3 scripts under a least-privilege IAM profile, followed by detection rules tested against deliberately misconfigured resources I seed myself. Status: early development — repo and AWS monitoring in place, first scripts underway.</p>
+            <p class="tech">Python · boto3 · FastAPI · Terraform</p>
+            <a class="project-link" href="https://github.com/Mannixgr/CloudGuard" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
           </article>
 
           <article class="project">
@@ -620,7 +628,7 @@
           <div class="skill-row">
             <h3>Infrastructure as Code</h3>
             <div>
-              <p>Production-structured Terraform codebase (bootstrap, modules, environments) that builds a multi-AZ AWS VPC, EC2, IAM and CloudWatch — repeatable, no console clicking.</p>
+              <p>Production-structured Terraform codebase (bootstrap, modules, environments) that builds a multi-AZ AWS VPC, EC2 and IAM — repeatable, no console clicking. Multi-region CloudTrail and a CloudWatch billing alarm are live.</p>
               <p class="tech">Terraform · AWS (EC2, VPC, IAM, CloudWatch, CloudTrail)</p>
             </div>
           </div>
@@ -634,7 +642,7 @@
           <div class="skill-row">
             <h3>Networking &amp; Homelab</h3>
             <div>
-              <p>Proxmox host running containers and a Docker VM behind a Cisco RV260 and Catalyst 3550, with remote admin over a Tailscale subnet route and no router ports opened. Next: VLAN zones with inter-VLAN ACLs.</p>
+              <p>Proxmox host running containers and a Docker VM behind a Cisco RV260 and Catalyst 3550, with remote admin over a Tailscale subnet route and no router ports opened. In progress: VLAN zones with inter-VLAN ACLs.</p>
               <p class="tech">Cisco IOS · Proxmox VE · Tailscale · Docker · Caddy · Debian Linux</p>
             </div>
           </div>
