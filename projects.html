@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projects | Mannix Graham</title>
+  <meta name="description" content="Terraform-built AWS environment, a Cisco/Proxmox homelab with no open ports, the CloudGuard cost-governance platform, and the CI/CD pipeline that deploys this site." />
+  <meta name="theme-color" content="#051F20" />
+  <link rel="canonical" href="https://portfolio-site.tail8c489d.ts.net/projects.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://portfolio-site.tail8c489d.ts.net/projects.html" />
+  <meta property="og:title" content="Projects | Mannix Graham" />
+  <meta property="og:description" content="Terraform-built AWS environment, a Cisco/Proxmox homelab with no open ports, the CloudGuard cost-governance platform, and the CI/CD pipeline that deploys this site." />
+  <meta property="og:image" content="https://mannixgr.github.io/mannix-portfolio/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23051F20'/%3E%3Ctext x='32' y='43' font-family='monospace' font-size='30' font-weight='700' text-anchor='middle' fill='%23DAF1DE'%3EMG%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet" />
+  <script>document.documentElement.className = 'js';</script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a class="nav-name" href="./">Mannix Graham.</a>
+      <nav class="nav-sections" aria-label="Sections">
+        <a href="experience.html">Experience</a>
+        <a href="projects.html" aria-current="page">Projects</a>
+        <a href="experience.html#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="https://github.com/Mannixgr" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://linkedin.com/in/mannixgraham" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a class="nav-resume" href="https://docs.google.com/document/d/1AXoYj0MFRzkPZ4OFpXVCawpK2MVTSP0J/preview" target="_blank" rel="noopener noreferrer">Resume</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section class="page-hero" aria-labelledby="page-title">
+      <div class="container">
+        <h1 id="page-title">What I'm <span class="accent">building.</span></h1>
+        <p class="lede">Each project runs on real infrastructure I own and break on purpose. Solid lines are built and running; anything in progress is labelled as such.</p>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" aria-label="All projects">
+      <div class="container">
+
+        <div class="project-grid">
+          <article class="project featured" id="proj-aws">
+            <h3>Enterprise Hybrid AWS Environment</h3>
+            <p class="outcome">Rebuilt from code. Zero long-lived keys.</p>
+            <p>A multi-AZ AWS environment that rebuilds from code instead of console clicks — a production-structured Terraform codebase (bootstrap, modules, environments) for the VPC, EC2 and IAM. A multi-region CloudTrail trail logs every API call to S3 with log-file validation, and a CloudWatch billing alarm guards spend. GitHub Actions deploys it with short-lived OIDC credentials, so there are no long-lived AWS keys to leak. In progress: bringing the billing alarm and its email alerts under Terraform. Next: a site-to-site VPN linking it to my homelab.</p>
+            <p class="tech">Terraform · AWS · GitHub Actions (OIDC) · Proxmox · Tailscale</p>
+            <a class="project-link" href="https://github.com/Mannixgr/enterprise-hybrid-aws" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
+
+            <figure class="diagram">
+              <a href="hybridhomelab.drawio.svg" target="_blank" rel="noopener">
+                <img src="hybridhomelab.drawio.svg" alt="Architecture diagram: GitHub Actions deploys Terraform over OIDC into a multi-AZ AWS VPC with EC2, IAM and CloudWatch, linked by a planned site-to-site VPN to a Proxmox-hosted homelab server." width="823" height="1113" loading="lazy" />
+              </a>
+              <figcaption>Architecture · click to enlarge ↗</figcaption>
+            </figure>
+          </article>
+
+          <article class="project featured" id="proj-homelab">
+            <h3>Network &amp; Virtualization Homelab</h3>
+            <p class="outcome">Self-hosted, with zero ports opened.</p>
+            <p>A Proxmox host running containers and a Docker VM behind a Cisco RV260 and Catalyst 3550 — including the server that hosts this site. Remote admin goes through a Tailscale subnet route and public traffic through Tailscale Funnel, so no ports are opened on the router. In progress: splitting the flat LAN into server, client and management VLANs with ACLs between them.</p>
+            <p class="tech">Proxmox VE · Cisco IOS · Tailscale · Docker · Caddy · k3s (learning)</p>
+            <a class="project-link" href="https://github.com/Mannixgr/Homelab" target="_blank" rel="noopener noreferrer">Configs &amp; diagrams on GitHub →</a>
+
+            <figure class="diagram diagram-trace">
+              <a href="homelab-network.svg" target="_blank" rel="noopener">
+                <img src="homelab-network.svg" alt="Homelab network diagram: Rogers gateway and Cisco RV260 (double NAT) feed a Catalyst 3550, PoE switch and access points. A Proxmox host runs a Homepage container, the Caddy container serving this site, and a Docker VM. Public visitors arrive through Tailscale Funnel and the GitHub Actions runner through the tailnet. Client and management VLAN zones and an AWS VPN are shown as planned." width="1300" height="930" loading="lazy" />
+              </a>
+              <figcaption>Network · click to enlarge ↗</figcaption>
+            </figure>
+          </article>
+
+          <article class="project" id="proj-cloudguard">
+            <h3>CloudGuard — AWS Operations &amp; Cost-Governance Platform</h3>
+            <p class="outcome">Catch the bill before it catches you.</p>
+            <p>An AWS operations platform I'm building in phases to flag cost waste and security misconfigurations, then help investigate incidents. It starts with read-only boto3 scripts under a least-privilege IAM profile, followed by detection rules tested against deliberately misconfigured resources I seed myself. Status: early development — repo and AWS monitoring in place, first scripts underway.</p>
+            <p class="tech">Python · boto3 · FastAPI · Terraform</p>
+            <a class="project-link" href="https://github.com/Mannixgr/CloudGuard" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
+          </article>
+
+          <article class="project" id="proj-site">
+            <h3>Portfolio Site</h3>
+            <p class="outcome">Every push ships. Nothing else gets in.</p>
+            <p>Self-hosted in my homelab and deployed on every push. A GitHub Actions workflow joins my tailnet as an ephemeral CI node that can reach exactly one host on port 22, then rsyncs the site to a Caddy container. The deploy user has no shell — its key can only run rsync into the web root, enforced by a wrapper script. Getting there took four fixes, written up below.</p>
+            <p class="tech">GitHub Actions · Tailscale ACLs &amp; Funnel · SSH · rsync · Caddy</p>
+            <div class="project-links">
+              <a class="project-link" href="https://github.com/Mannixgr/Homelab/blob/main/docs/2026-09-deploy-pipeline.md" target="_blank" rel="noopener noreferrer">What broke &amp; how I fixed it →</a>
+              <a class="project-link" href="https://github.com/Mannixgr/mannix-portfolio/blob/main/.github/workflows/deploy.yml" target="_blank" rel="noopener noreferrer">View the workflow →</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="reveal cta band" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <h2 id="contact-title">Let's <span class="accent">talk.</span></h2>
+        <p>Internships, a homelab question, or just a quick hello. I'm looking for Cloud, DevOps and SRE internships for <strong>Winter &amp; Summer 2027</strong> — email is the fastest way to reach me.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="mailto:Mannixg.is@gmail.com?subject=Internship%20opportunity">Email me</a>
+          <a class="btn" href="https://docs.google.com/document/d/1AXoYj0MFRzkPZ4OFpXVCawpK2MVTSP0J/preview" target="_blank" rel="noopener noreferrer">Resume</a>
+          <a class="btn" href="https://github.com/Mannixgr" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a class="btn" href="https://linkedin.com/in/mannixgraham" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">Mannix Graham · Waterloo / Brampton, ON · <span class="mirror-link">Site down? <a href="https://mannixgr.github.io/mannix-portfolio/">Backup on GitHub Pages</a></span></div>
+  </footer>
+
+  <script src="site.js"></script>
+</body>
+</html>

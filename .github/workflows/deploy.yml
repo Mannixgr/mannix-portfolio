@@ -46,7 +46,10 @@ jobs:
           # --delete makes the target an exact mirror of the repo: anything in
           # /var/www/html that is not in the repo is removed. Check the
           # destination path before changing it (add --dry-run to preview).
-          rsync -avz --delete \
+          # --delay-updates swaps every changed file in at the end, so visitors
+          # never get new HTML alongside the old styles.css / site.js.
+          rsync -avz --delete --delay-updates \
             -e "ssh -o StrictHostKeyChecking=yes" \
-            --exclude '.git*' --exclude '.github' \
+            --exclude '.git*' --exclude '.github' --exclude 'README.md' \
             ./ deploy@192.168.1.20:/var/www/html/
+            

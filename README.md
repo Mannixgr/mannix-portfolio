@@ -5,7 +5,7 @@ Source for my personal portfolio site, plus the pipeline that deploys it to my h
 **Live:** https://portfolio-site.tail8c489d.ts.net/
 **Backup (GitHub Pages):** https://mannixgr.github.io/mannix-portfolio/
 
-The site itself is a single static page. The more interesting part is how it gets published: a push to `main` joins a private network as a locked-down CI node and syncs the files into a container in my homelab, with no ports opened on my router.
+The site itself is three static pages (home, projects, experience) sharing one stylesheet and script. The more interesting part is how it gets published: a push to `main` joins a private network as a locked-down CI node and syncs the files into a container in my homelab, with no ports opened on my router.
 
 ## How it's deployed
 
@@ -53,7 +53,11 @@ Getting this working took four separate fixes: a wrong deploy path, empty secret
 
 | File | What it is |
 | --- | --- |
-| `index.html` | The whole site (HTML and CSS in one file) |
+| `index.html` | Home: hero, summary and the project picker |
+| `projects.html` | Full project write-ups with diagrams |
+| `experience.html` | Experience, skills and education |
+| `styles.css` | Shared styles for all pages |
+| `site.js` | Shared scripts (hero network, project picker, diagram animation, scroll reveal) |
 | `hybridhomelab.drawio.svg` | Architecture diagram for the Enterprise Hybrid AWS project |
 | `homelab-network.svg` | Homelab network diagram |
 | `og-image.png` | Social preview image |
