@@ -60,7 +60,10 @@ Getting this working took four separate fixes: a wrong deploy path, empty secret
 | `site.js` | Shared scripts (hero network, project picker, diagram animation, scroll reveal) |
 | `hybridhomelab.drawio.svg` | Architecture diagram for the Enterprise Hybrid AWS project |
 | `homelab-network.svg` | Homelab network diagram |
-| `og-image.png` | Social preview image |
+| `Mannix-Graham-Resume.pdf` | Resume (exported from the Google Doc; re-export after editing it) |
+| `fonts/` | Self-hosted web fonts (OFL licensed, see `fonts/README.md`) |
+| `og-image.png`, `og-projects.png`, `og-experience.png` | Social preview images, one per page |
+| `build.json` | Not in the repo: written by the deploy workflow so the footer can show the live commit |
 | `.github/workflows/deploy.yml` | Deploy pipeline |
 
 ## Run it locally

@@ -11,14 +11,13 @@
   <meta property="og:url" content="https://portfolio-site.tail8c489d.ts.net/experience.html" />
   <meta property="og:title" content="Experience | Mannix Graham" />
   <meta property="og:description" content="Quality & Product Support Intern at AGCO (Playwright suite: 3.5h to 7m regression), plus skills in Terraform, AWS, GitHub Actions, Cisco networking and test automation." />
-  <meta property="og:image" content="https://mannixgr.github.io/mannix-portfolio/og-image.png" />
+  <meta property="og:image" content="https://mannixgr.github.io/mannix-portfolio/og-experience.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23051F20'/%3E%3Ctext x='32' y='43' font-family='monospace' font-size='30' font-weight='700' text-anchor='middle' fill='%23DAF1DE'%3EMG%3C/text%3E%3C/svg%3E" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet" />
+  <link rel="preload" href="fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/instrument-serif-italic-latin.woff2" as="font" type="font/woff2" crossorigin />
   <script>document.documentElement.className = 'js';</script>
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -37,7 +36,7 @@
       <div class="nav-actions">
         <a href="https://github.com/Mannixgr" target="_blank" rel="noopener noreferrer">GitHub</a>
         <a href="https://linkedin.com/in/mannixgraham" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <a class="nav-resume" href="https://docs.google.com/document/d/1AXoYj0MFRzkPZ4OFpXVCawpK2MVTSP0J/preview" target="_blank" rel="noopener noreferrer">Resume</a>
+        <a class="nav-resume" href="Mannix-Graham-Resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
       </div>
     </div>
   </header>
@@ -138,9 +137,13 @@
       <div class="container">
         <h2 id="contact-title">Let's <span class="accent">talk.</span></h2>
         <p>Internships, a homelab question, or just a quick hello. I'm looking for Cloud, DevOps and SRE internships for <strong>Winter &amp; Summer 2027</strong> — email is the fastest way to reach me.</p>
+        <p class="email-line">
+          <span class="email-address">Mannixg.is@gmail.com</span>
+          <button type="button" class="copy-btn" data-copy="Mannixg.is@gmail.com">Copy</button>
+        </p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="mailto:Mannixg.is@gmail.com?subject=Internship%20opportunity">Email me</a>
-          <a class="btn" href="https://docs.google.com/document/d/1AXoYj0MFRzkPZ4OFpXVCawpK2MVTSP0J/preview" target="_blank" rel="noopener noreferrer">Resume</a>
+          <a class="btn" href="Mannix-Graham-Resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
           <a class="btn" href="https://github.com/Mannixgr" target="_blank" rel="noopener noreferrer">GitHub</a>
           <a class="btn" href="https://linkedin.com/in/mannixgraham" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
@@ -149,7 +152,7 @@
   </main>
 
   <footer>
-    <div class="container">Mannix Graham · Waterloo / Brampton, ON · <span class="mirror-link">Site down? <a href="https://mannixgr.github.io/mannix-portfolio/">Backup on GitHub Pages</a></span></div>
+    <div class="container">Mannix Graham · Waterloo / Brampton, ON · <span class="deploy-stamp" hidden></span><span class="mirror-link">Site down? <a href="https://mannixgr.github.io/mannix-portfolio/">Backup on GitHub Pages</a></span></div>
   </footer>
 
   <script src="site.js"></script>

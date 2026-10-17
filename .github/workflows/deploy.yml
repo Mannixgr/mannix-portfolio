@@ -41,6 +41,11 @@ jobs:
           mkdir -p ~/.ssh
           echo "$KNOWN_HOSTS" >> ~/.ssh/known_hosts
 
+      # The footer reads this to show which commit is live and when it shipped
+      - name: Write build stamp
+        run: |
+          printf '{"sha":"%s","time":"%s"}\n' "$GITHUB_SHA" "$(date -u +%Y-%m-%dT%H:%M:%SZ)" > build.json
+
       - name: Sync site files to the container
         run: |
           # --delete makes the target an exact mirror of the repo: anything in

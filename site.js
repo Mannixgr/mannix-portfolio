@@ -106,6 +106,40 @@ if (location.hostname.endsWith('github.io')) {
     'Backup copy · <a href="https://portfolio-site.tail8c489d.ts.net/' + page + '">Go to the main site</a>';
 }
 
+// Copy buttons: put the email on the clipboard and confirm for two seconds
+document.querySelectorAll('.copy-btn').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    if (!navigator.clipboard) return;
+    navigator.clipboard.writeText(btn.getAttribute('data-copy')).then(function () {
+      btn.textContent = 'Copied ✓';
+      setTimeout(function () { btn.textContent = 'Copy'; }, 2000);
+    });
+  });
+});
+
+// Deploy stamp: the deploy workflow writes build.json next to the pages.
+// It only exists on the homelab server, so it's only requested there.
+(function () {
+  var stamp = document.querySelector('.deploy-stamp');
+  if (!stamp || !window.fetch || location.hostname !== 'portfolio-site.tail8c489d.ts.net') return;
+  fetch('build.json', { cache: 'no-store' })
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(function (build) {
+      if (!/^[0-9a-f]{40}$/.test(build.sha)) return;
+      var mins = Math.max(0, Math.round((Date.now() - Date.parse(build.time)) / 60000));
+      var ago = mins < 1 ? 'just now'
+        : mins < 60 ? mins + ' min ago'
+        : mins < 1440 ? Math.round(mins / 60) + ' h ago'
+        : Math.round(mins / 1440) + ' d ago';
+      var link = document.createElement('a');
+      link.href = 'https://github.com/Mannixgr/mannix-portfolio/commit/' + build.sha;
+      link.textContent = build.sha.slice(0, 7);
+      stamp.append('Deployed ', link, ' · ' + ago + ' · served from my homelab');
+      stamp.hidden = false;
+    })
+    .catch(function () {});
+})();
+
 // Project picker: one card at a time, arrow keys move between tabs (WAI-ARIA tabs pattern)
 (function () {
   var tabs = Array.prototype.slice.call(document.querySelectorAll('.work-picker [role="tab"]'));
@@ -118,6 +152,7 @@ if (location.hostname.endsWith('github.io')) {
   });
 
   function select(index, focus) {
+    current = index;
     tabs.forEach(function (tab, i) {
       var on = i === index;
       tab.setAttribute('aria-selected', on ? 'true' : 'false');
@@ -125,6 +160,23 @@ if (location.hostname.endsWith('github.io')) {
       panels[i].hidden = !on;
     });
     if (focus) tabs[index].focus();
+  }
+
+  // "Show all" hides the tabs and stacks every card; pressing it again restores the picker
+  var showAll = document.querySelector('.show-all');
+  var section = showAll && showAll.closest('section');
+  var current = 0;
+  if (showAll) {
+    showAll.addEventListener('click', function () {
+      var on = showAll.getAttribute('aria-pressed') !== 'true';
+      showAll.setAttribute('aria-pressed', on ? 'true' : 'false');
+      showAll.textContent = on ? 'Back to picker' : 'Show all ' + tabs.length;
+      section.classList.toggle('showing-all', on);
+      panels.forEach(function (panel, i) {
+        if (on) panel.removeAttribute('role'); else panel.setAttribute('role', 'tabpanel');
+        panel.hidden = on ? false : i !== current;
+      });
+    });
   }
 
   tabs.forEach(function (tab, i) {

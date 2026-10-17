@@ -1,3 +1,33 @@
+/* Self-hosted fonts (SIL Open Font License, see fonts/README.md) */
+@font-face {
+  font-family: "Bricolage Grotesque";
+  font-style: normal;
+  font-weight: 500 700;
+  font-display: swap;
+  src: url("fonts/bricolage-grotesque-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/ibm-plex-mono-400-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("fonts/ibm-plex-mono-500-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Instrument Serif";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/instrument-serif-italic-latin.woff2") format("woff2");
+}
+
 :root {
   --bg: #051F20;
   --bg-alt: #0B2B26;
@@ -347,7 +377,7 @@ main { counter-reset: section; }
   border-radius: 10px;
   padding: 1.5rem;
 }
-.project h3 { font-size: 1.2rem; margin-bottom: 0.6rem; }
+.project h2, .project h3 { font-size: 1.2rem; margin-bottom: 0.6rem; }
 .project p { color: var(--text-muted); margin-bottom: 0.85rem; }
 .project > :last-child { margin-bottom: 0; }
 
@@ -366,8 +396,25 @@ main { counter-reset: section; }
 .tech { font-family: var(--font-mono); color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.6rem; }
 
 /* "Choose an area" picker — one project at a time; without JS every card shows */
-.no-js .work-picker, .no-js .picker-hint { display: none; }
-.picker-hint { font-family: var(--font-mono); font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0.75rem; }
+.no-js .work-picker, .no-js .picker-head { display: none; }
+.picker-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; margin-bottom: 0.75rem; }
+.picker-hint { font-family: var(--font-mono); font-size: 0.88rem; color: var(--text-muted); }
+.show-all {
+  font: inherit;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-main);
+  background: none;
+  border: 0;
+  padding: 0.2rem 0;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+.show-all:hover { text-decoration: none; }
+/* "Show all": the picker steps aside and every card stacks */
+.showing-all .work-picker { display: none; }
+.showing-all .picker-hint { visibility: hidden; }
 .work-picker {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -450,6 +497,31 @@ main { counter-reset: section; }
 .cta p strong { color: var(--text-main); }
 .cta .hero-actions { justify-content: center; margin-bottom: 0; }
 
+/* Email you can read and copy, for people whose mail app doesn't open */
+.email-line {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+.cta .email-line { margin-bottom: 1.25rem; }
+.email-address { font-family: var(--font-mono); color: var(--text-main); font-size: 1.05rem; }
+.no-js .copy-btn { display: none; }
+.copy-btn {
+  font: inherit;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.2rem 0.6rem;
+  cursor: pointer;
+  transition: border-color 150ms, color 150ms;
+}
+.copy-btn:hover { border-color: var(--text-muted); color: var(--text-main); }
+
 /* Footer */
 footer {
   border-top: 1px solid var(--border);
@@ -458,6 +530,8 @@ footer {
   font-size: 0.9rem;
   text-align: center;
 }
+.deploy-stamp { display: block; font-family: var(--font-mono); font-size: 0.8rem; margin-bottom: 0.35rem; }
+.deploy-stamp[hidden] { display: none; }
 
 /* Terminal card — resume highlights as a shell session */
 .terminal-section { padding-top: 0; }
