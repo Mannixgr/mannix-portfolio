@@ -62,8 +62,8 @@
             <a class="project-link" href="https://github.com/Mannixgr/enterprise-hybrid-aws" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
 
             <figure class="diagram">
-              <a href="hybridhomelab.drawio.svg" target="_blank" rel="noopener">
-                <img src="hybridhomelab.drawio.svg" alt="Architecture diagram: GitHub Actions deploys Terraform over OIDC into a multi-AZ AWS VPC with EC2, IAM and CloudWatch, linked by a planned site-to-site VPN to a Proxmox-hosted homelab server." width="823" height="1113" loading="lazy" />
+              <a href="hybridhomelab.svg" target="_blank" rel="noopener">
+                <img src="hybridhomelab.svg" alt="Architecture diagram: GitHub Actions assumes an IAM role over OIDC and runs Terraform, with remote state in S3, into a multi-AZ AWS VPC with public and private subnets, NAT gateways and EC2 instances. CloudWatch and CloudTrail collect metrics, logs and API activity. A planned IPsec VPN from the Virtual Private Gateway links to the Cisco RV260 in the Proxmox homelab; a Tailscale subnet router is the alternative option." width="1500" height="900" loading="lazy" />
               </a>
               <figcaption>Architecture · click to enlarge ↗</figcaption>
             </figure>
@@ -78,7 +78,7 @@
 
             <figure class="diagram diagram-trace">
               <a href="homelab-network.svg" target="_blank" rel="noopener">
-                <img src="homelab-network.svg" alt="Homelab network diagram: Rogers gateway and Cisco RV260 (double NAT) feed a Catalyst 3550, PoE switch and access points. A Proxmox host runs a Homepage container, the Caddy container serving this site, and a Docker VM. Public visitors arrive through Tailscale Funnel and the GitHub Actions runner through the tailnet. Client and management VLAN zones and an AWS VPN are shown as planned." width="1300" height="930" loading="lazy" />
+                <img src="homelab-network.svg" alt="Homelab network diagram: a Rogers gateway and Cisco RV260 (double NAT) feed a Catalyst 3550. A Proxmox host runs a Homepage container, the Caddy container serving this site, and a Docker media-server VM, with Tailscale as a subnet router. Public visitors arrive through Tailscale Funnel and the GitHub Actions runner through the tailnet as a rsync-only deploy user. Management, trusted and IoT/guest VLANs with ACLs, and an IPsec VPN to AWS, are shown as planned." width="1500" height="900" loading="lazy" />
               </a>
               <figcaption>Network · click to enlarge ↗</figcaption>
             </figure>

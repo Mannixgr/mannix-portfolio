@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 900" width="1500" height="900" font-family="Helvetica, Arial, sans-serif">
+<defs>
+<marker id="m-s" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto-start-reverse"><path d="M0,0 L10,4 L0,8 z" fill="#475569"/></marker>
+<marker id="m-v" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto-start-reverse"><path d="M0,0 L10,4 L0,8 z" fill="#7c3aed"/></marker>
+<marker id="m-a" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto-start-reverse"><path d="M0,0 L10,4 L0,8 z" fill="#d97706"/></marker>
+<marker id="m-p" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto-start-reverse"><path d="M0,0 L10,4 L0,8 z" fill="#e7157b"/></marker>
+<marker id="m-g" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto-start-reverse"><path d="M0,0 L10,4 L0,8 z" fill="#545B64"/></marker>
+<marker id="m-r" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto-start-reverse"><path d="M0,0 L10,4 L0,8 z" fill="#dc2626"/></marker>
+</defs>
+<rect width="1500" height="900" fill="#ffffff"/>
+<text x="30" y="40" font-size="24" font-weight="bold" text-anchor="start" fill="#0f172a">Enterprise Hybrid AWS: Cloud Architecture</text>
+<text x="30" y="62" font-size="13" font-weight="normal" text-anchor="start" fill="#475569">Terraform-managed multi-AZ VPC · GitHub Actions OIDC · CloudWatch / CloudTrail · site-to-site link to the homelab (planned)</text>
+<rect x="1310" y="22" width="160" height="30" rx="15" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>
+<text x="1390" y="42" font-size="12" font-weight="bold" text-anchor="middle" fill="#475569">Diagram 1 of 2</text>
+<ellipse cx="630" cy="118" rx="62" ry="24" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>
+<text x="630" y="123" font-size="13" font-weight="bold" text-anchor="middle" fill="#0f172a">Internet</text>
+<path d="M630,142 V170" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#m-s)"/>
+<rect x="30" y="150" width="220" height="670" rx="12" fill="#f8fafc" stroke="#64748b" stroke-width="1.5" stroke-dasharray="8 5"/>
+<text x="48" y="174" font-size="12" font-weight="bold" text-anchor="start" fill="#334155">CI/CD PIPELINE</text>
+<rect x="50" y="200" width="180" height="70" rx="8" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>
+<text x="140.0" y="224" font-size="12" font-weight="bold" text-anchor="middle" fill="#0f172a">GitHub repository</text>
+<text x="140.0" y="242" font-size="11" font-weight="normal" text-anchor="middle" fill="#0f172a">enterprise-hybrid-aws</text>
+<text x="140.0" y="259" font-size="11" font-weight="normal" text-anchor="middle" fill="#0f172a">Terraform modules + workflows</text>
+<rect x="50" y="320" width="180" height="70" rx="8" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>
+<text x="140.0" y="344" font-size="12" font-weight="bold" text-anchor="middle" fill="#0f172a">GitHub Actions</text>
+<text x="140.0" y="362" font-size="11" font-weight="normal" text-anchor="middle" fill="#0f172a">plan / apply workflow</text>
+<rect x="50" y="440" width="180" height="70" rx="8" fill="#fef2f2" stroke="#DD344C" stroke-width="1.5"/>
+<text x="140.0" y="464" font-size="12" font-weight="bold" text-anchor="middle" fill="#991b1b">IAM role via OIDC</text>
+<text x="140.0" y="482" font-size="11" font-weight="normal" text-anchor="middle" fill="#991b1b">short-lived credentials</text>
+<text x="140.0" y="499" font-size="11" font-weight="normal" text-anchor="middle" fill="#991b1b">no stored access keys</text>
+<rect x="50" y="560" width="180" height="70" rx="8" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>
+<text x="140.0" y="584" font-size="12" font-weight="bold" text-anchor="middle" fill="#0f172a">Terraform apply</text>
+<text x="140.0" y="602" font-size="11" font-weight="normal" text-anchor="middle" fill="#0f172a">modules/network · compute</text>
+<rect x="50" y="660" width="180" height="56" rx="8" fill="#fff" stroke="#64748b" stroke-width="1.2" stroke-dasharray="4 3"/>
+<text x="140" y="682" font-size="11" font-weight="bold" text-anchor="middle" fill="#0f172a">Remote state: S3</text>
+<text x="140" y="700" font-size="10" font-weight="normal" text-anchor="middle" fill="#475569">native locking (use_lockfile)</text>
+<path d="M140,270 V318" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#m-s)"/>
+<path d="M140,390 V438" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#m-s)"/>
+<path d="M140,510 V558" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#m-s)"/>
+<text x="148" y="420" font-size="10" font-weight="normal" text-anchor="start" fill="#475569">assume role</text>
+<path d="M140,630 V658" fill="none" stroke="#475569" stroke-width="1.5" stroke-dasharray="3 3" marker-end="url(#m-s)"/>
+<path d="M230,595 H308" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#m-s)"/>
+<text x="236" y="586" font-size="10" font-weight="normal" text-anchor="start" fill="#475569">provisions</text>
+<rect x="290" y="150" width="740" height="670" rx="4" fill="none" stroke="#232F3E" stroke-width="1.5"/>
+<text x="310" y="174" font-size="12" font-weight="bold" text-anchor="start" fill="#232F3E">AWS Cloud · Region</text>
+<rect x="310" y="200" width="670" height="500" rx="4" fill="none" stroke="#248814" stroke-width="1.5"/>
+<text x="330" y="224" font-size="14" font-weight="bold" text-anchor="start" fill="#248814">VPC 10.0.0.0/16</text>
+<rect x="330" y="250" width="285" height="430" rx="4" fill="#f2f8fd" stroke="#147EBA" stroke-width="1.2" stroke-dasharray="5 4"/>
+<text x="345" y="268" font-size="12" font-weight="bold" text-anchor="start" fill="#147EBA">Availability Zone A</text>
+<rect x="345" y="285" width="255" height="120" rx="4" fill="#f2f6e8" stroke="#7aa116" stroke-width="1"/>
+<text x="360" y="303" font-size="12" font-weight="normal" text-anchor="start" fill="#248814">Public subnet</text>
+<rect x="454.0" y="312.0" width="56" height="56" rx="8" fill="#8C4FFF"/>
+<text x="482" y="345" font-size="14" font-weight="bold" text-anchor="middle" fill="#fff">NAT</text>
+<text x="518" y="344" font-size="12" font-weight="bold" text-anchor="start" fill="#0f172a">NAT Gateway</text>
+<rect x="345" y="435" width="255" height="215" rx="4" fill="#e6f6f7" stroke="#00a4a6" stroke-width="1"/>
+<text x="360" y="453" font-size="12" font-weight="normal" text-anchor="start" fill="#147EBA">Private subnet</text>
+<rect x="454.0" y="502.0" width="56" height="56" rx="8" fill="#ED7100"/>
+<text x="482" y="535" font-size="14" font-weight="bold" text-anchor="middle" fill="#fff">EC2</text>
+<text x="518" y="534" font-size="12" font-weight="bold" text-anchor="start" fill="#0f172a">EC2 instance</text>
+<path d="M482,502 V372" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#m-s)"/>
+<text x="490" y="424" font-size="10" font-weight="normal" text-anchor="start" fill="#475569">outbound via NAT</text>
+<rect x="645" y="250" width="285" height="430" rx="4" fill="#f2f8fd" stroke="#147EBA" stroke-width="1.2" stroke-dasharray="5 4"/>
+<text x="660" y="268" font-size="12" font-weight="bold" text-anchor="start" fill="#147EBA">Availability Zone B</text>
+<rect x="660" y="285" width="255" height="120" rx="4" fill="#f2f6e8" stroke="#7aa116" stroke-width="1"/>
+<text x="675" y="303" font-size="12" font-weight="normal" text-anchor="start" fill="#248814">Public subnet</text>
+<rect x="769.0" y="312.0" width="56" height="56" rx="8" fill="#8C4FFF"/>
+<text x="797" y="345" font-size="14" font-weight="bold" text-anchor="middle" fill="#fff">NAT</text>
+<text x="833" y="344" font-size="12" font-weight="bold" text-anchor="start" fill="#0f172a">NAT Gateway</text>
+<rect x="660" y="435" width="255" height="215" rx="4" fill="#e6f6f7" stroke="#00a4a6" stroke-width="1"/>
+<text x="675" y="453" font-size="12" font-weight="normal" text-anchor="start" fill="#147EBA">Private subnet</text>
+<rect x="769.0" y="502.0" width="56" height="56" rx="8" fill="#ED7100"/>
+<text x="797" y="535" font-size="14" font-weight="bold" text-anchor="middle" fill="#fff">EC2</text>
+<text x="833" y="534" font-size="12" font-weight="bold" text-anchor="start" fill="#0f172a">EC2 instance</text>
+<path d="M797,502 V372" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#m-s)"/>
+<text x="805" y="424" font-size="10" font-weight="normal" text-anchor="start" fill="#475569">outbound via NAT</text>
+<path d="M482,312 V236 H615 V230" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#m-s)"/>
+<path d="M797,312 V236 H645 V230" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#m-s)"/>
+<rect x="602.0" y="172.0" width="56" height="56" rx="8" fill="#8C4FFF"/>
+<text x="630" y="205" font-size="14" font-weight="bold" text-anchor="middle" fill="#fff">IGW</text>
+<text x="668" y="186" font-size="12" font-weight="bold" text-anchor="start" fill="#0f172a">Internet Gateway</text>
+<rect x="952.0" y="302.0" width="56" height="56" rx="8" fill="#8C4FFF"/>
+<text x="980" y="335" font-size="14" font-weight="bold" text-anchor="middle" fill="#fff">VGW</text>
+<text x="988" y="372" font-size="11" font-weight="bold" text-anchor="start" fill="#0f172a">Virtual Private</text>
+<text x="988" y="386" font-size="11" font-weight="bold" text-anchor="start" fill="#0f172a">Gateway</text>
+<rect x="330" y="725" width="290" height="80" rx="4" fill="#fff" stroke="#232F3E" stroke-width="1.5"/>
+<rect x="346.0" y="741.0" width="48" height="48" rx="8" fill="#E7157B"/>
+<text x="370" y="770" font-size="12" font-weight="bold" text-anchor="middle" fill="#fff">CW</text>
+<text x="406" y="762" font-size="13" font-weight="bold" text-anchor="start" fill="#0f172a">CloudWatch</text>
+<text x="406" y="780" font-size="11" font-weight="normal" text-anchor="start" fill="#475569">metrics &amp; logs</text>
+<path d="M475,700 V723" fill="none" stroke="#545B64" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#m-g)"/>
+<text x="485" y="716" font-size="10" font-weight="normal" text-anchor="start" fill="#545B64">metrics &amp; logs</text>
+<rect x="660" y="725" width="290" height="80" rx="4" fill="#fff" stroke="#232F3E" stroke-width="1.5"/>
+<rect x="676.0" y="741.0" width="48" height="48" rx="8" fill="#E7157B"/>
+<text x="700" y="770" font-size="12" font-weight="bold" text-anchor="middle" fill="#fff">CT</text>
+<text x="736" y="762" font-size="13" font-weight="bold" text-anchor="start" fill="#0f172a">CloudTrail</text>
+<text x="736" y="780" font-size="11" font-weight="normal" text-anchor="start" fill="#475569">API activity</text>
+<path d="M805,700 V723" fill="none" stroke="#545B64" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#m-g)"/>
+<text x="815" y="716" font-size="10" font-weight="normal" text-anchor="start" fill="#545B64">API activity</text>
+<rect x="1090" y="150" width="380" height="670" rx="12" fill="none" stroke="#334155" stroke-width="1.5" stroke-dasharray="8 5"/>
+<text x="1110" y="174" font-size="12" font-weight="bold" text-anchor="start" fill="#334155">ON-PREMISES HOMELAB</text>
+<text x="1110" y="192" font-size="11" font-weight="normal" text-anchor="start" fill="#475569">Kitchener-Waterloo · 192.168.1.0/24</text>
+<text x="1110" y="208" font-size="11" font-weight="normal" text-anchor="start" fill="#475569" font-style="italic">Full topology: Diagram 2</text>
+<rect x="1120" y="290" width="320" height="80" rx="8" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
+<text x="1280.0" y="314" font-size="13" font-weight="bold" text-anchor="middle" fill="#1e3a8a">Cisco RV260</text>
+<text x="1280.0" y="332" font-size="11" font-weight="normal" text-anchor="middle" fill="#1e3a8a">router · firewall · 192.168.1.1</text>
+<text x="1280.0" y="349" font-size="10" font-weight="normal" text-anchor="middle" fill="#1e3a8a" font-style="italic">Customer Gateway · IPsec endpoint (planned)</text>
+<path d="M1280,370 V420" fill="none" stroke="#475569" stroke-width="2"/>
+<rect x="1120" y="420" width="320" height="70" rx="8" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
+<text x="1280.0" y="444" font-size="13" font-weight="bold" text-anchor="middle" fill="#1e3a8a">Cisco Catalyst 3550 (SW1)</text>
+<text x="1280.0" y="462" font-size="11" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Layer 3 switch · 802.1Q trunks</text>
+<path d="M1280,490 V540" fill="none" stroke="#475569" stroke-width="2"/>
+<rect x="1120" y="540" width="320" height="70" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+<text x="1280.0" y="564" font-size="13" font-weight="bold" text-anchor="middle" fill="#166534">HP EliteDesk · Proxmox VE</text>
+<text x="1280.0" y="582" font-size="11" font-weight="normal" text-anchor="middle" fill="#166534">192.168.1.50 · Tailscale subnet router</text>
+<rect x="1120" y="645" width="320" height="150" rx="8" fill="#fffbeb" stroke="#d97706" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="1136" y="668" font-size="12" font-weight="bold" text-anchor="start" fill="#92400e">Hybrid link: decision open</text>
+<text x="1136" y="692" font-size="11" font-weight="bold" text-anchor="start" fill="#92400e">A · IPsec site-to-site (VGW ↔ RV260)</text>
+<text x="1150" y="708" font-size="10" font-weight="normal" text-anchor="start" fill="#92400e">enterprise-standard · VPN hourly cost</text>
+<text x="1136" y="736" font-size="11" font-weight="bold" text-anchor="start" fill="#92400e">B · Tailscale subnet router on EC2</text>
+<text x="1150" y="752" font-size="10" font-weight="normal" text-anchor="start" fill="#92400e">low cost · reuses the existing tailnet</text>
+<text x="1136" y="778" font-size="10" font-weight="normal" text-anchor="start" fill="#92400e" font-style="italic">Diagram shows option A as drawn.</text>
+<path d="M1008,330 H1118" fill="none" stroke="#e7157b" stroke-width="3" stroke-dasharray="8 4" marker-end="url(#m-p)" marker-start="url(#m-p)"/>
+<rect x="1036" y="306" width="52" height="34" fill="#fff"/>
+<text x="1062" y="319" font-size="10" font-weight="bold" text-anchor="middle" fill="#be185d">IPsec VPN</text>
+<text x="1062" y="334" font-size="10" font-weight="normal" text-anchor="middle" fill="#be185d" font-style="italic">planned</text>
+<text x="30" y="862" font-size="12" font-weight="bold" text-anchor="start" fill="#0f172a">Legend</text>
+<path d="M90,858 H130" fill="none" stroke="#475569" stroke-width="2"/>
+<text x="138" y="862" font-size="11" font-weight="normal" text-anchor="start" fill="#334155">implemented link</text>
+<path d="M260,858 H300" fill="none" stroke="#d97706" stroke-width="2" stroke-dasharray="5 3"/>
+<text x="308" y="862" font-size="11" font-weight="normal" text-anchor="start" fill="#334155">planned / decision open</text>
+<path d="M471,858 H511" fill="none" stroke="#e7157b" stroke-width="2.5" stroke-dasharray="8 4"/>
+<text x="519" y="862" font-size="11" font-weight="normal" text-anchor="start" fill="#334155">IPsec VPN (planned)</text>
+<path d="M659,858 H699" fill="none" stroke="#7c3aed" stroke-width="2.5"/>
+<text x="707" y="862" font-size="11" font-weight="normal" text-anchor="start" fill="#334155">Tailscale overlay</text>
+<path d="M835,858 H875" fill="none" stroke="#545B64" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="883" y="862" font-size="11" font-weight="normal" text-anchor="start" fill="#334155">metrics / logs</text>
+<text x="30" y="886" font-size="11" font-weight="normal" text-anchor="start" fill="#475569" font-style="italic">Pairs with Diagram 2: homelab network &amp; overlay.</text>
+</svg>

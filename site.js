@@ -216,15 +216,23 @@ document.querySelectorAll('.copy-btn').forEach(function (btn) {
           if (el.closest('defs')) return;
           if (el.hasAttribute('stroke-dasharray')) { el.classList.add('trace-late'); return; }
           if (el.nodeName === 'line') { lines.push(el); return; }
-          if (el.nodeName === 'path') { el.classList.add('trace-late'); return; }
+          // Unfilled paths are connectors and draw like lines; filled ones are shapes
+          if (el.nodeName === 'path') {
+            if (el.getAttribute('fill') === 'none') lines.push(el);
+            else el.classList.add('trace-late');
+            return;
+          }
           if (el.parentNode === svg && el.nodeName === 'rect' && !el.hasAttribute('x')) return; // page background
           el.classList.add('trace-node');
         });
+        var lateDelay = (0.4 + lines.length * 0.07 + 0.3) + 's';
+        svg.querySelectorAll('.trace-late').forEach(function (el) { el.style.transitionDelay = lateDelay; });
+
+        // Inline first: path lengths can only be measured once the SVG is in the document
+        img.replaceWith(svg);
 
         lines.forEach(function (el, i) {
-          var dx = el.x2.baseVal.value - el.x1.baseVal.value;
-          var dy = el.y2.baseVal.value - el.y1.baseVal.value;
-          var len = Math.sqrt(dx * dx + dy * dy);
+          var len = el.getTotalLength();
           el.classList.add('trace-line');
           el.style.strokeDasharray = len;
           el.style.strokeDashoffset = len;
@@ -236,10 +244,6 @@ document.querySelectorAll('.copy-btn').forEach(function (btn) {
             el.addEventListener('transitionend', function () { el.setAttribute('marker-end', marker); }, { once: true });
           }
         });
-        var lateDelay = (0.4 + lines.length * 0.07 + 0.3) + 's';
-        svg.querySelectorAll('.trace-late').forEach(function (el) { el.style.transitionDelay = lateDelay; });
-
-        img.replaceWith(svg);
 
         var io = new IntersectionObserver(function (entries) {
           if (!entries[0].isIntersecting) return;
