@@ -9,7 +9,7 @@ The site is three pages (home, projects, experience) written in plain HTML, CSS 
 
 - an animated network background behind the hero
 - a project picker (keyboard-accessible tabs, with a "show all" view)
-- architecture diagrams that draw themselves when they scroll into view
+- two architecture diagrams that draw themselves when they scroll into view
 - a footer stamp showing which commit is live and when it was deployed, read from a `build.json` the deploy workflow writes
 - copy-to-clipboard for contact details
 
@@ -62,16 +62,16 @@ Getting this working took four separate fixes: a wrong deploy path, empty secret
 
 | File | What it is |
 | --- | --- |
-| `index.html` | Home: hero, summary and the project picker |
-| `projects.html` | Full project write-ups with diagrams |
+| `index.html` | Home: hero, highlights strip, about and the project picker |
+| `projects.html` | Full project write-ups (Built / In progress / Next) with diagrams |
 | `experience.html` | Experience, skills and education |
 | `styles.css` | Shared styles for all pages |
 | `site.js` | Shared scripts (hero network, project picker, diagram animation, deploy stamp, copy buttons, scroll reveal) |
-| `hybridhomelab.svg` | Diagram 1: Enterprise Hybrid AWS cloud architecture |
-| `homelab-network.svg` | Diagram 2: homelab network and overlay (this one animates on the projects page) |
+| `hybridhomelab.svg` | Diagram 1: Enterprise Hybrid AWS cloud architecture (pipeline, VPC, site-to-site VPN) |
+| `homelab-network.svg` | Diagram 2: homelab network and overlay |
 | `Mannix-Graham-Resume.pdf` | Resume (exported from the Google Doc; re-export after editing it) |
 | `fonts/` | Self-hosted web fonts (OFL licensed, see `fonts/README.md`) |
-| `og-image.png`, `og-projects.png`, `og-experience.png` | Social preview images, one per page |
+| `og-image.png`, `og-projects.png`, `og-experience.png` | Social preview images, one per page (1200×630; their headlines match each page's) |
 | `build.json` | Not in the repo: written by the deploy workflow so the footer can show the live commit |
 | `.github/workflows/deploy.yml` | Deploy pipeline |
 
@@ -95,10 +95,12 @@ The self-drawing animation works on any SVG inside a `.diagram-trace` figure, bu
 - Arrowheads are `<marker>`s inside `<defs>`, used through `marker-end`. They appear once their line has finished drawing.
 - The full-size background is a `<rect>` with no `x` attribute, so it stays visible from the start.
 
-If you replace a diagram, update the `width`/`height` on its `<img>` in `projects.html` to match the SVG's size so the page doesn't jump while it loads.
+Both diagrams use the site's dark palette (`#051F20` background, `#DAF1DE` / `#8EB69B` text) so they sit inside the page instead of glowing white. Keep new elements on that palette. Dashed means planned or in progress; when something is built, make its lines and boxes solid.
+
+If you replace a diagram, update the `width`/`height` on its `<img>` in `projects.html` to match the SVG's size so the page doesn't jump while it loads. Update its `alt` text too, since it describes what the diagram shows.
 
 ## Related
 
 - [Homelab](https://github.com/Mannixgr/Homelab): configs, diagrams, and write-ups for the network and server this runs on
-- [enterprise-hybrid-aws](https://github.com/Mannixgr/enterprise-hybrid-aws): Terraform and GitHub Actions OIDC on AWS
-- [CloudGuard](https://github.com/Mannixgr/CloudGuard): AWS operations and cost-governance platform (early development)
+- [enterprise-hybrid-aws](https://github.com/Mannixgr/enterprise-hybrid-aws): Terraform on AWS, deployed by GitHub Actions over OIDC, with a site-to-site VPN to the homelab
+- [CloudGuard](https://github.com/Mannixgr/CloudGuard): AWS cost and security scanner (early development)
