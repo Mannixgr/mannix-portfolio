@@ -200,8 +200,9 @@ h1 { font-size: clamp(2.3rem, 7vw, 4rem); line-height: 1.1; margin-bottom: 1rem;
 .hero-tagline {
   font-size: clamp(1.1rem, 2.6vw, 1.35rem);
   color: var(--text-muted);
-  max-width: 34rem;
+  max-width: 36rem;
   margin-bottom: 1.5rem;
+  text-wrap: pretty; /* no single word stranded on the last line */
 }
 .hero-tagline strong { color: var(--text-main); font-weight: 600; }
 
@@ -337,6 +338,20 @@ section.band { background: var(--bg-alt); }
   color: var(--text-muted);
   margin-top: 1.25rem;
 }
+
+/* Other roles: one line each, title on the left, dates on the right */
+.also-list { list-style: none; margin-top: 1.75rem; padding-top: 1.25rem; border-top: 1px solid var(--border); }
+.also-label { font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.6rem; }
+.also-list li {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.1rem 1rem;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+.also-list li strong { color: var(--text-main); font-weight: 600; }
 
 /* Projects */
 /* Stacked cards; the featured ones carry a full-width diagram */
@@ -513,7 +528,7 @@ footer {
 .deploy-stamp[hidden] { display: none; }
 
 /* Proof strip: three numbers under the hero; stacks on phones */
-.proof-section { padding-top: 0; }
+.proof-section { padding-top: 0; padding-bottom: 0; } /* the next section's top padding is the gap */
 .proof {
   list-style: none;
   display: grid;
@@ -552,3 +567,5 @@ footer {
   }
   .reveal { opacity: 1 !important; transform: none !important; }
 }
+
+.nowrap { white-space: nowrap; }
