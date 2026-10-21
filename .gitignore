@@ -6,3 +6,7 @@ skills-lock.json
 
 # Written by the deploy workflow
 build.json
+
+# Claude Code project context (not part of the site)
+CLAUDE.md
+claudecode.md

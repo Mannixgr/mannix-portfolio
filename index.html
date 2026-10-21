@@ -17,7 +17,6 @@
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23051F20'/%3E%3Ctext x='32' y='43' font-family='monospace' font-size='30' font-weight='700' text-anchor='middle' fill='%23DAF1DE'%3EMG%3C/text%3E%3C/svg%3E" />
   <link rel="preload" href="fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href="fonts/instrument-serif-italic-latin.woff2" as="font" type="font/woff2" crossorigin />
   <script>document.documentElement.className = 'js';</script>
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -46,44 +45,24 @@
     <section class="hero" id="top" aria-labelledby="hero-title">
       <canvas class="hero-net" aria-hidden="true"></canvas>
       <div class="container">
-        <p class="eyebrow">Mannix Graham · Computer Science, Wilfrid Laurier University</p>
-        <h1 id="hero-title">Zero-downtime <span class="accent">mindset.</span></h1>
-        <p class="hero-tagline">Infrastructure that rebuilds from code, deploys without long-lived keys, and gets tested before it breaks. <strong>Focused on Cloud Engineering, DevOps &amp; SRE.</strong></p>
-        <p class="hero-status"><span class="status-dot" aria-hidden="true"></span>Open to internships · <strong>Winter &amp; Summer 2027</strong></p>
+        <p class="hero-status"><span class="status-dot" aria-hidden="true"></span>Open to Cloud, DevOps &amp; SRE internships · <strong>Winter &amp; Summer 2027</strong></p>
+        <h1 id="hero-title">Infrastructure that rebuilds from code.</h1>
+        <p class="hero-tagline">CS student at Laurier building AWS environments in Terraform, deployed by GitHub Actions without long-lived keys.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="Mannix-Graham-Resume.pdf" target="_blank" rel="noopener noreferrer">Resume (PDF)</a>
+          <a class="btn btn-primary" href="Mannix-Graham-Resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
           <a class="btn" href="https://github.com/Mannixgr" target="_blank" rel="noopener noreferrer">GitHub</a>
-          <a class="btn" href="https://linkedin.com/in/mannixgraham" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
-        <p class="hero-now">Most recently: <a href="experience.html">Quality &amp; Product Support Intern, AGCO</a> (May–Aug 2026) · preparing for AWS Certified Cloud Practitioner</p>
       </div>
     </section>
 
-    <!-- Terminal card -->
-    <section class="reveal terminal-section" aria-label="Quick summary">
+    <!-- Proof: the three numbers worth remembering -->
+    <section class="reveal proof-section" aria-label="Highlights">
       <div class="container">
-        <div class="terminal">
-          <div class="terminal-bar" aria-hidden="true">
-            <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
-          </div>
-          <div class="terminal-body">
-            <p class="cmd">whoami</p>
-            <p class="out hl">mannix_graham — cloud, devops &amp; sre · CS @ Laurier</p>
-
-            <p class="cmd">cat wins.txt</p>
-            <p class="out"><span class="num">97%</span> faster regression (3.5h → 7m) — Playwright suite @ AGCO</p>
-            <p class="out"><span class="num">4/6</span> QA teammates now writing their own automated tests</p>
-            <p class="out"><span class="num">0</span> long-lived AWS keys — CI/CD deploys via GitHub Actions OIDC</p>
-
-            <p class="cmd">ls projects/</p>
-            <p class="out dirs">
-              <a href="https://github.com/Mannixgr/enterprise-hybrid-aws" target="_blank" rel="noopener noreferrer">enterprise-hybrid-aws/</a>
-              <a href="https://github.com/Mannixgr/Homelab" target="_blank" rel="noopener noreferrer">network-homelab/</a>
-            </p>
-
-            <p class="cmd"><span class="cursor" aria-hidden="true"></span></p>
-          </div>
-        </div>
+        <ul class="proof">
+          <li><span class="proof-num">3.5h → 7m</span><span class="proof-text">Full regression time after I built <a href="experience.html">AGCO's first Playwright suite</a></span></li>
+          <li><span class="proof-num">4 of 6</span><span class="proof-text">QA teammates now writing their own automated tests</span></li>
+          <li><span class="proof-num">0</span><span class="proof-text">Long-lived AWS keys. CI deploys through GitHub Actions OIDC</span></li>
+        </ul>
       </div>
     </section>
 
@@ -91,7 +70,7 @@
     <section class="reveal" aria-labelledby="about-title">
       <div class="container">
         <h2 id="about-title" class="section-label">About</h2>
-        <p class="lede">CS student (graduating Dec 2027) who'd rather learn how a system fails than just read about it. Most of my time goes into Terraform, AWS, and a homelab I keep rebuilding on purpose — deploying, breaking, and fixing infrastructure until I understand it end to end. Based between <strong>Waterloo</strong> and <strong>Brampton, ON</strong>.</p>
+        <p class="lede">CS student (graduating Dec 2027) who'd rather learn how a system fails than just read about it. Most of my time goes into Terraform, AWS, and a homelab I keep rebuilding on purpose: deploying, breaking and fixing infrastructure until I understand it end to end. Based between <strong>Waterloo</strong> and <strong>Brampton, ON</strong>.</p>
         <a class="more-link" href="experience.html">Experience &amp; skills →</a>
       </div>
     </section>
@@ -116,8 +95,8 @@
           <div class="project" id="proj-aws">
             <h3>Enterprise Hybrid AWS Environment</h3>
             <p class="outcome">Rebuilt from code. Zero long-lived keys.</p>
-            <p>A multi-AZ AWS environment (VPC, EC2, IAM) defined in Terraform and deployed by GitHub Actions over OIDC, with a multi-region CloudTrail trail logging every API call.</p>
-            <p class="tech">Terraform · AWS · GitHub Actions (OIDC)</p>
+            <p>A multi-AZ AWS VPC with a site-to-site VPN to my homelab, defined in Terraform and deployed by GitHub Actions over OIDC. Every pull request gets a plan, and applies wait for approval.</p>
+            <p class="tech">Terraform · AWS · GitHub Actions (OIDC) · strongSwan</p>
             <div class="project-links">
               <a class="project-link" href="projects.html#proj-aws">Full write-up →</a>
               <a class="project-link" href="https://github.com/Mannixgr/enterprise-hybrid-aws" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
@@ -134,7 +113,7 @@
             </div>
           </div>
           <div class="project" id="proj-cloudguard">
-            <h3>CloudGuard — AWS Operations &amp; Cost-Governance Platform</h3>
+            <h3>CloudGuard: AWS Cost &amp; Security Scanner</h3>
             <p class="outcome">Catch the bill before it catches you.</p>
             <p>Early development: read-only boto3 scripts under a least-privilege IAM profile, building toward detection rules for cost waste and security misconfigurations.</p>
             <p class="tech">Python · boto3 · FastAPI · Terraform</p>
@@ -161,16 +140,14 @@
     <!-- Contact -->
     <section class="reveal cta" id="contact" aria-labelledby="contact-title">
       <div class="container">
-        <h2 id="contact-title">Let's <span class="accent">talk.</span></h2>
-        <p>Internships, a homelab question, or just a quick hello. I'm looking for Cloud, DevOps and SRE internships for <strong>Winter &amp; Summer 2027</strong> — email is the fastest way to reach me.</p>
+        <h2 id="contact-title">Let's talk.</h2>
+        <p>Internships, a homelab question, or just a quick hello. I'm looking for Cloud, DevOps and SRE internships for <strong>Winter &amp; Summer 2027</strong>. Email is the fastest way to reach me.</p>
         <p class="email-line">
           <span class="email-address">Mannixg.is@gmail.com</span>
           <button type="button" class="copy-btn" data-copy="Mannixg.is@gmail.com">Copy</button>
         </p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="mailto:Mannixg.is@gmail.com?subject=Internship%20opportunity">Email me</a>
-          <a class="btn" href="Mannix-Graham-Resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
-          <a class="btn" href="https://github.com/Mannixgr" target="_blank" rel="noopener noreferrer">GitHub</a>
           <a class="btn" href="https://linkedin.com/in/mannixgraham" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
       </div>

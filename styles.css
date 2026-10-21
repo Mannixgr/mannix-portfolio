@@ -41,7 +41,7 @@
   --font-head: "Bricolage Grotesque", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-body: system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
-  --font-serif: "Instrument Serif", Georgia, serif; /* italic accents only */
+  --font-serif: "Instrument Serif", Georgia, serif; /* project outcome lines only */
   --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
   --grid-size: 64px;
 }
@@ -63,8 +63,8 @@ body {
   -webkit-font-smoothing: antialiased;
   /* Faint blueprint grid; solid bands and cards sit on top of it */
   background-image:
-    linear-gradient(rgba(35, 83, 71, 0.28) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(35, 83, 71, 0.28) 1px, transparent 1px);
+    linear-gradient(rgba(35, 83, 71, 0.14) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(35, 83, 71, 0.14) 1px, transparent 1px);
   background-size: var(--grid-size) var(--grid-size);
   background-position: center top;
 }
@@ -195,23 +195,7 @@ main:focus { outline: none; }
   mask-image: linear-gradient(to bottom, #000 55%, transparent);
 }
 
-.eyebrow {
-  font-family: var(--font-mono);
-  color: var(--accent);
-  font-size: 0.95rem;
-  margin-bottom: 0.75rem;
-}
-
-h1 { font-size: clamp(2.6rem, 8vw, 4.2rem); margin-bottom: 1rem; }
-
-/* Italic serif for one or two words of emphasis per heading */
-.accent {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: 400;
-  font-size: 1.12em;
-  letter-spacing: 0.01em;
-}
+h1 { font-size: clamp(2.3rem, 7vw, 4rem); line-height: 1.1; margin-bottom: 1rem; }
 
 .hero-tagline {
   font-size: clamp(1.1rem, 2.6vw, 1.35rem);
@@ -227,8 +211,9 @@ h1 { font-size: clamp(2.6rem, 8vw, 4.2rem); margin-bottom: 1rem; }
   gap: 0.7rem;
   margin-bottom: 1.25rem;
 }
+.hero .hero-actions { margin-bottom: 0; }
 
-/* Availability — what recruiters filter on, right above the buttons */
+/* Availability: what recruiters filter on, first thing in the hero */
 .hero-status {
   display: inline-block;
   font-family: var(--font-mono);
@@ -263,15 +248,9 @@ h1 { font-size: clamp(2.6rem, 8vw, 4.2rem); margin-bottom: 1rem; }
   transition: background 150ms, border-color 150ms, transform 150ms;
 }
 .btn:hover { border-color: var(--accent); background: var(--card-alt); }
+.btn:active { transform: translateY(1px); }
 .btn-primary { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
 .btn-primary:hover { filter: brightness(0.88); }
-
-.hero-now {
-  font-family: var(--font-mono);
-  font-size: 0.9rem;
-  color: var(--text-muted);
-}
-.hero-now strong { color: var(--text-main); font-weight: 500; }
 
 /* Page header on Projects / Experience */
 .page-hero { padding: clamp(2.75rem, 8vw, 4.5rem) 0 clamp(1.5rem, 4vw, 2.25rem); }
@@ -291,15 +270,6 @@ h1 { font-size: clamp(2.6rem, 8vw, 4.2rem); margin-bottom: 1rem; }
 /* Section rhythm — soft alternating bands instead of boxed-in cards */
 section { padding: clamp(2.5rem, 6vw, 3.75rem) 0; }
 section.band { background: var(--bg-alt); }
-
-/* Auto-numbered labels: "// 01 About", "// 02 Experience"… (alt text keeps screen readers quiet) */
-main { counter-reset: section; }
-.section-label { counter-increment: section; }
-.section-label::before {
-  content: "// " counter(section, decimal-leading-zero) "\00a0\00a0";
-  content: "// " counter(section, decimal-leading-zero) "\00a0\00a0" / "";
-  color: var(--text-muted);
-}
 
 .section-label {
   font-family: var(--font-mono);
@@ -369,7 +339,7 @@ main { counter-reset: section; }
 }
 
 /* Projects */
-/* Stacked cards: one featured project with its diagram alongside, then the rest */
+/* Stacked cards; the featured ones carry a full-width diagram */
 .project-grid { display: grid; gap: 1.25rem; }
 .project {
   background: var(--bg-alt);
@@ -381,16 +351,25 @@ main { counter-reset: section; }
 .project p { color: var(--text-muted); margin-bottom: 0.85rem; }
 .project > :last-child { margin-bottom: 0; }
 
-@media (min-width: 720px) {
-  .project.featured {
-    display: grid;
-    grid-template-columns: 1fr 17.5rem;
-    grid-template-rows: auto auto auto auto 1fr; /* the tall diagram's extra height lands below the link */
-    column-gap: 1.75rem;
-    align-items: start;
-  }
-  .project.featured .project-link { justify-self: start; }
-  .project.featured .diagram { grid-column: 2; grid-row: 1 / span 5; margin: 0; }
+/* Built / In progress / Next, so the status of each part is clear at a glance */
+.status-list { list-style: none; margin-bottom: 0.85rem; }
+.status-list li {
+  display: grid;
+  grid-template-columns: 6.5rem 1fr;
+  gap: 0 1rem;
+  color: var(--text-muted);
+  margin-bottom: 0.45rem;
+}
+.status-tag {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-main);
+  padding-top: 0.2rem;
+}
+@media (max-width: 480px) {
+  .status-list li { grid-template-columns: 1fr; }
 }
 
 .tech { font-family: var(--font-mono); color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.6rem; }
@@ -436,7 +415,7 @@ main { counter-reset: section; }
 .work-picker button[aria-selected="true"] { background: var(--card-alt); border-color: var(--accent); color: var(--text-main); }
 .work-picker .area { display: block; font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; }
 .work-picker .name { display: block; font-family: var(--font-head); font-weight: 700; font-size: 1rem; color: var(--text-main); }
-.project[hidden] { display: none !important; } /* beats .featured's display: grid */
+.project[hidden] { display: none !important; }
 .js .project[role="tabpanel"]:not([hidden]) { animation: panel-in 450ms var(--ease); }
 @keyframes panel-in { from { opacity: 0; transform: translateY(8px); } }
 
@@ -448,7 +427,7 @@ main { counter-reset: section; }
 .project-links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; }
 
 /* Diagram: dark frame to match the page; click opens it full size */
-.diagram { margin: 0.25rem 0 1rem; }
+.diagram { margin: 1.25rem 0 0; }
 .diagram a {
   display: block;
   background: var(--bg);
@@ -533,47 +512,28 @@ footer {
 .deploy-stamp { display: block; font-family: var(--font-mono); font-size: 0.8rem; margin-bottom: 0.35rem; }
 .deploy-stamp[hidden] { display: none; }
 
-/* Terminal card — resume highlights as a shell session */
-.terminal-section { padding-top: 0; }
-.terminal {
-  background: var(--bg-alt);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  overflow: hidden;
-  font-family: var(--font-mono);
-  font-size: 0.95rem;
+/* Proof strip: three numbers under the hero; stacks on phones */
+.proof-section { padding-top: 0; }
+.proof {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  border-top: 1px solid var(--border);
+  padding-top: 1.5rem;
 }
-.terminal-bar {
-  display: flex;
-  gap: 0.5rem;
-  padding: 0.75rem 1rem;
-  background: var(--card-alt);
-  border-bottom: 1px solid var(--border);
+.proof li { display: flex; flex-direction: column; gap: 0.35rem; }
+.proof-num {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: clamp(1.6rem, 4vw, 2.1rem);
+  line-height: 1.1;
+  color: var(--text-main);
 }
-.dot { width: 12px; height: 12px; border-radius: 50%; }
-.dot.red { background: #ff5f57; }
-.dot.yellow { background: #febc2e; }
-.dot.green { background: #28c840; }
-
-.terminal-body { padding: 1.25rem 1.5rem; overflow-x: auto; }
-.terminal-body p { margin: 0 0 0.35rem; }
-.terminal-body .cmd { color: var(--text-main); margin-top: 1.1rem; }
-.terminal-body .cmd:first-child { margin-top: 0; }
-.cmd::before { content: "$ "; color: var(--text-muted); }
-.out { color: var(--text-muted); }
-.out.hl, .num { color: var(--text-main); font-weight: 600; }
-.dirs { display: flex; flex-wrap: wrap; gap: 0.4rem 1.25rem; }
-.dirs a { color: var(--text-main); }
-
-.cursor {
-  display: inline-block;
-  width: 0.6em;
-  height: 1.1em;
-  background: var(--text-main);
-  vertical-align: text-bottom;
-  animation: blink 1s steps(1) infinite;
+.proof-text { color: var(--text-muted); font-size: 0.95rem; line-height: 1.5; }
+@media (max-width: 640px) {
+  .proof { grid-template-columns: 1fr; gap: 1.1rem; }
 }
-@keyframes blink { 50% { opacity: 0; } }
 
 @media (max-width: 480px) {
   .nav-actions { gap: 0.75rem; }
@@ -582,8 +542,6 @@ footer {
   /* GitHub/LinkedIn sit right below in the hero; dropping them keeps the header to two rows */
   .nav-actions a:not(.nav-resume) { display: none; }
   .btn { flex: 1 1 calc(50% - 0.7rem); text-align: center; }
-  .terminal { font-size: 0.82rem; }
-  .terminal-body { padding: 1rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {

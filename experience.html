@@ -17,7 +17,6 @@
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23051F20'/%3E%3Ctext x='32' y='43' font-family='monospace' font-size='30' font-weight='700' text-anchor='middle' fill='%23DAF1DE'%3EMG%3C/text%3E%3C/svg%3E" />
   <link rel="preload" href="fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href="fonts/instrument-serif-italic-latin.woff2" as="font" type="font/woff2" crossorigin />
   <script>document.documentElement.className = 'js';</script>
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -44,7 +43,7 @@
   <main id="main" tabindex="-1">
     <section class="page-hero" aria-labelledby="page-title">
       <div class="container">
-        <h1 id="page-title">Experience &amp; <span class="accent">skills.</span></h1>
+        <h1 id="page-title">Experience &amp; skills.</h1>
         <p class="lede">Where I've worked, what I can do, and <a href="projects.html">the projects</a> that back it up.</p>
       </div>
     </section>
@@ -57,12 +56,12 @@
         <article class="entry">
           <div class="entry-head">
             <h3>Quality &amp; Product Support Intern</h3>
-            <span class="entry-date">May – Aug 2026</span>
+            <span class="entry-date">May-Aug 2026</span>
           </div>
           <p class="entry-sub">Alcohol and Gaming Commission of Ontario, Toronto, ON</p>
 
           <p class="outcome">From hours to minutes.</p>
-          <p class="highlight">Built the team's first Playwright automation suite, cutting full regression from <strong>3.5 hours to 7 minutes</strong> — a 97% reduction across 14 test cases.</p>
+          <p class="highlight">Built the team's first Playwright automation suite, cutting full regression from <strong>3.5 hours to 7 minutes</strong>, a 97% reduction across 14 test cases.</p>
 
           <ul class="bullets">
             <li>Trained 4 of 6 teammates to write and maintain their own automated tests after a live demo.</li>
@@ -71,7 +70,7 @@
           </ul>
         </article>
 
-        <p class="also">Also: Operations Associate, City of Waterloo (Sept 2025–Present) · Facility Attendant III (shift lead, 5–8 staff), City of Brampton (2025–Present; joined Jan 2023)</p>
+        <p class="also">Also: Operations Associate, City of Waterloo (Sept 2025-Present) · Facility Attendant III (shift lead, 5-8 staff), City of Brampton (2025-Present; joined Jan 2023)</p>
       </div>
     </section>
 
@@ -83,22 +82,22 @@
           <div class="skill-row">
             <h3>Infrastructure as Code</h3>
             <div>
-              <p>Production-structured Terraform codebase (bootstrap, modules, environments) that builds a multi-AZ AWS VPC, EC2 and IAM — repeatable, no console clicking. Multi-region CloudTrail and a CloudWatch billing alarm are live.</p>
-              <p class="tech">Terraform · AWS (EC2, VPC, IAM, CloudWatch, CloudTrail)</p>
+              <p>Production-structured Terraform codebase (bootstrap, modules, environments) that builds a multi-AZ AWS VPC, a NAT gateway and the AWS side of a site-to-site VPN. Dev is torn down when idle and rebuilt through the pipeline, with no console clicking.</p>
+              <p class="tech">Terraform · AWS (VPC, Site-to-Site VPN, IAM, CloudWatch, CloudTrail)</p>
             </div>
           </div>
           <div class="skill-row">
             <h3>CI/CD &amp; Cloud Security</h3>
             <div>
-              <p>GitHub Actions deploys to AWS with short-lived OIDC credentials, so there are no long-lived access keys to leak.</p>
+              <p>GitHub Actions deploys to AWS with short-lived OIDC credentials, so there are no long-lived access keys to leak. Every pull request gets a plan, and applies wait for approval.</p>
               <p class="tech">GitHub Actions · OIDC · Docker · Azure DevOps</p>
             </div>
           </div>
           <div class="skill-row">
             <h3>Networking &amp; Homelab</h3>
             <div>
-              <p>Proxmox host running containers and a Docker VM behind a Cisco RV260 and Catalyst 3550, with remote admin over a Tailscale subnet route and no router ports opened. In progress: VLAN zones with inter-VLAN ACLs.</p>
-              <p class="tech">Cisco IOS · Proxmox VE · Tailscale · Docker · Caddy · Debian Linux</p>
+              <p>Proxmox host running containers and a Docker VM behind a Cisco RV260 and Catalyst 3550, with remote admin over a Tailscale subnet route and no router ports opened. In progress: a strongSwan VM for the IPsec tunnels to AWS, and VLAN zones with inter-VLAN ACLs.</p>
+              <p class="tech">Cisco IOS · Proxmox VE · Tailscale · strongSwan · Docker · Caddy · Debian Linux</p>
             </div>
           </div>
           <div class="skill-row">
@@ -111,7 +110,7 @@
           <div class="skill-row">
             <h3>Scripting &amp; Tooling</h3>
             <div>
-              <p>Python tool that scrapes news and social media for keyword mentions — later adopted by AGCO Communications for ongoing monitoring.</p>
+              <p>Python tool that scrapes news and social media for keyword mentions, later adopted by AGCO Communications for ongoing monitoring.</p>
               <p class="tech">Python · Bash · PowerShell · REST APIs · Git</p>
             </div>
           </div>
@@ -128,23 +127,21 @@
           <span class="entry-date">Expected Dec 2027</span>
         </div>
         <p class="entry-sub">B.Sc. Computer Science (Honours Specialization), Waterloo, ON</p>
-        <p class="also">AWS Certified Cloud Practitioner (CLF-C02) — currently preparing</p>
+        <p class="also">AWS Certified Cloud Practitioner (CLF-C02), currently preparing</p>
       </div>
     </section>
 
     <!-- Contact -->
     <section class="reveal cta" id="contact" aria-labelledby="contact-title">
       <div class="container">
-        <h2 id="contact-title">Let's <span class="accent">talk.</span></h2>
-        <p>Internships, a homelab question, or just a quick hello. I'm looking for Cloud, DevOps and SRE internships for <strong>Winter &amp; Summer 2027</strong> — email is the fastest way to reach me.</p>
+        <h2 id="contact-title">Let's talk.</h2>
+        <p>Internships, a homelab question, or just a quick hello. I'm looking for Cloud, DevOps and SRE internships for <strong>Winter &amp; Summer 2027</strong>. Email is the fastest way to reach me.</p>
         <p class="email-line">
           <span class="email-address">Mannixg.is@gmail.com</span>
           <button type="button" class="copy-btn" data-copy="Mannixg.is@gmail.com">Copy</button>
         </p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="mailto:Mannixg.is@gmail.com?subject=Internship%20opportunity">Email me</a>
-          <a class="btn" href="Mannix-Graham-Resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
-          <a class="btn" href="https://github.com/Mannixgr" target="_blank" rel="noopener noreferrer">GitHub</a>
           <a class="btn" href="https://linkedin.com/in/mannixgraham" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
       </div>
