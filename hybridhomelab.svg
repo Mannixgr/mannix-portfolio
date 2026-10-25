@@ -118,7 +118,7 @@
 <text x="736" y="777" font-size="11" font-weight="normal" text-anchor="start" fill="#8EB69B">account-level trail, API activity</text>
 <text x="736" y="792" font-size="11" font-weight="normal" text-anchor="start" fill="#8EB69B">not yet in Terraform</text>
 
-<!-- VPN tunnels: the AWS side is applied -->
+<!-- VPN tunnels: both ends built -->
 <path d="M1008,308 H1118" fill="none" stroke="#ff4fa3" stroke-width="2.5" marker-end="url(#m-p)" marker-start="url(#m-p)"/>
 <path d="M1008,328 H1118" fill="none" stroke="#ff4fa3" stroke-width="2.5" marker-end="url(#m-p)" marker-start="url(#m-p)"/>
 <text x="1060" y="298" font-size="10" font-weight="bold" text-anchor="middle" fill="#ff8cc4">2 tunnels</text>
@@ -137,7 +137,8 @@
 <path d="M1280,361 V393" fill="none" stroke="#8EB69B" stroke-width="2"/>
 <rect x="1120" y="393" width="320" height="64" rx="8" fill="#132a4a" stroke="#6b9cf5" stroke-width="1.5"/>
 <text x="1280" y="418" font-size="13" font-weight="bold" text-anchor="middle" fill="#bcd3ff">Cisco RV260</text>
-<text x="1280" y="436" font-size="11" font-weight="normal" text-anchor="middle" fill="#bcd3ff">router · firewall · second NAT · 192.168.1.1</text>
+<text x="1280" y="434" font-size="11" font-weight="normal" text-anchor="middle" fill="#bcd3ff">router · firewall · second NAT · 192.168.1.1</text>
+<text x="1280" y="450" font-size="10" font-weight="normal" text-anchor="middle" fill="#8EB69B">static route 10.20.0.0/16 → strongSwan VM</text>
 <path d="M1280,457 V485" fill="none" stroke="#8EB69B" stroke-width="2"/>
 <rect x="1120" y="485" width="320" height="56" rx="8" fill="#132a4a" stroke="#6b9cf5" stroke-width="1.5"/>
 <text x="1280" y="508" font-size="13" font-weight="bold" text-anchor="middle" fill="#bcd3ff">Cisco Catalyst 3550 (SW1)</text>
@@ -146,25 +147,23 @@
 <rect x="1120" y="569" width="320" height="226" rx="8" fill="#12382a" stroke="#4ccf7a" stroke-width="1.5"/>
 <text x="1280" y="591" font-size="13" font-weight="bold" text-anchor="middle" fill="#a6efc0">HP EliteDesk · Proxmox VE</text>
 <text x="1280" y="608" font-size="11" font-weight="normal" text-anchor="middle" fill="#a6efc0">192.168.1.50</text>
-<rect x="1140" y="622" width="280" height="76" rx="6" fill="#2e2510" stroke="#f0a53a" stroke-width="1.5" stroke-dasharray="6 4"/>
-<text x="1280" y="644" font-size="12" font-weight="bold" text-anchor="middle" fill="#f7c97a">strongSwan VM · 192.168.1.30</text>
-<text x="1280" y="662" font-size="11" font-weight="normal" text-anchor="middle" fill="#f7c97a">ends both tunnels · route-based (VTI)</text>
-<text x="1280" y="680" font-size="10" font-weight="normal" text-anchor="middle" fill="#f7c97a" font-style="italic">in progress</text>
+<rect x="1140" y="622" width="280" height="76" rx="6" fill="#0B2B26" stroke="#4ccf7a" stroke-width="1.2"/>
+<text x="1280" y="644" font-size="12" font-weight="bold" text-anchor="middle" fill="#a6efc0">strongSwan VM · 192.168.1.30</text>
+<text x="1280" y="662" font-size="11" font-weight="normal" text-anchor="middle" fill="#a6efc0">ends both tunnels · XFRM interfaces</text>
+<text x="1280" y="680" font-size="10" font-weight="normal" text-anchor="middle" fill="#8EB69B">both tunnels up · static routes, no BGP</text>
 <rect x="1140" y="710" width="280" height="68" rx="6" fill="#0B2B26" stroke="#4ccf7a" stroke-width="1.2"/>
 <text x="1280" y="733" font-size="12" font-weight="bold" text-anchor="middle" fill="#a6efc0">Caddy LXC · 192.168.1.20</text>
 <text x="1280" y="751" font-size="11" font-weight="normal" text-anchor="middle" fill="#a6efc0">serves this portfolio</text>
 <text x="1280" y="767" font-size="10" font-weight="normal" text-anchor="middle" fill="#8EB69B">deployed by GitHub Actions over Tailscale</text>
-<path d="M1120,345 H1104 V660 H1138" fill="none" stroke="#ff4fa3" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#m-p)"/>
+<path d="M1120,345 H1104 V660 H1138" fill="none" stroke="#ff4fa3" stroke-width="2" marker-end="url(#m-p)"/>
 
 <!-- Legend -->
 <text x="30" y="862" font-size="12" font-weight="bold" text-anchor="start" fill="#DAF1DE">Legend</text>
 <path d="M90,858 H130" fill="none" stroke="#8EB69B" stroke-width="2"/>
 <text x="138" y="862" font-size="11" font-weight="normal" text-anchor="start" fill="#a9cdb5">built</text>
 <path d="M190,858 H230" fill="none" stroke="#ff4fa3" stroke-width="2.5"/>
-<text x="238" y="862" font-size="11" font-weight="normal" text-anchor="start" fill="#a9cdb5">IPsec VPN (AWS side applied)</text>
-<path d="M430,858 H470" fill="none" stroke="#ff4fa3" stroke-width="2" stroke-dasharray="6 4"/>
-<text x="478" y="862" font-size="11" font-weight="normal" text-anchor="start" fill="#a9cdb5">in progress (homelab end)</text>
-<path d="M660,858 H700" fill="none" stroke="#8EB69B" stroke-width="1.5"/>
-<text x="708" y="862" font-size="11" font-weight="normal" text-anchor="start" fill="#a9cdb5">metrics</text>
+<text x="238" y="862" font-size="11" font-weight="normal" text-anchor="start" fill="#a9cdb5">IPsec VPN (2 tunnels, NAT traversal)</text>
+<path d="M450,858 H490" fill="none" stroke="#8EB69B" stroke-width="1.5"/>
+<text x="498" y="862" font-size="11" font-weight="normal" text-anchor="start" fill="#a9cdb5">metrics</text>
 <text x="30" y="886" font-size="11" font-weight="normal" text-anchor="start" fill="#8EB69B" font-style="italic">Pairs with Diagram 2: homelab network &amp; overlay.</text>
 </svg>

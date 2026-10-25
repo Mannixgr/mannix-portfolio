@@ -58,8 +58,8 @@
             <p class="outcome">Rebuilt from code. Zero long-lived keys.</p>
             <p>A multi-AZ AWS environment built from a production-structured Terraform codebase (bootstrap, modules, environments). GitHub Actions deploys it with short-lived OIDC credentials: every pull request gets a plan, and applies wait for a human approval.</p>
             <ul class="status-list">
-              <li><span class="status-tag">Built</span>VPC across two AZs, a NAT gateway, and the AWS side of a site-to-site VPN: a Virtual Private Gateway with two IPsec tunnels to my homelab. Dev is torn down when idle and rebuilt through the pipeline.</li>
-              <li><span class="status-tag">In progress</span>The homelab end of the VPN, on a strongSwan VM behind a double NAT.</li>
+              <li><span class="status-tag">Built</span>VPC across two AZs, a NAT gateway, and the AWS side of a site-to-site VPN: a Virtual Private Gateway with two IPsec tunnels to a strongSwan VM in my homelab, both up. Dev is torn down when idle and rebuilt through the pipeline.</li>
+              <li><span class="status-tag">In progress</span>Testing traffic from homelab hosts into the VPC over the tunnels.</li>
               <li><span class="status-tag">Next</span>CloudWatch alarms for the VPN and NAT, and CloudTrail brought under Terraform.</li>
             </ul>
             <p class="tech">Terraform · AWS · GitHub Actions (OIDC) · strongSwan</p>
@@ -67,7 +67,7 @@
 
             <figure class="diagram diagram-trace">
               <a href="hybridhomelab.svg" target="_blank" rel="noopener">
-                <img src="hybridhomelab.svg" alt="Architecture diagram: a pull request runs a read-only Terraform plan; after merge, the apply job waits for approval, assumes an apply role over OIDC and runs Terraform with state in S3. Terraform builds a VPC (10.20.0.0/16) in ca-central-1 across two availability zones, with public and private subnets, one shared NAT gateway and an internet gateway. A shared private route table sends internet traffic to the NAT gateway and homelab traffic (192.168.1.0/24) to a Virtual Private Gateway. Two IPsec tunnels run from the Virtual Private Gateway to the homelab's Rogers gateway; behind a double NAT, a strongSwan VM on Proxmox that will terminate them is in progress. CloudWatch has a NAT gateway dashboard and CloudTrail records API activity at the account level." width="1500" height="900" loading="lazy" />
+                <img src="hybridhomelab.svg" alt="Architecture diagram: a pull request runs a read-only Terraform plan; after merge, the apply job waits for approval, assumes an apply role over OIDC and runs Terraform with state in S3. Terraform builds a VPC (10.20.0.0/16) in ca-central-1 across two availability zones, with public and private subnets, one shared NAT gateway and an internet gateway. A shared private route table sends internet traffic to the NAT gateway and homelab traffic (192.168.1.0/24) to a Virtual Private Gateway. Two IPsec tunnels run from the Virtual Private Gateway through the homelab's double NAT to a strongSwan VM on Proxmox, which ends both with XFRM interfaces; the RV260 routes 10.20.0.0/16 to it. CloudWatch has a NAT gateway dashboard and CloudTrail records API activity at the account level." width="1500" height="900" loading="lazy" />
               </a>
               <figcaption>Architecture · click to enlarge ↗</figcaption>
             </figure>
@@ -78,15 +78,15 @@
             <p class="outcome">Self-hosted, with zero ports opened.</p>
             <p>A Proxmox host behind a Cisco RV260 and Catalyst 3550, including the server that hosts this site. Remote admin goes through a Tailscale subnet route and public traffic through Tailscale Funnel, so no ports are opened on the router.</p>
             <ul class="status-list">
-              <li><span class="status-tag">Built</span>Containers and a Docker VM on Proxmox, with Caddy serving this site.</li>
-              <li><span class="status-tag">In progress</span>A strongSwan VM for the IPsec tunnels to AWS, and server, client and management VLANs with ACLs between them.</li>
+              <li><span class="status-tag">Built</span>Containers and a Docker VM on Proxmox, with Caddy serving this site, and a strongSwan VM that ends both IPsec tunnels to AWS.</li>
+              <li><span class="status-tag">In progress</span>Server, client and management VLANs with ACLs between them.</li>
             </ul>
             <p class="tech">Proxmox VE · Cisco IOS · Tailscale · strongSwan · Docker · Caddy · k3s (learning)</p>
             <a class="project-link" href="https://github.com/Mannixgr/Homelab" target="_blank" rel="noopener noreferrer">Configs &amp; diagrams on GitHub →</a>
 
             <figure class="diagram diagram-trace">
               <a href="homelab-network.svg" target="_blank" rel="noopener">
-                <img src="homelab-network.svg" alt="Homelab network diagram: a Rogers gateway and Cisco RV260 (double NAT) feed a Catalyst 3550. A Proxmox host runs a Homepage container, the Caddy container serving this site, a Docker media-server VM and Tailscale as a subnet router. Public visitors arrive through Tailscale Funnel and the GitHub Actions runner through the tailnet as a rsync-only deploy user. Two IPsec tunnels from the AWS VPC (10.20.0.0/16) reach the Rogers gateway; the strongSwan VM that terminates them is in progress. Management, trusted and IoT/guest VLANs with ACLs are shown as planned." width="1500" height="900" loading="lazy" />
+                <img src="homelab-network.svg" alt="Homelab network diagram: a Rogers gateway and Cisco RV260 (double NAT) feed a Catalyst 3550. A Proxmox host runs a Homepage container, the Caddy container serving this site, a Docker media-server VM and Tailscale as a subnet router. Public visitors arrive through Tailscale Funnel and the GitHub Actions runner through the tailnet as a rsync-only deploy user. Two IPsec tunnels from the AWS VPC (10.20.0.0/16) pass through the Rogers gateway and end on a strongSwan VM, which the RV260 routes 10.20.0.0/16 to. Management, trusted and IoT/guest VLANs with ACLs are shown as planned." width="1500" height="900" loading="lazy" />
               </a>
               <figcaption>Network · click to enlarge ↗</figcaption>
             </figure>
