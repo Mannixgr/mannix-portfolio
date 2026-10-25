@@ -4,13 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Projects | Mannix Graham</title>
-  <meta name="description" content="Terraform-built AWS environment, a Cisco/Proxmox homelab with no open ports, the CloudGuard cost-governance platform, and the CI/CD pipeline that deploys this site." />
+  <meta name="description" content="Terraform-built AWS environment, a Cisco/Proxmox homelab with no open ports, CloudGuard, an agentic AWS operations assistant in development, and the CI/CD pipeline that deploys this site." />
   <meta name="theme-color" content="#051F20" />
   <link rel="canonical" href="https://portfolio-site.tail8c489d.ts.net/projects.html" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://portfolio-site.tail8c489d.ts.net/projects.html" />
   <meta property="og:title" content="Projects | Mannix Graham" />
-  <meta property="og:description" content="Terraform-built AWS environment, a Cisco/Proxmox homelab with no open ports, the CloudGuard cost-governance platform, and the CI/CD pipeline that deploys this site." />
+  <meta property="og:description" content="Terraform-built AWS environment, a Cisco/Proxmox homelab with no open ports, CloudGuard, an agentic AWS operations assistant in development, and the CI/CD pipeline that deploys this site." />
   <meta property="og:image" content="https://mannixgr.github.io/mannix-portfolio/og-projects.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -93,13 +93,15 @@
           </article>
 
           <article class="project" id="proj-cloudguard">
-            <h2>CloudGuard: AWS Cost &amp; Security Scanner</h2>
+            <h2>CloudGuard: Agentic AWS Operations Assistant</h2>
             <p class="outcome">Catch the bill before it catches you.</p>
-            <p>An AWS operations platform I'm building in phases to flag cost waste and security misconfigurations, then help investigate incidents. It scans read-only under a least-privilege IAM role, and each detection rule is tested against misconfigured resources I seed myself.</p>
+            <p>An AWS operations tool I'm building in phases: read-only scans under a least-privilege IAM role, then detection rules for cost waste and security misconfigurations, then an AI agent that investigates what it finds. Each detection rule is tested against resources I misconfigure on purpose in a separate sandbox account.</p>
             <ul class="status-list">
               <li><span class="status-tag">In progress</span>First read-only boto3 scans.</li>
+              <li><span class="status-tag">Next</span>Detection rules, tested against seeded misconfigurations.</li>
+              <li><span class="status-tag">Planned</span>An agentic investigator: an LLM agent calls read-only AWS tools (CloudTrail, CloudWatch, the scans), explains the likely cause and proposes a fix as a Terraform change that waits for human approval.</li>
             </ul>
-            <p class="tech">Python · boto3 · FastAPI · Terraform</p>
+            <p class="tech">Python · boto3 · LLM agents (tool calling) · Terraform · FastAPI</p>
             <a class="project-link" href="https://github.com/Mannixgr/CloudGuard" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
           </article>
 

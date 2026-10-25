@@ -87,7 +87,7 @@
         <div class="work-picker" role="tablist" aria-labelledby="picker-hint">
           <button type="button" role="tab" id="tab-aws" aria-controls="proj-aws" aria-selected="true"><span class="area">Cloud · IaC</span><span class="name">Hybrid AWS</span></button>
           <button type="button" role="tab" id="tab-homelab" aria-controls="proj-homelab" aria-selected="false" tabindex="-1"><span class="area">Networking</span><span class="name">Homelab</span></button>
-          <button type="button" role="tab" id="tab-cloudguard" aria-controls="proj-cloudguard" aria-selected="false" tabindex="-1"><span class="area">Cost · Security</span><span class="name">CloudGuard</span></button>
+          <button type="button" role="tab" id="tab-cloudguard" aria-controls="proj-cloudguard" aria-selected="false" tabindex="-1"><span class="area">Agentic AI</span><span class="name">CloudGuard</span></button>
           <button type="button" role="tab" id="tab-site" aria-controls="proj-site" aria-selected="false" tabindex="-1"><span class="area">CI/CD</span><span class="name">This site</span></button>
         </div>
 
@@ -113,10 +113,10 @@
             </div>
           </div>
           <div class="project" id="proj-cloudguard">
-            <h3>CloudGuard: AWS Cost &amp; Security Scanner</h3>
+            <h3>CloudGuard: Agentic AWS Operations Assistant</h3>
             <p class="outcome">Catch the bill before it catches you.</p>
-            <p>Early development: read-only boto3 scripts under a least-privilege IAM profile, building toward detection rules for cost waste and security misconfigurations.</p>
-            <p class="tech">Python · boto3 · FastAPI · Terraform</p>
+            <p>Early development: read-only boto3 scans under a least-privilege IAM role, then detection rules for cost waste and security misconfigurations, then an AI agent that investigates findings and proposes fixes for human approval.</p>
+            <p class="tech">Python · boto3 · LLM agents (tool calling) · Terraform · FastAPI</p>
             <div class="project-links">
               <a class="project-link" href="projects.html#proj-cloudguard">Full write-up →</a>
               <a class="project-link" href="https://github.com/Mannixgr/CloudGuard" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
