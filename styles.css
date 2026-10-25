@@ -384,7 +384,7 @@ section.band { background: var(--bg-alt); }
   padding-top: 0.2rem;
 }
 @media (max-width: 480px) {
-  .status-list li { grid-template-columns: 1fr; }
+  .status-list li { grid-template-columns: 1fr; margin-bottom: 0.85rem; }
 }
 
 .tech { font-family: var(--font-mono); color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.6rem; }
@@ -459,6 +459,11 @@ section.band { background: var(--bg-alt); }
 .traced .trace-line { transition: stroke-dashoffset 900ms var(--ease); }
 .traced .trace-late { opacity: 0; transition: opacity 600ms ease; }
 .traced.is-traced .trace-node, .traced.is-traced .trace-late { opacity: 1; }
+/* Wide screens: the projects page widens so diagram labels are readable; card text keeps its measure */
+@media (min-width: 1100px) {
+  .container.wide { max-width: 1080px; }
+  .container.wide .project > :not(.diagram) { max-width: 46rem; }
+}
 .diagram figcaption {
   font-family: var(--font-mono);
   font-size: 0.78rem;

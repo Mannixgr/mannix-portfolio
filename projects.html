@@ -24,7 +24,7 @@
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header">
-    <div class="container nav">
+    <div class="container wide nav">
       <a class="nav-name" href="./">Mannix Graham.</a>
       <nav class="nav-sections" aria-label="Sections">
         <a href="experience.html">Experience</a>
@@ -42,7 +42,7 @@
 
   <main id="main" tabindex="-1">
     <section class="page-hero" aria-labelledby="page-title">
-      <div class="container">
+      <div class="container wide">
         <h1 id="page-title">What I'm building.</h1>
         <p class="lede">Each project runs on real infrastructure I own and break on purpose. Each one says what's built, what's in progress and what's next.</p>
       </div>
@@ -50,7 +50,7 @@
 
     <!-- Projects -->
     <section id="projects" aria-label="All projects">
-      <div class="container">
+      <div class="container wide">
 
         <div class="project-grid">
           <article class="project featured" id="proj-aws">
@@ -106,7 +106,7 @@
           <article class="project" id="proj-site">
             <h2>Portfolio Site</h2>
             <p class="outcome">Every push ships. Nothing else gets in.</p>
-            <p>Self-hosted in my homelab and deployed on every push. A GitHub Actions workflow joins my tailnet as an ephemeral CI node that can reach exactly one host on port 22, then rsyncs the site to a Caddy container. The deploy user has no shell: its key can only run rsync into the web root, enforced by a wrapper script. Getting there took four fixes, written up below.</p>
+            <p>Self-hosted in my homelab and deployed on every push. A GitHub Actions workflow joins my tailnet as an ephemeral CI node that can reach exactly one host on port 22, then rsyncs the site to a Caddy container. The deploy user has no shell: its key can only run rsync into the web root, enforced by a wrapper script. Getting there took four fixes, written up in the link below.</p>
             <p class="tech">GitHub Actions · Tailscale ACLs &amp; Funnel · SSH · rsync · Caddy</p>
             <div class="project-links">
               <a class="project-link" href="https://github.com/Mannixgr/Homelab/blob/main/docs/2026-09-deploy-pipeline.md" target="_blank" rel="noopener noreferrer">What broke &amp; how I fixed it →</a>
