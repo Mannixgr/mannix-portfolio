@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 900" width="1500" height="900" font-family="Helvetica, Arial, sans-serif">
+<defs>
+<marker id="m-s" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto-start-reverse"><path d="M0,0 L10,4 L0,8 z" fill="#8EB69B"/></marker>
+<marker id="m-a" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto-start-reverse"><path d="M0,0 L10,4 L0,8 z" fill="#f0a53a"/></marker>
+</defs>
+<rect width="1500" height="900" fill="#051F20"/>
+<text x="30" y="40" font-size="24" font-weight="bold" text-anchor="start" fill="#DAF1DE">CloudGuard: Agentic AWS Operations Assistant</text>
+<text x="30" y="62" font-size="13" font-weight="normal" text-anchor="start" fill="#8EB69B">Finds cost waste and risky configuration in AWS, then helps work out why · read-only by design · a human approves every change</text>
+<rect x="1310" y="22" width="160" height="30" rx="15" fill="#163832" stroke="#3f7a68" stroke-width="1.5"/>
+<text x="1390" y="42" font-size="12" font-weight="bold" text-anchor="middle" fill="#8EB69B">Diagram 3 of 3</text>
+
+<!-- Left column: summary -->
+<text x="30" y="120" font-size="12" font-weight="bold" text-anchor="start" fill="#a9cdb5">HOW IT WORKS</text>
+<text x="30" y="146" font-size="13" font-weight="normal" text-anchor="start" fill="#DAF1DE">1  Assume a read-only role in the AWS account</text>
+<text x="30" y="170" font-size="13" font-weight="normal" text-anchor="start" fill="#DAF1DE">2  Scan resources with boto3, grouped by tag</text>
+<text x="30" y="194" font-size="13" font-weight="normal" text-anchor="start" fill="#DAF1DE">3  Run detection rules for waste and risk</text>
+<text x="30" y="218" font-size="13" font-weight="normal" text-anchor="start" fill="#DAF1DE">4  Store findings and their history</text>
+<text x="30" y="242" font-size="13" font-weight="normal" text-anchor="start" fill="#DAF1DE">5  Investigate with CloudTrail and CloudWatch</text>
+<text x="30" y="266" font-size="13" font-weight="normal" text-anchor="start" fill="#DAF1DE">6  An AI agent explains the cause and drafts a fix</text>
+<text x="30" y="290" font-size="13" font-weight="normal" text-anchor="start" fill="#DAF1DE">7  I review the pull request; Terraform applies it</text>
+
+<text x="30" y="340" font-size="12" font-weight="bold" text-anchor="start" fill="#a9cdb5">WHAT IT WILL FIND</text>
+<text x="30" y="366" font-size="13" font-weight="normal" text-anchor="start" fill="#DAF1DE">→  Resources missing the standard tags</text>
+<text x="30" y="390" font-size="13" font-weight="normal" text-anchor="start" fill="#DAF1DE">→  Resources past their ExpiresOn date</text>
+<text x="30" y="414" font-size="13" font-weight="normal" text-anchor="start" fill="#DAF1DE">→  Idle NAT gateways and unattached Elastic IPs</text>
+<text x="30" y="438" font-size="13" font-weight="normal" text-anchor="start" fill="#DAF1DE">→  Unattached EBS volumes and old snapshots</text>
+<text x="30" y="462" font-size="13" font-weight="normal" text-anchor="start" fill="#DAF1DE">→  Public S3 buckets and open security groups</text>
+
+<text x="30" y="512" font-size="12" font-weight="bold" text-anchor="start" fill="#a9cdb5">GUARDRAILS</text>
+<text x="30" y="538" font-size="13" font-weight="normal" text-anchor="start" fill="#DAF1DE">→  Scans use a read-only role, never the admin profile</text>
+<text x="30" y="562" font-size="13" font-weight="normal" text-anchor="start" fill="#DAF1DE">→  Bad resources are seeded only in a sandbox account</text>
+<text x="30" y="586" font-size="13" font-weight="normal" text-anchor="start" fill="#DAF1DE">→  Every rule is tested against known-bad infrastructure</text>
+<text x="30" y="610" font-size="13" font-weight="normal" text-anchor="start" fill="#DAF1DE">→  The agent proposes; a human approves</text>
+
+<text x="30" y="660" font-size="12" font-weight="bold" text-anchor="start" fill="#a9cdb5">TECH STACK</text>
+<text x="30" y="686" font-size="13" font-weight="normal" text-anchor="start" fill="#DAF1DE">Python · boto3 · FastAPI · PostgreSQL · LLM tool calling · Terraform</text>
+<text x="30" y="710" font-size="13" font-weight="normal" text-anchor="start" fill="#8EB69B">AWS: IAM · EC2 · S3 · Cost Explorer · CloudTrail · CloudWatch</text>
+
+<!-- Inputs -->
+<rect x="620" y="96" width="260" height="72" rx="8" fill="#163832" stroke="#3f7a68" stroke-width="1.5"/>
+<text x="750" y="118" font-size="12" font-weight="bold" text-anchor="middle" fill="#DAF1DE">Real AWS account</text>
+<text x="750" y="136" font-size="11" font-weight="normal" text-anchor="middle" fill="#DAF1DE">NAT, VPN, VGW, EC2, EIPs, S3</text>
+<text x="750" y="153" font-size="10" font-weight="normal" text-anchor="middle" fill="#8EB69B">built by enterprise-hybrid-aws</text>
+<rect x="900" y="96" width="260" height="72" rx="8" fill="#0B2B26" stroke="#3f7a68" stroke-width="1.5" stroke-dasharray="6 5"/>
+<text x="1030" y="118" font-size="12" font-weight="bold" text-anchor="middle" fill="#DAF1DE">Cost Explorer</text>
+<text x="1030" y="136" font-size="11" font-weight="normal" text-anchor="middle" fill="#DAF1DE">spend grouped by tag</text>
+<text x="1030" y="153" font-size="10" font-weight="normal" text-anchor="middle" fill="#8EB69B">charged per request, called sparingly</text>
+<rect x="1180" y="96" width="260" height="72" rx="8" fill="#0B2B26" stroke="#3f7a68" stroke-width="1.5" stroke-dasharray="6 5"/>
+<text x="1310" y="118" font-size="12" font-weight="bold" text-anchor="middle" fill="#DAF1DE">CloudTrail + CloudWatch</text>
+<text x="1310" y="136" font-size="11" font-weight="normal" text-anchor="middle" fill="#DAF1DE">API history and metrics</text>
+<text x="1310" y="153" font-size="10" font-weight="normal" text-anchor="middle" fill="#8EB69B">for incident investigation</text>
+<path d="M750,168 V186 H1010 V202" fill="none" stroke="#f0a53a" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#m-a)"/>
+<path d="M1030,168 V202" fill="none" stroke="#8EB69B" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#m-s)"/>
+<path d="M1310,168 V186 H1050 V202" fill="none" stroke="#8EB69B" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#m-s)"/>
+
+<!-- Phase 0.5 -->
+<rect x="860" y="204" width="340" height="56" rx="8" fill="#163832" stroke="#f0a53a" stroke-width="1.5" stroke-dasharray="6 5"/>
+<text x="1030" y="227" font-size="12" font-weight="bold" text-anchor="middle" fill="#DAF1DE">cloudguard-readonly role</text>
+<text x="1030" y="245" font-size="11" font-weight="normal" text-anchor="middle" fill="#DAF1DE">assume role · read and describe calls only</text>
+<text x="845" y="236" font-size="11" font-weight="bold" text-anchor="end" fill="#f0a53a">Phase 0.5</text>
+<path d="M1030,260 V290" fill="none" stroke="#f0a53a" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#m-a)"/>
+<rect x="860" y="292" width="340" height="56" rx="8" fill="#163832" stroke="#f0a53a" stroke-width="1.5" stroke-dasharray="6 5"/>
+<text x="1030" y="315" font-size="12" font-weight="bold" text-anchor="middle" fill="#DAF1DE">Scan and normalize</text>
+<text x="1030" y="333" font-size="11" font-weight="normal" text-anchor="middle" fill="#DAF1DE">Python + boto3 · paginated · grouped by tag</text>
+<text x="845" y="324" font-size="11" font-weight="bold" text-anchor="end" fill="#f0a53a">in progress</text>
+
+<!-- Sandbox -->
+<rect x="1250" y="292" width="190" height="56" rx="8" fill="#0B2B26" stroke="#3f7a68" stroke-width="1.5" stroke-dasharray="6 5"/>
+<text x="1345" y="315" font-size="12" font-weight="bold" text-anchor="middle" fill="#DAF1DE">Sandbox account</text>
+<text x="1345" y="333" font-size="10" font-weight="normal" text-anchor="middle" fill="#8EB69B">seeded bad resources · no Org</text>
+<text x="1344" y="370" font-size="10" font-weight="normal" text-anchor="start" fill="#8EB69B">proves rules fire</text>
+
+<!-- Phase 1 -->
+<path d="M1030,348 V378" fill="none" stroke="#8EB69B" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#m-s)"/>
+<rect x="620" y="380" width="820" height="112" rx="12" fill="#0B2B26" stroke="#3f7a68" stroke-width="1.5" stroke-dasharray="6 5"/>
+<text x="635" y="398" font-size="12" font-weight="bold" text-anchor="start" fill="#a9cdb5">DETECTION RULES · PHASE 1</text>
+<rect x="635" y="408" width="190" height="72" rx="6" fill="#163832" stroke="#3f7a68" stroke-width="1.2"/>
+<text x="730" y="430" font-size="12" font-weight="bold" text-anchor="middle" fill="#DAF1DE">Tagging</text>
+<text x="730" y="448" font-size="11" font-weight="normal" text-anchor="middle" fill="#DAF1DE">missing standard tags</text>
+<text x="730" y="464" font-size="11" font-weight="normal" text-anchor="middle" fill="#DAF1DE">past ExpiresOn</text>
+<rect x="837" y="408" width="190" height="72" rx="6" fill="#163832" stroke="#3f7a68" stroke-width="1.2"/>
+<text x="932" y="430" font-size="12" font-weight="bold" text-anchor="middle" fill="#DAF1DE">Idle spend</text>
+<text x="932" y="448" font-size="11" font-weight="normal" text-anchor="middle" fill="#DAF1DE">idle NAT gateways</text>
+<text x="932" y="464" font-size="11" font-weight="normal" text-anchor="middle" fill="#DAF1DE">unattached Elastic IPs</text>
+<rect x="1039" y="408" width="190" height="72" rx="6" fill="#163832" stroke="#3f7a68" stroke-width="1.2"/>
+<text x="1134" y="430" font-size="12" font-weight="bold" text-anchor="middle" fill="#DAF1DE">Unused storage</text>
+<text x="1134" y="448" font-size="11" font-weight="normal" text-anchor="middle" fill="#DAF1DE">unattached EBS volumes</text>
+<text x="1134" y="464" font-size="11" font-weight="normal" text-anchor="middle" fill="#DAF1DE">old snapshots</text>
+<rect x="1241" y="408" width="190" height="72" rx="6" fill="#163832" stroke="#3f7a68" stroke-width="1.2"/>
+<text x="1336" y="430" font-size="12" font-weight="bold" text-anchor="middle" fill="#DAF1DE">Risky config</text>
+<text x="1336" y="448" font-size="11" font-weight="normal" text-anchor="middle" fill="#DAF1DE">public S3 buckets</text>
+<text x="1336" y="464" font-size="11" font-weight="normal" text-anchor="middle" fill="#DAF1DE">open security groups</text>
+<path d="M1336,348 V406" fill="none" stroke="#8EB69B" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#m-s)"/>
+
+<!-- Phase 2 onwards -->
+<path d="M1030,492 V522" fill="none" stroke="#8EB69B" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#m-s)"/>
+<rect x="860" y="524" width="340" height="52" rx="8" fill="#163832" stroke="#3f7a68" stroke-width="1.5" stroke-dasharray="6 5"/>
+<text x="1030" y="546" font-size="12" font-weight="bold" text-anchor="middle" fill="#DAF1DE">Findings history</text>
+<text x="1030" y="563" font-size="11" font-weight="normal" text-anchor="middle" fill="#DAF1DE">FastAPI + PostgreSQL</text>
+<text x="845" y="554" font-size="11" font-weight="bold" text-anchor="end" fill="#8EB69B">Phase 2</text>
+<path d="M1030,576 V606" fill="none" stroke="#8EB69B" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#m-s)"/>
+<rect x="860" y="608" width="340" height="70" rx="8" fill="#1f1a3a" stroke="#8c4fff" stroke-width="1.5" stroke-dasharray="6 5"/>
+<text x="1030" y="630" font-size="12" font-weight="bold" text-anchor="middle" fill="#d9ccff">AI agent</text>
+<text x="1030" y="647" font-size="11" font-weight="normal" text-anchor="middle" fill="#d9ccff">investigates with CloudTrail + CloudWatch</text>
+<text x="1030" y="663" font-size="11" font-weight="normal" text-anchor="middle" fill="#d9ccff">explains the cause, drafts a Terraform fix</text>
+<text x="845" y="647" font-size="11" font-weight="bold" text-anchor="end" fill="#8EB69B">Phase 3 + v2</text>
+<path d="M1030,678 V708" fill="none" stroke="#8EB69B" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#m-s)"/>
+<rect x="860" y="710" width="340" height="52" rx="8" fill="#3a1a1f" stroke="#f06a7c" stroke-width="1.5" stroke-dasharray="6 5"/>
+<text x="1030" y="732" font-size="12" font-weight="bold" text-anchor="middle" fill="#ffb3bd">Human approval</text>
+<text x="1030" y="749" font-size="11" font-weight="normal" text-anchor="middle" fill="#ffb3bd">I review the pull request</text>
+<text x="845" y="740" font-size="11" font-weight="bold" text-anchor="end" fill="#8EB69B">v2</text>
+<path d="M1030,762 V792" fill="none" stroke="#8EB69B" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#m-s)"/>
+<rect x="860" y="794" width="340" height="52" rx="8" fill="#163832" stroke="#3f7a68" stroke-width="1.5"/>
+<text x="1030" y="816" font-size="12" font-weight="bold" text-anchor="middle" fill="#DAF1DE">Gated Terraform apply</text>
+<text x="1030" y="833" font-size="11" font-weight="normal" text-anchor="middle" fill="#DAF1DE">existing enterprise-hybrid-aws pipeline</text>
+<text x="845" y="824" font-size="11" font-weight="bold" text-anchor="end" fill="#8EB69B">already built</text>
+
+<!-- Legend -->
+<text x="30" y="862" font-size="12" font-weight="bold" text-anchor="start" fill="#DAF1DE">Legend</text>
+<path d="M90,858 H130" fill="none" stroke="#8EB69B" stroke-width="2"/>
+<text x="138" y="862" font-size="11" font-weight="normal" text-anchor="start" fill="#a9cdb5">built</text>
+<path d="M190,858 H230" fill="none" stroke="#f0a53a" stroke-width="2" stroke-dasharray="6 5"/>
+<text x="238" y="862" font-size="11" font-weight="normal" text-anchor="start" fill="#a9cdb5">in progress</text>
+<path d="M320,858 H360" fill="none" stroke="#8EB69B" stroke-width="2" stroke-dasharray="6 5"/>
+<text x="368" y="862" font-size="11" font-weight="normal" text-anchor="start" fill="#a9cdb5">planned</text>
+<text x="30" y="886" font-size="11" font-weight="normal" text-anchor="start" fill="#8EB69B" font-style="italic">Phases match the roadmap in the CloudGuard README.</text>
+</svg>

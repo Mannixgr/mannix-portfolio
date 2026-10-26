@@ -11,7 +11,7 @@
 <text x="30" y="40" font-size="24" font-weight="bold" text-anchor="start" fill="#DAF1DE">Homelab: Network &amp; Overlay Architecture</text>
 <text x="30" y="62" font-size="13" font-weight="normal" text-anchor="start" fill="#8EB69B">Hybrid AWS / on-prem lab · Kitchener-Waterloo · solid = implemented, dashed = planned</text>
 <rect x="1310" y="22" width="160" height="30" rx="15" fill="#163832" stroke="#3f7a68" stroke-width="1.5"/>
-<text x="1390" y="42" font-size="12" font-weight="bold" text-anchor="middle" fill="#8EB69B">Diagram 2 of 2</text>
+<text x="1390" y="42" font-size="12" font-weight="bold" text-anchor="middle" fill="#8EB69B">Diagram 2 of 3</text>
 <ellipse cx="110" cy="118" rx="70" ry="28" fill="#163832" stroke="#3f7a68" stroke-width="1.5"/>
 <text x="110" y="123" font-size="13" font-weight="bold" text-anchor="middle" fill="#DAF1DE">Internet</text>
 <rect x="950" y="95" width="160" height="60" rx="8" fill="#163832" stroke="#3f7a68" stroke-width="1.5"/>

@@ -92,7 +92,7 @@
             </figure>
           </article>
 
-          <article class="project" id="proj-cloudguard">
+          <article class="project featured" id="proj-cloudguard">
             <h2>CloudGuard: Agentic AWS Operations Assistant</h2>
             <p class="outcome">Catch the bill before it catches you.</p>
             <p>An AWS operations tool I'm building in phases: read-only scans under a least-privilege IAM role, then detection rules for cost waste and security misconfigurations, then an AI agent that investigates what it finds. Each detection rule is tested against resources I misconfigure on purpose in a separate sandbox account.</p>
@@ -103,6 +103,13 @@
             </ul>
             <p class="tech">Python · boto3 · LLM agents (tool calling) · Terraform · FastAPI</p>
             <a class="project-link" href="https://github.com/Mannixgr/CloudGuard" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
+
+            <figure class="diagram diagram-trace">
+              <a href="cloudguard.svg" target="_blank" rel="noopener">
+                <img src="cloudguard.svg" alt="CloudGuard design diagram, mostly planned. In progress: a read-only IAM role and Python boto3 scans of the real AWS account built by enterprise-hybrid-aws, grouped by tag. Planned: Cost Explorer and CloudTrail plus CloudWatch as further inputs; detection rules for tagging (missing tags, past ExpiresOn), idle spend (idle NAT gateways, unattached Elastic IPs), unused storage (unattached EBS volumes, old snapshots) and risky config (public S3 buckets, open security groups), each proven against bad resources seeded in a separate sandbox account; findings history in FastAPI and PostgreSQL; an AI agent that investigates with CloudTrail and CloudWatch and drafts a Terraform fix; human approval of the pull request; then the existing gated Terraform apply pipeline." width="1500" height="900" loading="lazy" />
+              </a>
+              <figcaption>Design · click to enlarge ↗</figcaption>
+            </figure>
           </article>
 
           <article class="project" id="proj-site">

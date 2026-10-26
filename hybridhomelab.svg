@@ -9,7 +9,7 @@
 <text x="30" y="40" font-size="24" font-weight="bold" text-anchor="start" fill="#DAF1DE">Enterprise Hybrid AWS: Cloud Architecture</text>
 <text x="30" y="62" font-size="13" font-weight="normal" text-anchor="start" fill="#8EB69B">Terraform-managed multi-AZ VPC in ca-central-1 · GitHub Actions over OIDC with a gated apply · site-to-site VPN to the homelab</text>
 <rect x="1310" y="22" width="160" height="30" rx="15" fill="#163832" stroke="#3f7a68" stroke-width="1.5"/>
-<text x="1390" y="42" font-size="12" font-weight="bold" text-anchor="middle" fill="#8EB69B">Diagram 1 of 2</text>
+<text x="1390" y="42" font-size="12" font-weight="bold" text-anchor="middle" fill="#8EB69B">Diagram 1 of 3</text>
 
 <!-- CI/CD pipeline -->
 <rect x="30" y="150" width="220" height="670" rx="12" fill="#0B2B26" stroke="#3f7a68" stroke-width="1.5"/>
