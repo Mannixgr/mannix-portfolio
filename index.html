@@ -82,12 +82,13 @@
 
         <div class="picker-head">
           <p class="picker-hint" id="picker-hint">Choose an area to explore</p>
-          <button type="button" class="show-all" aria-pressed="false">Show all 4</button>
+          <button type="button" class="show-all" aria-pressed="false">Show all 5</button>
         </div>
         <div class="work-picker" role="tablist" aria-labelledby="picker-hint">
           <button type="button" role="tab" id="tab-aws" aria-controls="proj-aws" aria-selected="true"><span class="area">Cloud · IaC</span><span class="name">Hybrid AWS</span></button>
           <button type="button" role="tab" id="tab-homelab" aria-controls="proj-homelab" aria-selected="false" tabindex="-1"><span class="area">Networking</span><span class="name">Homelab</span></button>
           <button type="button" role="tab" id="tab-cloudguard" aria-controls="proj-cloudguard" aria-selected="false" tabindex="-1"><span class="area">Agentic AI</span><span class="name">CloudGuard</span></button>
+          <button type="button" role="tab" id="tab-uniwallet" aria-controls="proj-uniwallet" aria-selected="false" tabindex="-1"><span class="area">Full stack</span><span class="name">UniWallet</span></button>
           <button type="button" role="tab" id="tab-site" aria-controls="proj-site" aria-selected="false" tabindex="-1"><span class="area">CI/CD</span><span class="name">This site</span></button>
         </div>
 
@@ -120,6 +121,16 @@
             <div class="project-links">
               <a class="project-link" href="projects.html#proj-cloudguard">Full write-up →</a>
               <a class="project-link" href="https://github.com/Mannixgr/CloudGuard" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
+            </div>
+          </div>
+          <div class="project" id="proj-uniwallet">
+            <h3>UniWallet: Student Budget Forecaster</h3>
+            <p class="outcome">Know where you stand before payday.</p>
+            <p>A hackathon app built with Shayan Baig. I built the backend: a TypeScript REST API on Postgres where rules do the money math and a GPT-4o-mini coach only explains it, so it can't invent numbers.</p>
+            <p class="tech">TypeScript · Express · Prisma · PostgreSQL · OpenAI API · Next.js</p>
+            <div class="project-links">
+              <a class="project-link" href="projects.html#proj-uniwallet">Full write-up →</a>
+              <a class="project-link" href="https://github.com/shayanb18/road2profits" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
             </div>
           </div>
           <div class="project" id="proj-site">
