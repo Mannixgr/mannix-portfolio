@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Projects | Mannix Graham</title>
-  <meta name="description" content="Terraform-built AWS environment, a Cisco/Proxmox homelab with no open ports, CloudGuard, an agentic AWS operations assistant in development, and the CI/CD pipeline that deploys this site." />
+  <meta name="description" content="Terraform-built AWS environment, a Cisco/Proxmox homelab with no open ports, CloudGuard, an agentic AWS operations assistant in development, UniWallet, a hackathon budgeting app, and the CI/CD pipeline that deploys this site." />
   <meta name="theme-color" content="#051F20" />
   <link rel="canonical" href="https://portfolio-site.tail8c489d.ts.net/projects.html" />
   <meta property="og:type" content="website" />
@@ -111,6 +111,21 @@
               </a>
               <figcaption>Design · click to enlarge ↗</figcaption>
             </figure>
+          </article>
+
+          <article class="project" id="proj-uniwallet">
+            <h2>UniWallet: Student Budget Forecaster</h2>
+            <p class="outcome">Know where you stand before payday.</p>
+            <p>A hackathon app built with Shayan Baig for students living paycheque to paycheque. You enter your balance, pay date and bills. It ranks what to pay first, projects what you'll have left before payday, and an AI coach answers questions using your actual numbers. I built the backend; Shayan built the frontend.</p>
+            <ul class="status-list">
+              <li><span class="status-tag">Built</span>An Express and TypeScript REST API on PostgreSQL through Prisma, with zod request validation and a dashboard endpoint that returns a whole page's data in one call.</li>
+              <li><span class="status-tag">Built</span>A rule-based forecast does all the money math. GPT-4o-mini gets the precomputed numbers and only explains them, so the coach can't make figures up. The coach endpoint is rate-limited.</li>
+              <li><span class="status-tag">Built</span>After the hackathon: connected the Next.js frontend to the API, added a phone layout, and a rule-based fallback when the AI endpoint is unavailable.</li>
+            </ul>
+            <p class="tech">TypeScript · Express · Prisma · PostgreSQL · OpenAI API · zod · Next.js</p>
+            <div class="project-links">
+              <a class="project-link" href="https://github.com/shayanb18/road2profits" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
+            </div>
           </article>
 
           <article class="project" id="proj-site">

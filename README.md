@@ -105,3 +105,4 @@ If you replace a diagram, update the `width`/`height` on its `<img>` in `project
 - [Homelab](https://github.com/Mannixgr/Homelab): configs, diagrams, and write-ups for the network and server this runs on
 - [enterprise-hybrid-aws](https://github.com/Mannixgr/enterprise-hybrid-aws): Terraform on AWS, deployed by GitHub Actions over OIDC, with a site-to-site VPN to the homelab
 - [CloudGuard](https://github.com/Mannixgr/CloudGuard): AWS cost and security scanner (early development)
+- [UniWallet](https://github.com/shayanb18/road2profits): hackathon budgeting app with Shayan Baig; I built the backend
