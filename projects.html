@@ -97,7 +97,8 @@
             <p class="outcome">Catch the bill before it catches you.</p>
             <p>An AWS operations tool I'm building in phases: read-only scans under a least-privilege IAM role, then detection rules for cost waste and security misconfigurations, then an AI agent that investigates what it finds. Each detection rule is tested against resources I misconfigure on purpose in a separate sandbox account.</p>
             <ul class="status-list">
-              <li><span class="status-tag">In progress</span>First read-only boto3 scans.</li>
+              <li><span class="status-tag">Built</span>A read-only scanner role in Terraform: AWS security-audit and view-only policies, MFA required to assume it, and an explicit deny on reading Terraform state.</li>
+              <li><span class="status-tag">In progress</span>First read-only boto3 scans: EC2, NAT gateways, VPN and Elastic IPs, flagging missing tags.</li>
               <li><span class="status-tag">Next</span>Detection rules, tested against seeded misconfigurations.</li>
               <li><span class="status-tag">Planned</span>An agentic investigator: an LLM agent calls read-only AWS tools (CloudTrail, CloudWatch, the scans), explains the likely cause and proposes a fix as a Terraform change that waits for human approval.</li>
             </ul>
@@ -106,7 +107,7 @@
 
             <figure class="diagram diagram-trace">
               <a href="cloudguard.svg" target="_blank" rel="noopener">
-                <img src="cloudguard.svg" alt="CloudGuard design diagram, mostly planned. In progress: a read-only IAM role and Python boto3 scans of the real AWS account built by enterprise-hybrid-aws, grouped by tag. Planned: Cost Explorer and CloudTrail plus CloudWatch as further inputs; detection rules for tagging (missing tags, past ExpiresOn), idle spend (idle NAT gateways, unattached Elastic IPs), unused storage (unattached EBS volumes, old snapshots) and risky config (public S3 buckets, open security groups), each proven against bad resources seeded in a separate sandbox account; findings history in FastAPI and PostgreSQL; an AI agent that investigates with CloudTrail and CloudWatch and drafts a Terraform fix; human approval of the pull request; then the existing gated Terraform apply pipeline." width="1500" height="900" loading="lazy" />
+                <img src="cloudguard.svg" alt="CloudGuard design diagram, mostly planned. Built: a read-only IAM role that needs MFA. In progress: Python boto3 scans of the real AWS account built by enterprise-hybrid-aws, grouped by tag. Planned: Cost Explorer and CloudTrail plus CloudWatch as further inputs; detection rules for tagging (missing tags, past ExpiresOn), idle spend (idle NAT gateways, unattached Elastic IPs), unused storage (unattached EBS volumes, old snapshots) and risky config (public S3 buckets, open security groups), each proven against bad resources seeded in a separate sandbox account; findings history in FastAPI and PostgreSQL; an AI agent that investigates with CloudTrail and CloudWatch and drafts a Terraform fix; human approval of the pull request; then the existing gated Terraform apply pipeline." width="1500" height="900" loading="lazy" />
               </a>
               <figcaption>Design · click to enlarge ↗</figcaption>
             </figure>
