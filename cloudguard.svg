@@ -54,9 +54,9 @@
 <path d="M1310,168 V186 H1050 V202" fill="none" stroke="#8EB69B" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#m-s)"/>
 
 <!-- Phase 0.5 -->
-<rect x="860" y="204" width="340" height="56" rx="8" fill="#163832" stroke="#f0a53a" stroke-width="1.5" stroke-dasharray="6 5"/>
+<rect x="860" y="204" width="340" height="56" rx="8" fill="#163832" stroke="#3f7a68" stroke-width="1.5"/>
 <text x="1030" y="227" font-size="12" font-weight="bold" text-anchor="middle" fill="#DAF1DE">cloudguard-readonly role</text>
-<text x="1030" y="245" font-size="11" font-weight="normal" text-anchor="middle" fill="#DAF1DE">assume role · read and describe calls only</text>
+<text x="1030" y="245" font-size="11" font-weight="normal" text-anchor="middle" fill="#DAF1DE">built · MFA required · read and describe calls only</text>
 <text x="845" y="236" font-size="11" font-weight="bold" text-anchor="end" fill="#f0a53a">Phase 0.5</text>
 <path d="M1030,260 V290" fill="none" stroke="#f0a53a" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#m-a)"/>
 <rect x="860" y="292" width="340" height="56" rx="8" fill="#163832" stroke="#f0a53a" stroke-width="1.5" stroke-dasharray="6 5"/>
