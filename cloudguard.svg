@@ -49,7 +49,7 @@
 <text x="1310" y="118" font-size="12" font-weight="bold" text-anchor="middle" fill="#DAF1DE">CloudTrail + CloudWatch</text>
 <text x="1310" y="136" font-size="11" font-weight="normal" text-anchor="middle" fill="#DAF1DE">API history and metrics</text>
 <text x="1310" y="153" font-size="10" font-weight="normal" text-anchor="middle" fill="#8EB69B">for incident investigation</text>
-<path d="M750,168 V186 H1010 V202" fill="none" stroke="#f0a53a" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#m-a)"/>
+<path d="M750,168 V186 H1010 V202" fill="none" stroke="#8EB69B" stroke-width="2" marker-end="url(#m-s)"/>
 <path d="M1030,168 V202" fill="none" stroke="#8EB69B" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#m-s)"/>
 <path d="M1310,168 V186 H1050 V202" fill="none" stroke="#8EB69B" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#m-s)"/>
 
@@ -58,11 +58,11 @@
 <text x="1030" y="227" font-size="12" font-weight="bold" text-anchor="middle" fill="#DAF1DE">cloudguard-readonly role</text>
 <text x="1030" y="245" font-size="11" font-weight="normal" text-anchor="middle" fill="#DAF1DE">built · MFA required · read and describe calls only</text>
 <text x="845" y="236" font-size="11" font-weight="bold" text-anchor="end" fill="#f0a53a">Phase 0.5</text>
-<path d="M1030,260 V290" fill="none" stroke="#f0a53a" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#m-a)"/>
-<rect x="860" y="292" width="340" height="56" rx="8" fill="#163832" stroke="#f0a53a" stroke-width="1.5" stroke-dasharray="6 5"/>
+<path d="M1030,260 V290" fill="none" stroke="#8EB69B" stroke-width="2" marker-end="url(#m-s)"/>
+<rect x="860" y="292" width="340" height="56" rx="8" fill="#163832" stroke="#3f7a68" stroke-width="1.5"/>
 <text x="1030" y="315" font-size="12" font-weight="bold" text-anchor="middle" fill="#DAF1DE">Scan and normalize</text>
 <text x="1030" y="333" font-size="11" font-weight="normal" text-anchor="middle" fill="#DAF1DE">Python + boto3 · paginated · grouped by tag</text>
-<text x="845" y="324" font-size="11" font-weight="bold" text-anchor="end" fill="#f0a53a">in progress</text>
+<text x="845" y="324" font-size="11" font-weight="bold" text-anchor="end" fill="#8EB69B">built</text>
 
 <!-- Sandbox -->
 <rect x="1250" y="292" width="190" height="56" rx="8" fill="#0B2B26" stroke="#3f7a68" stroke-width="1.5" stroke-dasharray="6 5"/>
