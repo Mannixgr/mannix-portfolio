@@ -112,7 +112,8 @@ document.querySelectorAll('.copy-btn').forEach(function (btn) {
     if (!navigator.clipboard) return;
     navigator.clipboard.writeText(btn.getAttribute('data-copy')).then(function () {
       btn.textContent = 'Copied ✓';
-      setTimeout(function () { btn.textContent = 'Copy'; }, 2000);
+      btn.classList.add('is-copied');
+      setTimeout(function () { btn.textContent = 'Copy'; btn.classList.remove('is-copied'); }, 2000);
     });
   });
 });
@@ -255,25 +256,4 @@ document.querySelectorAll('.copy-btn').forEach(function (btn) {
       })
       .catch(function () {});
   });
-})();
-
-(function () {
-  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var targets = document.querySelectorAll('.reveal');
-
-  if (reduceMotion || !('IntersectionObserver' in window)) {
-    targets.forEach(function (el) { el.classList.add('is-visible'); });
-    return;
-  }
-
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        io.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
-
-  targets.forEach(function (el) { io.observe(el); });
 })();
