@@ -172,6 +172,11 @@ main:focus { outline: none; }
   padding: clamp(3rem, 9vw, 5.5rem) 0 clamp(2.5rem, 6vw, 3.5rem);
 }
 .hero > .container { position: relative; z-index: 1; }
+.hero .proof { margin-top: clamp(2rem, 5vw, 3rem); }
+@media (min-width: 960px) {
+  .hero-grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 4rem; align-items: center; }
+  .hero .proof { grid-template-columns: 1fr; margin-top: 0; border-top: 0; padding: 0 0 0 2.5rem; border-left: 1px solid var(--border); gap: 1.75rem; }
+}
 
 /* Drifting network graph behind the hero; fades out toward the bottom */
 .hero-net {
@@ -245,6 +250,13 @@ h1 { font-size: clamp(2.3rem, 7vw, 4rem); line-height: 1.1; margin-bottom: 1rem;
 .page-hero { padding: clamp(2.75rem, 8vw, 4.5rem) 0 clamp(1.5rem, 4vw, 2.25rem); }
 .page-hero h1 { font-size: clamp(2.3rem, 6.5vw, 3.6rem); margin-bottom: 0.75rem; }
 .page-hero .lede { margin: 0; }
+.page-hero-grid { display: grid; gap: 2rem; }
+@media (min-width: 900px) { .page-hero-grid { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); align-items: center; } }
+.edu-card { background: var(--card-alt); border: 1px solid var(--border); border-radius: 10px; padding: 1.5rem; }
+.edu-card h3 { font-size: 1.3rem; }
+.edu-card .entry-sub { margin-bottom: 0.75rem; }
+.edu-card .also { margin-top: 0; }
+.edu-label { font-family: var(--font-body); font-size: 0.85rem; font-weight: 600; color: var(--text-muted); margin-bottom: 0.5rem; }
 
 .more-link { display: inline-block; margin-top: 1.25rem; font-weight: 600; }
 
@@ -273,6 +285,9 @@ section.band { background: var(--bg-alt); }
 .entry-head h3 { font-size: 1.3rem; }
 .entry-date { font-variant-numeric: tabular-nums; font-family: var(--font-mono); color: var(--text-muted); font-size: 0.88rem; white-space: nowrap; }
 .entry-sub { color: var(--text-muted); margin: 0.2rem 0 1rem; }
+.entry-role { color: var(--accent); font-weight: 600; margin: 0.2rem 0 1rem; }
+.bullets li strong { color: var(--text-main); font-weight: 600; }
+.entry .tech { margin-top: 1rem; }
 
 /* One-line outcome above the details: "From hours to minutes." */
 .outcome {
@@ -384,7 +399,10 @@ section.band { background: var(--bg-alt); }
   .status-list li { grid-template-columns: 1fr; margin-bottom: 0.85rem; }
 }
 
-.tech { font-family: var(--font-mono); color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.6rem; }
+.tech { list-style: none; display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.85rem; }
+.tech li { font-size: 0.8rem; color: var(--text-muted); border: 1px solid var(--border); border-radius: 4px; padding: 0.1rem 0.5rem; line-height: 1.6; }
+.ext { display: inline-block; font-size: 0.85em; transition: transform 150ms; }
+a:hover .ext { transform: translate(2px, -2px); }
 
 .project-link { display: inline-block; padding: 0.4rem 0; font-size: 0.92rem; font-weight: 600; }
 .project-links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; }
@@ -426,7 +444,7 @@ section.band { background: var(--bg-alt); }
 .skill-row:last-child { border-bottom: 1px solid var(--border); }
 .skill-row h3 { font-size: 1.02rem; }
 .skill-row p { color: var(--text-muted); }
-.skill-row .tech { margin: 0.4rem 0 0; }
+.skill-row .tech { margin: 0.6rem 0 0; }
 
 @media (max-width: 640px) {
   .skill-row { grid-template-columns: 1fr; }
@@ -473,11 +491,15 @@ footer {
   font-size: 0.9rem;
   text-align: center;
 }
+.footer-row { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 0.75rem 2rem; }
+.footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem 1.25rem; }
+.footer-links a { color: var(--text-main); text-decoration: none; }
+.footer-links a:hover { color: var(--accent); }
+@media (min-width: 760px) { .footer-row { justify-content: space-between; text-align: left; } }
 .deploy-stamp { display: block; font-variant-numeric: tabular-nums; font-family: var(--font-mono); font-size: 0.8rem; margin-bottom: 0.35rem; }
 .deploy-stamp[hidden] { display: none; }
 
 /* Proof strip: three numbers under the hero; stacks on phones */
-.proof-section { padding-top: 0; padding-bottom: 0; } /* the next section's top padding is the gap */
 .proof {
   list-style: none;
   display: grid;
