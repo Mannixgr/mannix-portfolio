@@ -6,7 +6,7 @@
   var ctx = canvas.getContext('2d');
   var hero = canvas.parentElement;
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var RGB = '142, 182, 155'; // --text-muted
+  var RGB = '155, 163, 167'; // --text-muted
   var LINK_DIST = 130;
   var w, h, nodes = [], running = false, visible = true;
 
@@ -139,58 +139,6 @@ document.querySelectorAll('.copy-btn').forEach(function (btn) {
       stamp.hidden = false;
     })
     .catch(function () {});
-})();
-
-// Project picker: one card at a time, arrow keys move between tabs (WAI-ARIA tabs pattern)
-(function () {
-  var tabs = Array.prototype.slice.call(document.querySelectorAll('.work-picker [role="tab"]'));
-  if (!tabs.length) return;
-  var panels = tabs.map(function (tab) {
-    var panel = document.getElementById(tab.getAttribute('aria-controls'));
-    panel.setAttribute('role', 'tabpanel');
-    panel.setAttribute('aria-labelledby', tab.id);
-    return panel;
-  });
-
-  function select(index, focus) {
-    current = index;
-    tabs.forEach(function (tab, i) {
-      var on = i === index;
-      tab.setAttribute('aria-selected', on ? 'true' : 'false');
-      tab.tabIndex = on ? 0 : -1;
-      panels[i].hidden = !on;
-    });
-    if (focus) tabs[index].focus();
-  }
-
-  // "Show all" hides the tabs and stacks every card; pressing it again restores the picker
-  var showAll = document.querySelector('.show-all');
-  var section = showAll && showAll.closest('section');
-  var current = 0;
-  if (showAll) {
-    showAll.addEventListener('click', function () {
-      var on = showAll.getAttribute('aria-pressed') !== 'true';
-      showAll.setAttribute('aria-pressed', on ? 'true' : 'false');
-      showAll.textContent = on ? 'Back to picker' : 'Show all ' + tabs.length;
-      section.classList.toggle('showing-all', on);
-      panels.forEach(function (panel, i) {
-        if (on) panel.removeAttribute('role'); else panel.setAttribute('role', 'tabpanel');
-        panel.hidden = on ? false : i !== current;
-      });
-    });
-  }
-
-  tabs.forEach(function (tab, i) {
-    tab.addEventListener('click', function () { select(i); });
-    tab.addEventListener('keydown', function (e) {
-      var next = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: tabs.length - 1 }[e.key];
-      if (next === undefined) return;
-      e.preventDefault();
-      select((next + tabs.length) % tabs.length, true);
-    });
-  });
-
-  select(0);
 })();
 
 // Homelab diagram draws itself the first time it scrolls into view.
