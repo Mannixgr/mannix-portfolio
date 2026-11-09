@@ -54,6 +54,7 @@
 
         <div class="project-grid">
           <article class="project featured" id="proj-aws">
+            <p class="badge">Rebuilt on demand</p>
             <h2>Enterprise Hybrid AWS Environment</h2>
             <p class="outcome">Rebuilt from code. Zero long-lived keys.</p>
             <div class="project-body">
@@ -71,11 +72,12 @@
               <a href="hybridhomelab.svg" target="_blank" rel="noopener">
                 <img src="hybridhomelab.svg" alt="Architecture diagram: a pull request runs a read-only Terraform plan; after merge, the apply job waits for approval, assumes an apply role over OIDC and runs Terraform with state in S3. Terraform builds a VPC (10.20.0.0/16) in ca-central-1 across two availability zones, with public and private subnets, one shared NAT gateway and an internet gateway. A shared private route table sends internet traffic to the NAT gateway and homelab traffic (192.168.1.0/24) to a Virtual Private Gateway. Two IPsec tunnels run from the Virtual Private Gateway through the homelab's double NAT to a strongSwan VM on Proxmox, which ends both with XFRM interfaces; the RV260 routes 10.20.0.0/16 to it. CloudWatch has a NAT gateway dashboard and CloudTrail records API activity at the account level." width="1500" height="900" loading="lazy" />
               </a>
-              <figcaption>Architecture · click to enlarge ↗</figcaption>
+              <figcaption>Architecture · click to enlarge</figcaption>
             </figure>
           </article>
 
           <article class="project featured" id="proj-homelab">
+            <p class="badge badge-live">Live</p>
             <h2>Network &amp; Virtualization Homelab</h2>
             <p class="outcome">Self-hosted, with zero ports opened.</p>
             <div class="project-body">
@@ -92,11 +94,12 @@
               <a href="homelab-network.svg" target="_blank" rel="noopener">
                 <img src="homelab-network.svg" alt="Homelab network diagram: a Rogers gateway and Cisco RV260 (double NAT) feed a Catalyst 3550. A Proxmox host runs a Homepage container, the Caddy container serving this site, a Docker media-server VM and Tailscale as a subnet router. Public visitors arrive through Tailscale Funnel and the GitHub Actions runner through the tailnet as a rsync-only deploy user. Two IPsec tunnels from the AWS VPC (10.20.0.0/16) pass through the Rogers gateway and end on a strongSwan VM, which the RV260 routes 10.20.0.0/16 to. Management, trusted and IoT/guest VLANs with ACLs are shown as planned." width="1500" height="900" loading="lazy" />
               </a>
-              <figcaption>Network · click to enlarge ↗</figcaption>
+              <figcaption>Network · click to enlarge</figcaption>
             </figure>
           </article>
 
           <article class="project featured" id="proj-cloudguard">
+            <p class="badge">In development</p>
             <h2>CloudGuard: Agentic AWS Operations Assistant</h2>
             <p class="outcome">Catch the bill before it catches you.</p>
             <div class="project-body">
@@ -115,11 +118,12 @@
               <a href="cloudguard.svg" target="_blank" rel="noopener">
                 <img src="cloudguard.svg" alt="CloudGuard design diagram, mostly planned. Built: a read-only IAM role that needs MFA, and Python boto3 scans of the real AWS account built by enterprise-hybrid-aws that flag resources breaking the tagging standard. Planned: Cost Explorer and CloudTrail plus CloudWatch as further inputs; detection rules for tagging (missing tags, past ExpiresOn), idle spend (idle NAT gateways, unattached Elastic IPs), unused storage (unattached EBS volumes, old snapshots) and risky config (public S3 buckets, open security groups), each proven against bad resources seeded in a separate sandbox account; findings history in FastAPI and PostgreSQL; an AI agent that investigates with CloudTrail and CloudWatch and drafts a Terraform fix; human approval of the pull request; then the existing gated Terraform apply pipeline." width="1500" height="900" loading="lazy" />
               </a>
-              <figcaption>Design · click to enlarge ↗</figcaption>
+              <figcaption>Design · click to enlarge</figcaption>
             </figure>
           </article>
 
           <article class="project" id="proj-uniwallet">
+            <p class="badge">Hackathon</p>
             <h2>UniWallet: Student Budget Forecaster</h2>
             <p class="outcome">Know where you stand before payday.</p>
             <p>A hackathon app built with Shayan Baig for students living paycheque to paycheque. You enter your balance, pay date and bills. It ranks what to pay first, projects what you'll have left before payday, and an AI coach answers questions using your actual numbers. I built the backend; Shayan built the frontend.</p>
@@ -135,6 +139,7 @@
           </article>
 
           <article class="project" id="proj-site">
+            <p class="badge badge-live">Live</p>
             <h2>Portfolio Site</h2>
             <p class="outcome">Every push ships. Nothing else gets in.</p>
             <p>Self-hosted in my homelab and deployed on every push. A GitHub Actions workflow joins my tailnet as an ephemeral CI node that can reach exactly one host on port 22, then rsyncs the site to a Caddy container. The deploy user has no shell: its key can only run rsync into the web root, enforced by a wrapper script. Getting there took four fixes, written up in the link below.</p>

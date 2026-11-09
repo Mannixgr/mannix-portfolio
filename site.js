@@ -205,3 +205,34 @@ document.querySelectorAll('.copy-btn').forEach(function (btn) {
       .catch(function () {});
   });
 })();
+
+// Diagram lightbox: a plain click opens the diagram full width on the page.
+// Cmd/Ctrl/Shift-clicks and no-JS visitors still get the link to the SVG.
+(function () {
+  var links = document.querySelectorAll('.diagram a');
+  if (!links.length || !window.HTMLDialogElement) return;
+  var box = document.createElement('dialog');
+  box.className = 'lightbox';
+  box.setAttribute('aria-label', 'Diagram');
+  box.innerHTML = '<img alt=""><div class="lightbox-bar"><a target="_blank" rel="noopener">Open full size <span class="ext" aria-hidden="true">\u2197</span></a><button type="button" class="btn">Close</button></div>';
+  document.body.appendChild(box);
+  var big = box.querySelector('img');
+  var full = box.querySelector('a');
+  box.querySelector('button').addEventListener('click', function () { box.close(); });
+  // Clicks on the dialog itself (its padding or the backdrop), not its content, close it
+  box.addEventListener('click', function (e) { if (e.target === box) box.close(); });
+
+  links.forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+      e.preventDefault();
+      // The traced diagrams replace their <img> with inline SVG, so read the label from either
+      var img = a.querySelector('img');
+      var svg = a.querySelector('svg');
+      big.src = a.getAttribute('href');
+      big.alt = img ? img.alt : (svg && svg.getAttribute('aria-label')) || '';
+      full.href = a.getAttribute('href');
+      box.showModal();
+    });
+  });
+})();
