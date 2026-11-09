@@ -73,11 +73,16 @@
           <p class="highlight">Built the team's first Playwright automation suite, cutting full regression from <strong>3.5 hours to 7 minutes</strong>, a 97% reduction across 14 test cases.</p>
 
           <ul class="bullets">
+            <li><strong>Turned the team's manual test cases into automated tests</strong> for the public licensing portal in pytest and Playwright: login, complaint submission and the full Special Occasion Permit application, each with a positive test and three negative cases, plus the Forgot Password flow.</li>
+            <li><strong>Finished the teardown that cleans up old test records</strong>, so leftover draft applications no longer pile up between runs or get reopened on the next login.</li>
+            <li><strong>Made the tests survive UI changes</strong> by replacing recorded element IDs, which the portal regenerates on every record, with label-based locators, and by routing every click through a helper that waits until the control is ready instead of silently skipping it.</li>
+            <li><strong>Tracked down failures that hid themselves:</strong> browser settings lived in a config file pytest never loads, so no run had ever opened a browser, and a single-iframe assumption turned real errors into misleading "not found" messages. The suite now searches every frame on the page.</li>
+            <li><strong>Kept production safe:</strong> against production the permit test stops before any payment details, and test dates are computed from today so the suite doesn't go stale.</li>
+            <li><strong>Tested across 8 enterprise projects</strong>, including Salesforce Contact Centre, Oracle Fusion ERP and the move of CRM reporting from Izenda to Power BI: writing and running test cases, logging and retesting defects in Azure DevOps, and supporting regression, release and user acceptance testing.</li>
             <li><strong>Got 4 of 6 teammates writing their own automated tests</strong> by training them after a live demo.</li>
             <li><strong>Ran disaster-recovery drills across 3 critical systems</strong> and 10+ Azure DevOps test cases per sprint.</li>
-            <li><strong>Automated the complaint-handling workflow</strong> (public portal and back office) and the Forgot Password flow with Playwright and pytest.</li>
           </ul>
-          <ul class="tech" aria-label="Tech stack"><li>Playwright</li><li>pytest</li><li>Azure DevOps</li></ul>
+          <ul class="tech" aria-label="Tech stack"><li>Playwright</li><li>pytest</li><li>Python</li><li>TestComplete</li><li>Azure DevOps</li></ul>
         </article>
 
         <ul class="also-list" aria-label="Other roles">
@@ -118,7 +123,7 @@
             <h3>Test Automation</h3>
             <div>
               <p>Built AGCO's first Playwright suite, cutting full regression from 3.5 hours to 7 minutes, and trained 4 of 6 teammates to maintain it.</p>
-              <ul class="tech" aria-label="Tech stack"><li>Playwright</li><li>Selenium</li><li>pytest</li><li>Azure DevOps</li></ul>
+              <ul class="tech" aria-label="Tech stack"><li>Playwright</li><li>Selenium</li><li>TestComplete</li><li>pytest</li><li>Azure DevOps</li></ul>
             </div>
           </div>
           <div class="skill-row">
