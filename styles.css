@@ -380,6 +380,7 @@ a:hover .ext { transform: translate(2px, -2px); }
 
 /* Diagram: dark frame to match the page; click opens it full size */
 .diagram { margin: 1.25rem 0 0; }
+.project .diagram:not(:last-child) { margin-bottom: 1.25rem; }
 .diagram a {
   display: block;
   background: var(--bg);

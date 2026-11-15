@@ -127,6 +127,12 @@
             <h2>UniWallet: Student Budget Forecaster</h2>
             <p class="outcome">Forecasts from rules, so the AI coach can't invent numbers</p>
             <p>A hackathon app built with Shayan Baig for students living paycheque to paycheque. You enter your balance, pay date and bills. It ranks what to pay first, projects what you'll have left before payday, and an AI coach answers questions using your actual numbers. I built the backend; Shayan built the frontend.</p>
+            <figure class="diagram">
+              <a href="uniwallet-dashboard.jpg" target="_blank" rel="noopener">
+                <img src="uniwallet-dashboard.jpg" alt="UniWallet dashboard with sample data: a student with $847.50 is told they will have $97.50 left before payday, with five bills ranked by due date and three alerts, such as rent being due tomorrow." width="1440" height="900" loading="lazy" />
+              </a>
+              <figcaption>Dashboard, sample data · click to enlarge</figcaption>
+            </figure>
             <ul class="status-list">
               <li><span class="status-tag">Built</span>An Express and TypeScript REST API on PostgreSQL through Prisma, with zod request validation and a dashboard endpoint that returns a whole page's data in one call.</li>
               <li><span class="status-tag">Built</span>A rule-based forecast does all the money math. GPT-4o-mini gets the precomputed numbers and only explains them, so the coach can't make figures up. The coach endpoint is rate-limited.</li>
@@ -143,6 +149,12 @@
             <h2>Portfolio Site</h2>
             <p class="outcome">Deployed by a CI node that can reach one host</p>
             <p>Self-hosted in my homelab and deployed on every push. A GitHub Actions workflow joins my tailnet as an ephemeral CI node that can reach exactly one host on port 22, then rsyncs the site to a Caddy container. The deploy user has no shell: its key can only run rsync into the web root, enforced by a wrapper script. Getting there took four fixes, written up in the link below.</p>
+            <figure class="diagram">
+              <a href="portfolio-deploy.jpg" target="_blank" rel="noopener">
+                <img src="portfolio-deploy.jpg" alt="A successful run of this site's GitHub Actions deploy job, 14 seconds: check out the repository, connect to Tailscale, add the SSH key, trust the server's pinned host key, write the build stamp, then sync the site files to the container." width="960" height="810" loading="lazy" />
+              </a>
+              <figcaption>A real deploy run · click to enlarge</figcaption>
+            </figure>
             <ul class="tech" aria-label="Tech stack"><li>GitHub Actions</li><li>Tailscale ACLs &amp; Funnel</li><li>SSH</li><li>rsync</li><li>Caddy</li></ul>
             <div class="project-links">
               <a class="project-link" href="https://github.com/Mannixgr/Homelab/blob/main/docs/2026-09-deploy-pipeline.md" target="_blank" rel="noopener noreferrer">What broke &amp; how I fixed it <span class="ext" aria-hidden="true">↗</span></a>

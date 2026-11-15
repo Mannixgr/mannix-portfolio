@@ -130,6 +130,11 @@
             <h3>UniWallet: Student Budget Forecaster</h3>
             <p class="outcome">Forecasts from rules, so the AI coach can't invent numbers</p>
             <p>A hackathon app built with Shayan Baig. I built the backend: a TypeScript REST API on Postgres where rules do the money math and a GPT-4o-mini coach only explains it, so it can't invent numbers.</p>
+            <figure class="diagram">
+              <a href="uniwallet-dashboard.jpg" target="_blank" rel="noopener">
+                <img src="uniwallet-dashboard.jpg" alt="UniWallet dashboard with sample data: a student with $847.50 is told they will have $97.50 left before payday, with five bills ranked by due date and three alerts, such as rent being due tomorrow." width="1440" height="900" loading="lazy" />
+              </a>
+            </figure>
             <ul class="tech" aria-label="Tech stack"><li>TypeScript</li><li>Express</li><li>Prisma</li><li>PostgreSQL</li><li>OpenAI API</li><li>Next.js</li></ul>
             <div class="project-links">
               <a class="project-link" href="projects.html#proj-uniwallet">Full write-up →</a>
@@ -141,6 +146,11 @@
             <h3>Portfolio Site</h3>
             <p class="outcome">Deployed by a CI node that can reach one host</p>
             <p>Every push to main deploys to a Caddy container in my homelab, through an ephemeral CI node that can reach one host and a deploy user that can only run rsync.</p>
+            <figure class="diagram">
+              <a href="portfolio-deploy.jpg" target="_blank" rel="noopener">
+                <img src="portfolio-deploy.jpg" alt="A successful run of this site's GitHub Actions deploy job, 14 seconds: check out the repository, connect to Tailscale, add the SSH key, trust the server's pinned host key, write the build stamp, then sync the site files to the container." width="960" height="810" loading="lazy" />
+              </a>
+            </figure>
             <ul class="tech" aria-label="Tech stack"><li>GitHub Actions</li><li>Tailscale ACLs &amp; Funnel</li><li>rsync</li><li>Caddy</li></ul>
             <div class="project-links">
               <a class="project-link" href="projects.html#proj-site">Full write-up →</a>
