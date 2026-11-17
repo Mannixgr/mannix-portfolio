@@ -14,12 +14,6 @@
 <text x="1390" y="42" font-size="12" font-weight="bold" text-anchor="middle" fill="#9BA3A7">Diagram 2 of 3</text>
 <ellipse cx="110" cy="118" rx="70" ry="28" fill="#1B1F22" stroke="#3A4146" stroke-width="1.5"/>
 <text x="110" y="123" font-size="13" font-weight="bold" text-anchor="middle" fill="#EDEFEF">Internet</text>
-<rect x="950" y="95" width="160" height="60" rx="8" fill="#1B1F22" stroke="#3A4146" stroke-width="1.5"/>
-<text x="1030" y="120" font-size="13" font-weight="bold" text-anchor="middle" fill="#EDEFEF">Public visitors</text>
-<text x="1030" y="138" font-size="11" font-weight="normal" text-anchor="middle" fill="#9BA3A7">portfolio site over HTTPS</text>
-<rect x="1130" y="95" width="210" height="60" rx="8" fill="#1B1F22" stroke="#3A4146" stroke-width="1.5"/>
-<text x="1235" y="120" font-size="13" font-weight="bold" text-anchor="middle" fill="#EDEFEF">GitHub Actions runner</text>
-<text x="1235" y="138" font-size="11" font-weight="normal" text-anchor="middle" fill="#9BA3A7">ephemeral · joins tailnet as tag:ci</text>
 <rect x="30" y="235" width="160" height="70" rx="8" fill="#1B1F22" stroke="#3A4146" stroke-width="1.5"/>
 <text x="110.0" y="259" font-size="13" font-weight="bold" text-anchor="middle" fill="#EDEFEF">Rogers gateway</text>
 <text x="110.0" y="277" font-size="11" font-weight="normal" text-anchor="middle" fill="#EDEFEF">ISP-managed · NAT</text>
@@ -41,8 +35,8 @@
 <rect x="270" y="400" width="240" height="100" rx="8" fill="#132a4a" stroke="#6b9cf5" stroke-width="1.5"/>
 <text x="390" y="424" font-size="12" font-weight="bold" text-anchor="middle" fill="#bcd3ff">Cisco Catalyst 3550 (SW1)</text>
 <text x="390" y="442" font-size="11" font-weight="normal" text-anchor="middle" fill="#bcd3ff">Layer 3 switch</text>
-<text x="390" y="458" font-size="11" font-weight="normal" text-anchor="middle" fill="#bcd3ff">802.1Q trunks · VLAN ACLs</text>
-<text x="390" y="484" font-size="10" font-weight="normal" text-anchor="middle" fill="#bcd3ff" font-style="italic">segmentation planned</text>
+<text x="390" y="458" font-size="11" font-weight="normal" text-anchor="middle" fill="#bcd3ff">802.1Q trunks</text>
+<text x="390" y="484" font-size="10" font-weight="normal" text-anchor="middle" fill="#bcd3ff" font-style="italic">DMZ VLAN planned</text>
 <path d="M510,450 H568" fill="none" stroke="#9BA3A7" stroke-width="2"/>
 <text x="539" y="442" font-size="10" font-weight="normal" text-anchor="middle" fill="#9BA3A7">access</text>
 <rect x="30" y="470" width="160" height="120" rx="8" fill="#131618" stroke="#5C656B" stroke-width="1.5"/>
@@ -58,79 +52,99 @@
 <text x="110" y="627" font-size="10" font-weight="normal" text-anchor="middle" fill="#ff8cc4" font-style="italic">both tunnels up, through</text>
 <text x="110" y="641" font-size="10" font-weight="normal" text-anchor="middle" fill="#ff8cc4" font-style="italic">both NATs (NAT-T)</text>
 <rect x="570" y="235" width="870" height="340" rx="10" fill="#0c2a20" stroke="#4ccf7a" stroke-width="2"/>
-<text x="590" y="258" font-size="12" font-weight="bold" text-anchor="start" fill="#a6efc0">SERVER ZONE · today: flat LAN → planned: Servers VLAN</text>
+<text x="590" y="258" font-size="12" font-weight="bold" text-anchor="start" fill="#a6efc0">SERVER ZONE · today: one flat LAN, 192.168.1.0/24</text>
 <rect x="595" y="285" width="820" height="270" rx="8" fill="#131618" stroke="#4ccf7a" stroke-width="1.5"/>
 <text x="615" y="308" font-size="13" font-weight="bold" text-anchor="start" fill="#a6efc0">HP EliteDesk · Proxmox VE</text>
 <text x="615" y="324" font-size="11" font-weight="normal" text-anchor="start" fill="#a6efc0">192.168.1.50</text>
-<rect x="615" y="345" width="180" height="100" rx="8" fill="#12382a" stroke="#4ccf7a" stroke-width="1.5"/>
-<text x="705.0" y="369" font-size="12" font-weight="bold" text-anchor="middle" fill="#a6efc0">CT100 · Homepage</text>
-<text x="705.0" y="387" font-size="11" font-weight="normal" text-anchor="middle" fill="#a6efc0">192.168.1.100:3000</text>
-<text x="705.0" y="404" font-size="11" font-weight="normal" text-anchor="middle" fill="#a6efc0">dashboard · ping/SNMP</text>
-<rect x="815" y="345" width="180" height="100" rx="8" fill="#241a40" stroke="#a78bfa" stroke-width="1.5"/>
-<text x="905.0" y="369" font-size="12" font-weight="bold" text-anchor="middle" fill="#c4b5fd">Tailscale</text>
-<text x="905.0" y="387" font-size="11" font-weight="normal" text-anchor="middle" fill="#c4b5fd">subnet router</text>
-<text x="905.0" y="404" font-size="11" font-weight="normal" text-anchor="middle" fill="#c4b5fd">advertises 192.168.1.0/24</text>
-<rect x="1015" y="345" width="180" height="100" rx="8" fill="#12382a" stroke="#4ccf7a" stroke-width="1.5"/>
-<text x="1105.0" y="369" font-size="12" font-weight="bold" text-anchor="middle" fill="#a6efc0">CT101 · Caddy</text>
-<text x="1105.0" y="387" font-size="11" font-weight="normal" text-anchor="middle" fill="#a6efc0">Debian 12 · 192.168.1.20</text>
-<text x="1105.0" y="404" font-size="11" font-weight="normal" text-anchor="middle" fill="#a6efc0">serves this portfolio site</text>
-<rect x="1215" y="345" width="180" height="100" rx="8" fill="#12382a" stroke="#4ccf7a" stroke-width="1.5"/>
-<text x="1305.0" y="369" font-size="12" font-weight="bold" text-anchor="middle" fill="#a6efc0">VM102 · media server</text>
-<text x="1305.0" y="387" font-size="11" font-weight="normal" text-anchor="middle" fill="#a6efc0">Debian 13 · Docker/Compose</text>
-<text x="1305.0" y="404" font-size="11" font-weight="normal" text-anchor="middle" fill="#a6efc0">Navidrome · Jellyfin</text>
-<rect x="615" y="460" width="180" height="50" rx="8" fill="#131618" stroke="#4ccf7a" stroke-width="1"/>
-<text x="705" y="481" font-size="11" font-weight="bold" text-anchor="middle" fill="#a6efc0">strongSwan VM · 192.168.1.30</text>
-<text x="705" y="498" font-size="10" font-weight="normal" text-anchor="middle" fill="#a6efc0">IPsec to AWS · XFRM interfaces</text>
+<rect x="615" y="345" width="145" height="100" rx="8" fill="#12382a" stroke="#4ccf7a" stroke-width="1.5"/>
+<text x="687.5" y="369" font-size="12" font-weight="bold" text-anchor="middle" fill="#a6efc0">CT100 · Homepage</text>
+<text x="687.5" y="387" font-size="11" font-weight="normal" text-anchor="middle" fill="#a6efc0">192.168.1.100:3000</text>
+<text x="687.5" y="404" font-size="11" font-weight="normal" text-anchor="middle" fill="#a6efc0">dashboard · ping/SNMP</text>
+<rect x="773" y="345" width="145" height="100" rx="8" fill="#241a40" stroke="#a78bfa" stroke-width="1.5"/>
+<text x="845.5" y="369" font-size="12" font-weight="bold" text-anchor="middle" fill="#c4b5fd">Tailscale</text>
+<text x="845.5" y="387" font-size="11" font-weight="normal" text-anchor="middle" fill="#c4b5fd">subnet router</text>
+<text x="845.5" y="404" font-size="11" font-weight="normal" text-anchor="middle" fill="#c4b5fd">192.168.1.0/24</text>
+<rect x="931" y="345" width="145" height="100" rx="8" fill="#12382a" stroke="#4ccf7a" stroke-width="1.5"/>
+<text x="1003.5" y="369" font-size="12" font-weight="bold" text-anchor="middle" fill="#a6efc0">VM102 · media</text>
+<text x="1003.5" y="387" font-size="11" font-weight="normal" text-anchor="middle" fill="#a6efc0">Debian 13 · Docker</text>
+<text x="1003.5" y="404" font-size="11" font-weight="normal" text-anchor="middle" fill="#a6efc0">Navidrome · Jellyfin</text>
+<rect x="1089" y="345" width="145" height="100" rx="8" fill="#12382a" stroke="#4ccf7a" stroke-width="1.5"/>
+<text x="1161.5" y="369" font-size="12" font-weight="bold" text-anchor="middle" fill="#a6efc0">CT101 · Caddy</text>
+<text x="1161.5" y="387" font-size="11" font-weight="normal" text-anchor="middle" fill="#a6efc0">Debian 12 · 192.168.1.20</text>
+<text x="1161.5" y="404" font-size="11" font-weight="normal" text-anchor="middle" fill="#a6efc0">serves this site</text>
+<rect x="1247" y="345" width="145" height="100" rx="8" fill="#12382a" stroke="#4ccf7a" stroke-width="1.5"/>
+<text x="1319.5" y="369" font-size="12" font-weight="bold" text-anchor="middle" fill="#a6efc0">CT104 · resale app</text>
+<text x="1319.5" y="387" font-size="11" font-weight="normal" text-anchor="middle" fill="#a6efc0">Debian 12 · 192.168.1.21</text>
+<text x="1319.5" y="404" font-size="11" font-weight="normal" text-anchor="middle" fill="#a6efc0">invite-only · SQLite</text>
+<rect x="615" y="460" width="145" height="50" rx="8" fill="#131618" stroke="#4ccf7a" stroke-width="1"/>
+<text x="687.5" y="481" font-size="11" font-weight="bold" text-anchor="middle" fill="#a6efc0">strongSwan VM</text>
+<text x="687.5" y="498" font-size="10" font-weight="normal" text-anchor="middle" fill="#a6efc0">192.168.1.30 · XFRM</text>
+<rect x="773" y="460" width="145" height="50" rx="8" fill="#131618" stroke="#a78bfa" stroke-width="1"/>
+<text x="845.5" y="481" font-size="11" font-weight="bold" text-anchor="middle" fill="#c4b5fd">remote admin</text>
+<text x="845.5" y="498" font-size="10" font-weight="normal" text-anchor="middle" fill="#c4b5fd">via subnet route</text>
+<rect x="931" y="460" width="145" height="50" rx="8" fill="#131618" stroke="#4ccf7a" stroke-width="1"/>
+<text x="1003.5" y="481" font-size="11" font-weight="bold" text-anchor="middle" fill="#a6efc0">1 TB external drive</text>
+<text x="1003.5" y="498" font-size="10" font-weight="normal" text-anchor="middle" fill="#a6efc0">→ /mnt/media</text>
+<rect x="1089" y="460" width="145" height="50" rx="8" fill="#131618" stroke="#4ccf7a" stroke-width="1"/>
+<text x="1161.5" y="481" font-size="11" font-weight="bold" text-anchor="middle" fill="#a6efc0">deploy user</text>
+<text x="1161.5" y="498" font-size="10" font-weight="normal" text-anchor="middle" fill="#a6efc0">rsync-only → web root</text>
+<rect x="1247" y="460" width="145" height="50" rx="8" fill="#131618" stroke="#4ccf7a" stroke-width="1"/>
+<text x="1319.5" y="481" font-size="11" font-weight="bold" text-anchor="middle" fill="#a6efc0">LAN + VPN blocked</text>
+<text x="1319.5" y="498" font-size="10" font-weight="normal" text-anchor="middle" fill="#a6efc0">forced-command deploy</text>
 <path d="M190,295 H215 V660 H550 V485 H613" fill="none" stroke="#ff4fa3" stroke-width="2" marker-end="url(#m-p)"/>
 <text x="400" y="652" font-size="10" font-weight="normal" text-anchor="start" fill="#ff8cc4">to strongSwan (forwarded)</text>
-<rect x="815" y="460" width="180" height="50" rx="8" fill="#131618" stroke="#a78bfa" stroke-width="1"/>
-<text x="905" y="481" font-size="11" font-weight="bold" text-anchor="middle" fill="#c4b5fd">remote admin</text>
-<text x="905" y="498" font-size="10" font-weight="normal" text-anchor="middle" fill="#c4b5fd">via tailnet subnet route</text>
-<rect x="1015" y="460" width="180" height="50" rx="8" fill="#131618" stroke="#4ccf7a" stroke-width="1"/>
-<text x="1105" y="481" font-size="11" font-weight="bold" text-anchor="middle" fill="#a6efc0">deploy user</text>
-<text x="1105" y="498" font-size="10" font-weight="normal" text-anchor="middle" fill="#a6efc0">rsync-only → /var/www/html</text>
-<rect x="1215" y="460" width="180" height="50" rx="8" fill="#131618" stroke="#4ccf7a" stroke-width="1"/>
-<text x="1305" y="481" font-size="11" font-weight="bold" text-anchor="middle" fill="#a6efc0">1 TB external drive</text>
-<text x="1305" y="498" font-size="10" font-weight="normal" text-anchor="middle" fill="#a6efc0">passed through → /mnt/media</text>
-<path d="M1060,155 V343" fill="none" stroke="#a78bfa" stroke-width="2.5" marker-end="url(#m-v)"/>
-<text x="1052" y="217" font-size="10" font-weight="bold" text-anchor="end" fill="#c4b5fd">Tailscale Funnel</text>
-<text x="1052" y="231" font-size="10" font-weight="normal" text-anchor="end" fill="#c4b5fd">public HTTPS</text>
-<path d="M1150,155 V343" fill="none" stroke="#a78bfa" stroke-width="2.5" marker-end="url(#m-v)"/>
-<text x="1158" y="217" font-size="10" font-weight="bold" text-anchor="start" fill="#c4b5fd">tailnet · tag:ci</text>
-<text x="1158" y="231" font-size="10" font-weight="normal" text-anchor="start" fill="#c4b5fd">SSH → rsync only</text>
+<rect x="990" y="95" width="170" height="60" rx="8" fill="#1B1F22" stroke="#3A4146" stroke-width="1.5"/>
+<text x="1075" y="120" font-size="13" font-weight="bold" text-anchor="middle" fill="#EDEFEF">Public visitors</text>
+<text x="1075" y="138" font-size="11" font-weight="normal" text-anchor="middle" fill="#9BA3A7">HTTPS to both containers</text>
+<rect x="1180" y="95" width="210" height="60" rx="8" fill="#1B1F22" stroke="#3A4146" stroke-width="1.5"/>
+<text x="1285" y="120" font-size="13" font-weight="bold" text-anchor="middle" fill="#EDEFEF">GitHub Actions runner</text>
+<text x="1285" y="138" font-size="11" font-weight="normal" text-anchor="middle" fill="#9BA3A7">ephemeral · joins tailnet as tag:ci</text>
+<path d="M1110,155 V343" fill="none" stroke="#a78bfa" stroke-width="2.5" marker-end="url(#m-v)"/>
+<path d="M1145,155 V272 H1280 V343" fill="none" stroke="#a78bfa" stroke-width="2.5" marker-end="url(#m-v)"/>
+<text x="1102" y="217" font-size="10" font-weight="bold" text-anchor="end" fill="#c4b5fd">Tailscale Funnel</text>
+<text x="1102" y="231" font-size="10" font-weight="normal" text-anchor="end" fill="#c4b5fd">public HTTPS</text>
+<path d="M1200,155 V343" fill="none" stroke="#a78bfa" stroke-width="2.5" marker-end="url(#m-v)"/>
+<path d="M1360,155 V343" fill="none" stroke="#a78bfa" stroke-width="2.5" marker-end="url(#m-v)"/>
+<text x="1208" y="217" font-size="10" font-weight="bold" text-anchor="start" fill="#c4b5fd">tailnet · tag:ci</text>
+<text x="1208" y="231" font-size="10" font-weight="normal" text-anchor="start" fill="#c4b5fd">SSH, restricted keys</text>
 <path d="M390,500 V710 H568" fill="none" stroke="#f0a53a" stroke-width="2" stroke-dasharray="5 3" marker-end="url(#m-a)"/>
 <text x="398" y="610" font-size="10" font-weight="normal" text-anchor="start" fill="#f7c97a">802.1Q trunks (planned)</text>
 <rect x="570" y="620" width="250" height="180" rx="10" fill="#2e2510" stroke="#f0a53a" stroke-width="2" stroke-dasharray="8 5"/>
-<text x="585" y="645" font-size="12" font-weight="bold" text-anchor="start" fill="#f7c97a">MANAGEMENT VLAN (planned)</text>
+<text x="585" y="645" font-size="12" font-weight="bold" text-anchor="start" fill="#f7c97a">DMZ VLAN (next)</text>
 <rect x="585" y="665" width="220" height="70" rx="8" fill="#131618" stroke="#f0a53a" stroke-width="1.5" stroke-dasharray="6 4"/>
-<text x="695" y="695" font-size="12" font-weight="bold" text-anchor="middle" fill="#f7c97a">RV260 · Catalyst 3550</text>
-<text x="695" y="714" font-size="11" font-weight="normal" text-anchor="middle" fill="#f7c97a">Proxmox UI · Tailscale admin</text>
+<text x="695" y="695" font-size="12" font-weight="bold" text-anchor="middle" fill="#f7c97a">CT101 · CT104</text>
+<text x="695" y="714" font-size="11" font-weight="normal" text-anchor="middle" fill="#f7c97a">the two public containers</text>
+<text x="695" y="770" font-size="10" font-weight="normal" text-anchor="middle" fill="#f7c97a" font-style="italic">reached only through Funnel</text>
+<text x="695" y="784" font-size="10" font-weight="normal" text-anchor="middle" fill="#f7c97a" font-style="italic">and the tag:ci deploy</text>
 <rect x="880" y="620" width="250" height="180" rx="10" fill="#2e2510" stroke="#f0a53a" stroke-width="2" stroke-dasharray="8 5"/>
-<text x="895" y="645" font-size="12" font-weight="bold" text-anchor="start" fill="#f7c97a">TRUSTED VLAN (planned)</text>
+<text x="895" y="645" font-size="12" font-weight="bold" text-anchor="start" fill="#f7c97a">SERVERS VLAN (planned)</text>
 <rect x="895" y="665" width="220" height="70" rx="8" fill="#131618" stroke="#f0a53a" stroke-width="1.5" stroke-dasharray="6 4"/>
-<text x="1005" y="695" font-size="12" font-weight="bold" text-anchor="middle" fill="#f7c97a">Trusted clients</text>
-<text x="1005" y="714" font-size="11" font-weight="normal" text-anchor="middle" fill="#f7c97a">laptops · phones</text>
-<rect x="1190" y="620" width="250" height="180" rx="10" fill="#2e2510" stroke="#f0a53a" stroke-width="2" stroke-dasharray="8 5"/>
-<text x="1205" y="645" font-size="12" font-weight="bold" text-anchor="start" fill="#f7c97a">IoT / GUEST VLAN (planned)</text>
-<rect x="1205" y="665" width="220" height="70" rx="8" fill="#131618" stroke="#f0a53a" stroke-width="1.5" stroke-dasharray="6 4"/>
-<text x="1315" y="695" font-size="12" font-weight="bold" text-anchor="middle" fill="#f7c97a">IoT and guest devices</text>
-<text x="1315" y="714" font-size="11" font-weight="normal" text-anchor="middle" fill="#f7c97a">internet access only</text>
-<path d="M695,620 V577" fill="none" stroke="#f0a53a" stroke-width="2" stroke-dasharray="5 3" marker-end="url(#m-a)"/>
-<text x="705" y="602" font-size="10" font-weight="normal" text-anchor="start" fill="#f7c97a">allow SSH, 8006</text>
-<path d="M1005,620 V577" fill="none" stroke="#f0a53a" stroke-width="2" stroke-dasharray="5 3" marker-end="url(#m-a)"/>
-<text x="1015" y="602" font-size="10" font-weight="normal" text-anchor="start" fill="#f7c97a">allow 80/443, 3000</text>
+<text x="1005" y="695" font-size="12" font-weight="bold" text-anchor="middle" fill="#f7c97a">Proxmox · strongSwan</text>
+<text x="1005" y="714" font-size="11" font-weight="normal" text-anchor="middle" fill="#f7c97a">Homepage · media VM</text>
+<text x="1005" y="770" font-size="10" font-weight="normal" text-anchor="middle" fill="#f7c97a" font-style="italic">admin over the tailnet only</text>
+<rect x="1190" y="620" width="250" height="180" rx="10" fill="#131618" stroke="#5C656B" stroke-width="2"/>
+<text x="1205" y="645" font-size="12" font-weight="bold" text-anchor="start" fill="#B4BBBF">CLIENTS (as built)</text>
+<rect x="1205" y="665" width="220" height="70" rx="8" fill="#1B1F22" stroke="#5C656B" stroke-width="1.5"/>
+<text x="1315" y="695" font-size="12" font-weight="bold" text-anchor="middle" fill="#EDEFEF">Rogers Wi-Fi</text>
+<text x="1315" y="714" font-size="11" font-weight="normal" text-anchor="middle" fill="#9BA3A7">10.0.0.0/24 · laptops, phones</text>
+<text x="1315" y="770" font-size="10" font-weight="normal" text-anchor="middle" fill="#9BA3A7" font-style="italic">outside the RV260 NAT,</text>
+<text x="1315" y="784" font-size="10" font-weight="normal" text-anchor="middle" fill="#9BA3A7" font-style="italic">so no client VLAN is needed</text>
+<path d="M695,577 V618" fill="none" stroke="#f0a53a" stroke-width="2" stroke-dasharray="5 3" marker-end="url(#m-a)"/>
+<text x="705" y="602" font-size="10" font-weight="normal" text-anchor="start" fill="#f7c97a">public containers move</text>
+<path d="M1005,577 V618" fill="none" stroke="#f0a53a" stroke-width="2" stroke-dasharray="5 3" marker-end="url(#m-a)"/>
+<text x="1015" y="602" font-size="10" font-weight="normal" text-anchor="start" fill="#f7c97a">the rest of the lab</text>
 <path d="M820,700 H880" fill="none" stroke="#f87171" stroke-width="2" stroke-dasharray="5 3"/>
 <text x="850" y="692" font-size="10" font-weight="bold" text-anchor="middle" fill="#f87171">deny</text>
 <text x="850" y="724" font-size="14" font-weight="bold" text-anchor="middle" fill="#f87171">✕</text>
-<path d="M1130,700 H1190" fill="none" stroke="#f87171" stroke-width="2" stroke-dasharray="5 3"/>
-<text x="1160" y="692" font-size="10" font-weight="bold" text-anchor="middle" fill="#f87171">deny</text>
-<text x="1160" y="724" font-size="14" font-weight="bold" text-anchor="middle" fill="#f87171">✕</text>
-<text x="1030" y="812" font-size="10" font-weight="normal" text-anchor="middle" fill="#f7c97a" font-style="italic">Only the Server zone is live today; VLAN zones are being implemented.</text>
+<path d="M1130,700 H1190" fill="none" stroke="#9BA3A7" stroke-width="2"/>
+<text x="1160" y="692" font-size="10" font-weight="bold" text-anchor="middle" fill="#9BA3A7">NAT</text>
+<text x="1160" y="716" font-size="9" font-weight="normal" text-anchor="middle" fill="#9BA3A7">no inbound</text>
+<text x="1005" y="813" font-size="10" font-weight="normal" text-anchor="middle" fill="#f7c97a" font-style="italic">Today each public container has its own firewall that blocks the LAN and the VPN; the DMZ VLAN is next.</text>
 <text x="30" y="862" font-size="12" font-weight="bold" text-anchor="start" fill="#EDEFEF">Legend</text>
 <path d="M90,858 H130" fill="none" stroke="#9BA3A7" stroke-width="2"/>
 <text x="138" y="862" font-size="11" font-weight="normal" text-anchor="start" fill="#B4BBBF">implemented link</text>
 <path d="M260,858 H300" fill="none" stroke="#f0a53a" stroke-width="2" stroke-dasharray="5 3"/>
-<text x="308" y="862" font-size="11" font-weight="normal" text-anchor="start" fill="#B4BBBF">planned (VLAN zones, allowed flows)</text>
+<text x="308" y="862" font-size="11" font-weight="normal" text-anchor="start" fill="#B4BBBF">planned (VLAN zones, moves)</text>
 <path d="M542,858 H582" fill="none" stroke="#ff4fa3" stroke-width="2.5"/>
 <text x="590" y="862" font-size="11" font-weight="normal" text-anchor="start" fill="#B4BBBF">IPsec VPN to strongSwan</text>
 <path d="M775,858 H815" fill="none" stroke="#a78bfa" stroke-width="2.5"/>
