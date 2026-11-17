@@ -10,7 +10,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://portfolio-site.tail8c489d.ts.net/projects.html" />
   <meta property="og:title" content="Projects | Mannix Graham" />
-  <meta property="og:description" content="Terraform-built AWS environment, a Cisco/Proxmox homelab with no open ports, CloudGuard, an agentic AWS operations assistant in development, and the CI/CD pipeline that deploys this site." />
+  <meta property="og:description" content="Terraform-built AWS environment, a Cisco/Proxmox homelab with no open ports, CloudGuard, an agentic AWS operations assistant in development, UniWallet, a hackathon budgeting app, and the CI/CD pipeline that deploys this site." />
   <meta property="og:image" content="https://mannixgr.github.io/mannix-portfolio/og-projects.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -87,12 +87,13 @@
             </div>
             <ul class="status-list">
               <li><span class="status-tag">Built</span>Containers and a Docker VM on Proxmox, with Caddy serving this site, and a strongSwan VM that ends both IPsec tunnels to AWS.</li>
-              <li><span class="status-tag">In progress</span>Server, client and management VLANs with ACLs between them.</li>
+              <li><span class="status-tag">Built</span>A second public container for an invite-only web app: firewalled off from the LAN and the VPN, deployed by CI over the tailnet, with nightly backups to S3 and a tested restore.</li>
+              <li><span class="status-tag">Next</span>A DMZ VLAN for the two public containers, with ACLs between it and the rest of the lab.</li>
             </ul>
 
             <figure class="diagram diagram-trace">
               <a href="homelab-network.svg" target="_blank" rel="noopener">
-                <img src="homelab-network.svg" alt="Homelab network diagram: a Rogers gateway and Cisco RV260 (double NAT) feed a Catalyst 3550. A Proxmox host runs a Homepage container, the Caddy container serving this site, a Docker media-server VM and Tailscale as a subnet router. Public visitors arrive through Tailscale Funnel and the GitHub Actions runner through the tailnet as a rsync-only deploy user. Two IPsec tunnels from the AWS VPC (10.20.0.0/16) pass through the Rogers gateway and end on a strongSwan VM, which the RV260 routes 10.20.0.0/16 to. Management, trusted and IoT/guest VLANs with ACLs are shown as planned." width="1500" height="900" loading="lazy" />
+                <img src="homelab-network.svg" alt="Homelab network diagram: a Rogers gateway and Cisco RV260 (double NAT) feed a Catalyst 3550. A Proxmox host runs a Homepage container, the Caddy container serving this site, a second public container for an invite-only app (firewalled off from the LAN and the VPN), a Docker media-server VM and Tailscale as a subnet router. Public visitors reach both public containers through Tailscale Funnel, and the GitHub Actions runner deploys to them over the tailnet with restricted SSH keys. Two IPsec tunnels from the AWS VPC (10.20.0.0/16) pass through the Rogers gateway and end on a strongSwan VM, which the RV260 routes 10.20.0.0/16 to. Planned: a DMZ VLAN for the two public containers, denied access to a servers VLAN with the rest of the lab. Client devices stay on the Rogers Wi-Fi, outside the RV260's NAT." width="1500" height="900" loading="lazy" />
               </a>
               <figcaption>Network · click to enlarge</figcaption>
             </figure>

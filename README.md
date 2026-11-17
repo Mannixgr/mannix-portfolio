@@ -7,9 +7,8 @@ Source for my personal portfolio site, plus the pipeline that deploys it to my h
 
 The site is three pages (home, projects, experience) written in plain HTML, CSS and JavaScript, with no framework or build step. They share one stylesheet and one script, which adds the interactive parts:
 
-- an animated network background behind the hero
-- a project picker (keyboard-accessible tabs, with a "show all" view)
 - three architecture diagrams that draw themselves when they scroll into view
+- a lightbox (native `<dialog>`) that opens a diagram or screenshot full size
 - a footer stamp showing which commit is live and when it was deployed, read from a `build.json` the deploy workflow writes
 - copy-to-clipboard for contact details
 
@@ -62,14 +61,15 @@ Getting this working took four separate fixes: a wrong deploy path, empty secret
 
 | File | What it is |
 | --- | --- |
-| `index.html` | Home: hero, highlights strip, about and the project picker |
+| `index.html` | Home: hero with proof numbers, about, and a grid of all five projects |
 | `projects.html` | Full project write-ups (Built / In progress / Next) with diagrams |
 | `experience.html` | Experience, skills and education |
 | `styles.css` | Shared styles for all pages |
-| `site.js` | Shared scripts (hero network, project picker, diagram animation, deploy stamp, copy buttons, scroll reveal) |
+| `site.js` | Shared scripts (diagram animation, diagram lightbox, deploy stamp, copy buttons) |
 | `hybridhomelab.svg` | Diagram 1: Enterprise Hybrid AWS cloud architecture (pipeline, VPC, site-to-site VPN) |
 | `homelab-network.svg` | Diagram 2: homelab network and overlay |
 | `cloudguard.svg` | Diagram 3: CloudGuard design (scan, detection rules, agent, human approval); mostly planned |
+| `uniwallet-dashboard.jpg`, `portfolio-deploy.jpg` | Screenshots on the UniWallet and Portfolio cards |
 | `Mannix-Graham-Resume.pdf` | Resume (exported from the Google Doc; re-export after editing it) |
 | `fonts/` | Self-hosted web fonts (OFL licensed, see `fonts/README.md`) |
 | `og-image.png`, `og-projects.png`, `og-experience.png` | Social preview images, one per page (1200×630; their headlines match each page's) |
@@ -96,7 +96,7 @@ The self-drawing animation works on any SVG inside a `.diagram-trace` figure, bu
 - Arrowheads are `<marker>`s inside `<defs>`, used through `marker-end`. They appear once their line has finished drawing.
 - The full-size background is a `<rect>` with no `x` attribute, so it stays visible from the start.
 
-All three diagrams use the site's dark palette (`#051F20` background, `#DAF1DE` / `#8EB69B` text) so they sit inside the page instead of glowing white. Keep new elements on that palette. Dashed means planned or in progress; when something is built, make its lines and boxes solid.
+All three diagrams use the site's graphite palette (`#0B0D0E` background, `#EDEFEF` / `#9BA3A7` text) so they sit inside the page instead of glowing white. Keep new elements on that palette. Dashed means planned or in progress; when something is built, make its lines and boxes solid.
 
 If you replace a diagram, update the `width`/`height` on its `<img>` in `projects.html` to match the SVG's size so the page doesn't jump while it loads. Update its `alt` text too, since it describes what the diagram shows.
 
