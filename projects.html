@@ -10,7 +10,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://portfolio-site.tail8c489d.ts.net/projects.html" />
   <meta property="og:title" content="Projects | Mannix Graham" />
-  <meta property="og:description" content="Terraform-built AWS environment, a Cisco/Proxmox homelab with no open ports, CloudGuard, an agentic AWS operations assistant in development, and the CI/CD pipeline that deploys this site." />
+  <meta property="og:description" content="Terraform-built AWS environment, a Cisco/Proxmox homelab with no open ports, CloudGuard, an agentic AWS operations assistant in development, UniWallet, a hackathon budgeting app, and the CI/CD pipeline that deploys this site." />
   <meta property="og:image" content="https://mannixgr.github.io/mannix-portfolio/og-projects.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -87,7 +87,8 @@
             </div>
             <ul class="status-list">
               <li><span class="status-tag">Built</span>Containers and a Docker VM on Proxmox, with Caddy serving this site, and a strongSwan VM that ends both IPsec tunnels to AWS.</li>
-              <li><span class="status-tag">In progress</span>Server, client and management VLANs with ACLs between them.</li>
+              <li><span class="status-tag">Built</span>A second public container for an invite-only web app: firewalled off from the LAN and the VPN, deployed by CI over the tailnet, with nightly backups to S3 and a tested restore.</li>
+              <li><span class="status-tag">Next</span>A DMZ VLAN for the two public containers, with ACLs between it and the rest of the lab.</li>
             </ul>
 
             <figure class="diagram diagram-trace">
