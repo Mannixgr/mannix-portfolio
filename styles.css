@@ -50,6 +50,20 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Quiet backdrop: faint dot grid fading out down the screen, a soft steel-blue glow up top. Fixed, so it never moves with the scroll. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 60% 40% at 50% -5%, rgb(122 167 245 / 0.09), transparent 70%),
+    radial-gradient(circle, rgb(237 239 239 / 0.07) 1px, transparent 1.5px) 0 0 / 24px 24px;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, rgb(0 0 0 / 0.35) 60%, transparent 100%);
+          mask-image: linear-gradient(to bottom, #000 0%, rgb(0 0 0 / 0.35) 60%, transparent 100%);
+}
+
 h1, h2, h3 { font-family: var(--font-head); font-weight: 600; line-height: 1.2; text-wrap: balance; }
 
 a { color: var(--accent); text-underline-offset: 3px; }
